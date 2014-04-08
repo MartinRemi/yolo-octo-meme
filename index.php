@@ -1,4 +1,5 @@
-<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<html ng-app>
 	<head>
 	</head>
 
@@ -12,7 +13,10 @@
 		echo $unit->getCoordinates()->getY();
 		?>
 
-		<canevas>
-		</canevas>
+		<p>lolilol {{1+2}}</p>
 	</body>
+
+	<script>
+		
+	</script>
 </html>
