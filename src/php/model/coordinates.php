@@ -8,6 +8,9 @@ class Coordinates
 	// Constructeur(s)
 	function Coordinates($x, $y)
 	{
+		$x=(integer)$x;
+		$y=(integer)$y;
+	
 		$this->x=$x;
 		$this->y=$y;
 	}
@@ -26,11 +29,15 @@ class Coordinates
 	// Setter(s)
 	function setX($x)
 	{
+		$x=(integer)$x;
+	
 		$this->x=$x;
 	}
 
 	function setY($y)
 	{
+		$y=(integer)$y;
+	
 		$this->y=$y;
 	}
 }

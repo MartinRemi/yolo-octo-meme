@@ -1,15 +1,18 @@
 <?php
-include_once "coordinates.php";
+include_once "Coordinates.php";
 
 class Unit {
 	// private member(s)
-	var $id;
-	var $coordinates;
+	private $id;
+	private $coordinates;
 
 	// Constructor(s)
-	function Unit() {
-		$this->id=12;
-		$this->coordinates=new Coordinates(0,0);
+	function Unit($id, $x, $y) {
+		$x=(integer) $x;
+		$y=(integer) $y;
+		
+		$this->id=$id;
+		$this->coordinates=new Coordinates($x, $y);
 	}
 
 	// Getter(s)
@@ -26,7 +29,22 @@ class Unit {
 	// Setter(s)
 	public function setId($id)
 	{
+		$id=(integer) $id;
+		
 		$this->id=$id;
+	}
+	
+	// Database function(s)
+	public function persist()
+	{
+		// TODO : DB query
+	}
+	
+	public function getUnitById($id)
+	{
+		$id=(integer) $id;
+		
+		// TODO : DB query
 	}
 }
 ?>
