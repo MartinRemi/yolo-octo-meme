@@ -1,9 +1,10 @@
 <?php
 include_once "Unit.php";
+include_once "../functions/databaseConnection.php";
+include_once "DatabaseObject.php";
 
-class GameBoard {
+class GameBoard extends DatabaseObject {
 	// private member(s)
-	private $id;
 	private $width;
 	private $height;
 	private $board;
@@ -46,7 +47,14 @@ class GameBoard {
 	// Database function(s)
 	public function persist()
 	{
-		// TODO : DB query
+		// TODO : change the method
+		global $conn;
+		if($conn!=null) {
+			$stmt = $conn->prepare("INSERT INTO `Unit` (`id_unit`, `x`, `y`) VALUES (NULL, ?, ?);");
+			$stmt->bindParam(1, $this->coordinates->getX(), PDO::PARAM_INT);
+			$stmt->bindParam(2, $this->coordinates->getY(), PDO::PARAM_INT);
+    		$stmt->execute();
+		}
 	}
 }
 ?>

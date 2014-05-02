@@ -1,5 +1,7 @@
 <?php
-	interface DatabaseObject {
-		public function persist();
+	abstract class DatabaseObject {
+		private $id;
+		
+		abstract public function persist();
 	}
 ?>
