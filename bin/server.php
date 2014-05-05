@@ -4,7 +4,7 @@ use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 use YOMServer\Server;
 	require dirname(__DIR__) . '/vendor/autoload.php';
-	require 'src/php/server/Server.php';
+	require 'src/server/server/Server.php';
 	
 	$server = IoServer::factory(
 		new HttpServer(
