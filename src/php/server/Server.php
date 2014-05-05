@@ -8,7 +8,7 @@
 	 * 	Class which define le behavior of the server when a socket is received/sent
 	 *	Cannot be defined by the user
 	 *	@author Rémi_MARTIN
-	 *	@version 1.0.1
+	 *	@version 1.0.2
 	 */
 	final class Server implements MessageComponentInterface {
 		protected $clients;
