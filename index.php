@@ -3,6 +3,7 @@
 	</head>
 
 	<body>
+		<!--
 		<?php
 		// DATABASE connection
 		include "src/server/functions/databaseConnection.php";
@@ -33,11 +34,21 @@
 			echo $unit->getId().'<br />';
 		}
 		?>
-
+		-->
+		<div id="app">
+		</div>
 		
 	</body>
 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="src/client/controller/Controller.js"></script>
 	<script>
-		
+		// MANDATORY
+		var controller = new Controller("#app");
+	</script>
+	<script src="src/client/model/Unit.js"></script>
+	<script>
+		var unit = new Unit(1, 2, 3);
+		$("#1").css("background", "yellow");
 	</script>
 </html>
