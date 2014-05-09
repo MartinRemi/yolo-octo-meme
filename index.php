@@ -39,7 +39,8 @@
 		</div>
 		
 	</body>
-
+	<script src="src/client/yom.js"></script>
+<!--
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="src/client/controller/Controller.js"></script>
 	<script>
@@ -47,8 +48,34 @@
 		var controller = new Controller("#app");
 	</script>
 	<script src="src/client/model/Unit.js"></script>
+-->
+	<script src="src/client/geometry/Point.js"></script>
+	<script src="src/client/geometry/Circle.js"></script>
+	<script src="src/client/geometry/Line.js"></script>
 	<script>
-		var unit = new Unit(1, 2, 3);
+		/*var unit = new Unit(1, 2, 3);
 		$("#1").css("background", "yellow");
+
+		var test = {};
+		test.start = function() {
+			$("#app").css("background", "red").css("width", 600).css("height", 600);
+
+			$("#1").css("background", "blue");
+		};
+
+		test.start();*/
+		/*$('<div/>', {
+		    id: this.id,
+		    className: "Unit"
+		}).css("width", "100px").css("height", "100px").appendTo(app);*/
+
+
+		var circle = new yom.Circle();
+		alert(circle.getX());
+		var c = circle.copy();
+		c.move(1, 1);
+		circle.move();
+		alert(c.getX()+ " " + c.getY());
+		alert(circle.getX()+ " " + circle.getY());
 	</script>
 </html>

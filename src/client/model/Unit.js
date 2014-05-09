@@ -3,17 +3,6 @@ function Unit (id, x, y) {
 	this.id = id;
 	this.x = x;
 	this.y = y;
-
-	//var app = $(controller.getIdApp());
-	var app = controller.getApp();
-	$('<div/>', {
-	    id: this.id,
-	    className: "Unit"
-	}).css("width", "100px").css("height", "100px").appendTo(app);
-	
-	app.css("background", "red");
-	app.css("width", "100%");
-	app.css("height", "120px");
 }
  
 Unit.prototype.getId = function() {
