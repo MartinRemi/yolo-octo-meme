@@ -98,13 +98,10 @@ yom.Circle.prototype.move = function (x, y) {
  */
 yom.Circle.prototype.contains = function (x, y, inside) {
 	if(radius >= 0) {
-	 	if(inside) { // within the circle
-			return true;
-		} else { // On the perimeter
-			return true;
-		}
+		var dist = Math.pow(x - this.center.getX(), 2) + Math.pow(y - this.center.getY(), 2);
+	 	return (inside && (dist < Math.pow(this.getRadius(), 2)) || (dist == Math.pow(this.getRadius(), 2)));
 	} else {
-		return false;
+		return inside && this.center.equals(x, y);
 	}
 }
 
@@ -117,12 +114,9 @@ yom.Circle.prototype.contains = function (x, y, inside) {
  */
 yom.Circle.prototype.contains = function (point, inside) {
 	if(radius >= 0) {
-	 	if(inside) { // within the circle
-			return true;
-		} else { // On the perimeter
-			return true;
-		}
+		var dist = Math.pow(point.x - this.center.getX(), 2) + Math.pow(point.y - this.center.getY(), 2);
+	 	return (inside && (dist < Math.pow(this.getRadius(), 2)) || (dist == Math.pow(this.getRadius(), 2)));
 	} else {
-		return false;
+		return inside && this.center.equals(point);
 	}
 }

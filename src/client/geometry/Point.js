@@ -66,3 +66,45 @@ yom.Point.prototype.move = function (x, y) {
 
 	this.y += y || 0;
 };
+
+/**
+ * 	Checkes if a point point(x, y) is equal to another point
+ * 	@method yom.Point#equals
+ * 	@param {yom.Point} [point] - The point concerned
+ *	@return {boolean} True if the point is equal to this, else false
+ */
+yom.Point.prototype.equals = function (point) {
+	return (this.x == point.x) && (this.y == point.y);
+};
+
+/**
+ * 	Checkes if a point of coordinates (x, y) is equal to another point
+ * 	@method yom.Point#equals
+ * 	@param {number} [x=0] - The x-coordinate of the point
+ * 	@param {number} [y=0] - The y-coordinate of the point
+ *	@return {boolean} True if the point is equal to this, else false
+ */
+yom.Point.prototype.equals = function (x, y) {
+	return (this.x == x) && (this.y == y);
+};
+
+/**
+ * 	Computes the distance between this and a point of coordinates (x, y)
+ * 	@method yom.Point#distance
+ * 	@param {number} [x=0] - The x-coordinate of the point
+ * 	@param {number} [y=0] - The y-coordinate of the point
+ *	@return {number} The distance between the two points
+ */
+yom.Point.prototype.distance = function (x, y) {
+	return Math.sqrt(Math.pow(x - this.center.getX()) + Math.pow(y - this.center.getY()));
+};
+
+/**
+ * 	Computes the distance between this and a point of coordinates (x, y)
+ * 	@method yom.Point#distance
+ * 	@param {yom.Point} [point] - The point concerned
+ *	@return {number} The distance between the two points
+ */
+yom.Point.prototype.distance = function (point) {
+	return Math.sqrt(Math.pow(point.x - this.center.getX()) + Math.pow(point.y - this.center.getY()));
+};
