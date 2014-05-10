@@ -73,7 +73,7 @@
 		var circle = new yom.Circle();
 		alert(circle.getX());
 		var c = circle.copy();
-		c.move(1, 1);
+		c.move(1.4, 1);
 		circle.move();
 		alert(c.getX()+ " " + c.getY());
 		alert(circle.getX()+ " " + circle.getY());
