@@ -40,8 +40,8 @@
 		
 	</body>
 	<script src="src/client/yom.js"></script>
-<!--
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!--
 	<script src="src/client/controller/Controller.js"></script>
 	<script>
 		// MANDATORY
