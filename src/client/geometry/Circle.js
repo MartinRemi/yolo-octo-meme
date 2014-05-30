@@ -4,7 +4,7 @@
  */
 
 /**
- * 	@property {number} maxCircleId - The maximum id of the circle element
+ * 	@property {number} maxCircleId - The maximum id of the circle element class
  * 	TODO : initiate with database
  */
 yom.maxCircleId = 1; 

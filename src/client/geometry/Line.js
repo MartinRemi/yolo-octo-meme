@@ -118,7 +118,7 @@ yom.Line.prototype.move = function (x, y) {
  *	@return {boolean} True if the point is contained by the line, else false
  */
 yom.Line.prototype.contains = function (x, y) {
-	return (this.gradient * x) == y;
+	return (this.gradient * x) + this.intercept == y;
 };
 
 /**
@@ -128,5 +128,5 @@ yom.Line.prototype.contains = function (x, y) {
  *	@return {boolean} True if the point is contained by the line, else false
  */
 yom.Line.prototype.contains = function (point) {
-	return (this.gradient * point.x) == point.y;
+	return (this.gradient * point.x) + this.intercept == point.y;
 };
