@@ -24,12 +24,12 @@ yom.maxCircleId = 1;
 yom.Circle = function (x, y, radius) {
 
 	/**
-     * 	@property {number} id - The id of the cercle.
+     * 	@property {number} id - The id of the circle.
      */
 	this.id = yom.maxCircleId++;
 
 	/**
-     * 	@property {yom.Point} centre - The center of the cerle.
+     * 	@property {yom.Point} centre - The center of the cicle.
      */
 	this.center = new yom.Point (x || 0, y || 0);
 
