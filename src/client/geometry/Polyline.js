@@ -107,7 +107,7 @@ yom.Polyline.prototype.contains = function (x, y) {
 			return true;
 		}
 	}
-	returnf false;
+	return false;
 }
 
 /**
@@ -123,5 +123,5 @@ yom.Polyline.prototype.contains = function (point) {
 			return true;
 		}
 	}
-	returnf false;
+	return false;
 }

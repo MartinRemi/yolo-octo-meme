@@ -52,6 +52,8 @@
 	<script src="src/client/geometry/Point.js"></script>
 	<script src="src/client/geometry/Circle.js"></script>
 	<script src="src/client/geometry/Line.js"></script>
+	<script src="src/client/geometry/Polyline.js"></script>
+	<script src="src/client/geometry/Polygon.js"></script>
 	<script>
 		/*var unit = new Unit(1, 2, 3);
 		$("#1").css("background", "yellow");
