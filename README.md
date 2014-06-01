@@ -1,11 +1,11 @@
 yolo-octo-meme
 ==============
 
-# Description : 
+## Description : 
 This 2D web game engine is not meant to overperform its competitors.
 This project is led by three students in computing at INSA, Lyon, France for learning purposes.
 
-# Some of its features :
+## Some of its features :
 	* I/O :
 		- Basic functions to handle Input events : keyboard and eventually touchscreen events
 		- Sound management 
@@ -20,5 +20,13 @@ This project is led by three students in computing at INSA, Lyon, France for lea
 	* Scripts :
 		- LUA
 		- or our own scripting language
+		
+## Installation
+To use our game engine, make sure to follow the instructions given in the "install.txt" file.
+		
+## Concepts
+* shape rendered without being part of a gameobject won't be tangible.
+* Coordinates are in pixel. Scale factors are applied to this coordinates during the rendering. You can modify those values.
 
-The features marked with a red star are the most important ones. The other ones will only be developed after.
+## Credits
+Jean Marchal - Contributor

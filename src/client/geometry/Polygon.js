@@ -123,7 +123,25 @@ yom.Polygon.prototype.contains = function (x, y, inside) {
  */
 yom.Polygon.prototype.contains = function (point, inside) {
 	if(inside) {
-		// TODO : Add check with ray cast method
+		// TODO : pixel unit? cm ? mm?
+		// TODO : Enhance by trying better directions?
+		var i;
+		var maxX = this.coordinates[0];
+		for(i = 2; i < this.coordinates.length; i+=2) {
+			maxX = (this.coordinates[i] > maxX) ? this.coordinates[i] : maxX;
+		}
+		if(point.x < maxX) {
+			// We count the number of intersections with the borders of the figure
+			var cpt = 0;
+			for(i = point.x; i < maxX; i++) {
+				cpt = (this.perimeter.contains(i, point.y)) ? cpt+1 : cpt;
+			}
+
+			// If an even number of intersections with the figure, the points doesn't belong to the figure
+			return (cpt % 2 != 0);
+		} else {
+			return false;
+		}
 	} else {
 		return this.perimeter.contains(point);
 	}
