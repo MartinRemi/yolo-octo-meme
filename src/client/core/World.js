@@ -29,4 +29,9 @@ yom.World = function (idOfCanvas, width, height) {
      * 	@property {number} height - The height of the canvas element.
      */
 	this.height = height || 0;
+
+	/**
+     * 	@property {Array.<yom.Body>} bodies - The bodies engaged in the world
+     */
+	this.bodies = [];
 }
