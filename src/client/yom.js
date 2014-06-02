@@ -8,5 +8,11 @@ var yom = yom || {
 	server : {
 		ADDRESS: 	'localhost',
 		PORT: 		8888
+	},
+
+	// ----- Scales used with the coordinates for display purposes
+	scales : {
+		X:  		1,
+		Y: 			1 
 	}
 };

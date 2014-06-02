@@ -11,10 +11,11 @@
  *	@param {string} idOfCanvas - The id of the canvas element (without the '#' symbol).
  * 	@param {number} [width=0] - The width of the canvas element.
  * 	@param {number} [y=0] - The height of the canvas element.
+ *	@param {Array.<yom.Body>} [bodies] - The bodies engaged in the world
+  *	@param {Array} [shapes] - Independant shapes, i.e. not tengible and that don't belong to a body
  * 	@return {yom.World} The point object
  */
-yom.World = function (idOfCanvas, width, height) {
-
+yom.World = function (idOfCanvas, width, height, bodies, shapes) {
 	/**
      * 	@property {string} idOfCanevas - The id of the canvas element (without the '#' symbol).
      */
@@ -33,5 +34,10 @@ yom.World = function (idOfCanvas, width, height) {
 	/**
      * 	@property {Array.<yom.Body>} bodies - The bodies engaged in the world
      */
-	this.bodies = [];
+	this.bodies = bodies || [];
+
+	/**
+     * 	@property {Array} shapes - Independant shapes, i.e. not tengible and that don't belong to a body.
+     */
+	this.shapes = shapes || [];
 }
