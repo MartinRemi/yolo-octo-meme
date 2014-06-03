@@ -5,6 +5,7 @@
 
  /**
  * 	Creates a new RenderManager. This class is used to render the World.
+ *	Rendering shouldn't be used outside of this function.
  * 	@class RenderManager
  * 	@classdesc yom - RenderManager
  * 	@constructor
@@ -22,8 +23,6 @@ yom.RenderManager = function () {
  * 	@return {boolean} True if the body contains the point, else false
  */
 yom.RenderManager.prototype.display = function(world) {
-	var savedWorld = world;
-
 	var i;
 	for(i = 0; i < saveWorld.length; ++i) {
 		// RENDER

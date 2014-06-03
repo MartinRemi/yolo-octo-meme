@@ -47,6 +47,16 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
      this.stepBehavior = function() {};
 }
 
+// ----- Setter(s) ----- \\
+/**
+ *   Used to define the behavior of the 'step' function
+ *   @method yom.World#setStepBehavior
+ *   @param {function()} [stepFunction] - The function to be executed within the step function
+ */
+yom.World.prototype.setStepBehavior = function(stepFunction) {
+     this.stepBehavior = stepFunction;
+};
+
 // ----- Method(s) ----- \\
 /**
  *   Called before the render manager in order to proceed a new step of the world evolution
@@ -55,13 +65,4 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
  */
 yom.World.prototype.step = function() {
      this.stepBehavior();
-};
-
-/**
- *   Used to define the behavior of the 'step' function
- *   @method yom.World#setStepBehavior
- *   @param {function()} [stepFunction] - The function to be executed within the step function
- */
-yom.World.prototype.setStepBehavior = function(stepFunction) {
-     this.stepBehavior = stepFunction;
 };
