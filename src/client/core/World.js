@@ -12,7 +12,7 @@
  * 	@param {number} [width=0] - The width of the canvas element.
  * 	@param {number} [y=0] - The height of the canvas element.
  *	@param {Array.<yom.Body>} [bodies] - The bodies engaged in the world
-  *	@param {Array} [shapes] - Independant shapes, i.e. not tengible and that don't belong to a body
+ *	@param {Array} [shapes] - Independant shapes, i.e. not tengible and that don't belong to a body
  * 	@return {yom.World} The point object
  */
 yom.World = function (idOfCanvas, width, height, bodies, shapes) {
@@ -40,4 +40,28 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
      * 	@property {Array} shapes - Independant shapes, i.e. not tengible and that don't belong to a body.
      */
 	this.shapes = shapes || [];
+
+     /**
+     *    @property {function()} stepBehavior - Defines the step behavior
+     */
+     this.stepBehavior = function() {};
 }
+
+// ----- Method(s) ----- \\
+/**
+ *   Called before the render manager in order to proceed a new step of the world evolution
+ *   BEHAVIOR DEFINED BY THE USER
+ *   @method yom.World#step
+ */
+yom.World.prototype.step = function() {
+     this.stepBehavior();
+};
+
+/**
+ *   Used to define the behavior of the 'step' function
+ *   @method yom.World#setStepBehavior
+ *   @param {function()} [stepFunction] - The function to be executed within the step function
+ */
+yom.World.prototype.setStepBehavior = function(stepFunction) {
+     this.stepBehavior = stepFunction;
+};

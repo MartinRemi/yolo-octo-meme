@@ -18,7 +18,7 @@ yom.RenderManager = function () {
 /**
  * 	Render the world how it is when the function is called
  * 	@method yom.Body#contains
-  *	@param {yom.World} world - The world we want to display.
+ *	@param {yom.World} world - The world we want to display.
  * 	@return {boolean} True if the body contains the point, else false
  */
 yom.RenderManager.prototype.display = function(world) {

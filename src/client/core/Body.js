@@ -32,7 +32,7 @@ yom.Body = function (shapes) {
  * 	@method yom.Body#contains
  * 	@return {boolean} True if the body contains the point, else false
  */
-yom.Body.prototype.contains(x, y) {
+yom.Body.prototype.contains = function(x, y) {
 	var i;
 	for(i = 0; i < this.shapes.length; ++i) {
 		(this.shapes[i].contains(x, y)) ? return true : /* NOTHING */;
@@ -44,7 +44,7 @@ yom.Body.prototype.contains(x, y) {
  * 	@method yom.Body#contains
  * 	@return {boolean} True if the body contains the point, else false
  */
-yom.Body.prototype.contains(point) {
+yom.Body.prototype.contains = function(point) {
 	var i;
 	for(i = 0; i < this.shapes.length; ++i) {
 		(this.shapes[i].contains(point)) ? return true : /* NOTHING */;
