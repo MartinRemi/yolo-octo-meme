@@ -52,6 +52,11 @@ yom.GraphicLine.prototype.move = function (x, y) {
 	this.line.move(x, y);
 };
 
+/**
+ * 	Render the graphic line.
+ * 	@method yom.GraphicLine#render
+ * 	@param {yom.RenderManager} [renderManager] - The renderManager object
+ */
 yom.GraphicLine.prototype.render = function() {
 	// TODO : Add code
 };

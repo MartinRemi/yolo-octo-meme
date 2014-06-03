@@ -52,6 +52,11 @@ yom.GraphicPolyline.prototype.move = function (x, y) {
 	this.polyline.move(x, y);
 };
 
+/**
+ * 	Render the graphic polyline.
+ * 	@method yom.GraphicPolyline#render
+ * 	@param {yom.RenderManager} [renderManager] - The renderManager object
+ */
 yom.GraphicPolyline.prototype.render = function() {
 	// TODO : Add code
 };

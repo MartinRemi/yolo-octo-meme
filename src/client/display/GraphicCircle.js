@@ -52,6 +52,11 @@ yom.GraphicCircle.prototype.move = function (x, y) {
 	this.circle.move(x, y);
 };
 
-yom.GraphicCircle.prototype.render = function() {
+/**
+ * 	Render the graphic circle.
+ * 	@method yom.GraphicCircle#render
+ * 	@param {yom.RenderManager} [renderManager] - The renderManager object
+ */
+yom.GraphicCircle.prototype.render = function(renderManager) {
 	// TODO : Add code
 };
