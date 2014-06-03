@@ -57,6 +57,6 @@ yom.GraphicPolyline.prototype.move = function (x, y) {
  * 	@method yom.GraphicPolyline#render
  * 	@param {yom.RenderManager} [renderManager] - The renderManager object
  */
-yom.GraphicPolyline.prototype.render = function() {
+yom.GraphicPolyline.prototype.render = function(renderManager) {
 	// TODO : Add code
 };

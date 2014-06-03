@@ -57,6 +57,6 @@ yom.GraphicPolygon.prototype.move = function (x, y) {
  * 	@method yom.GraphicLine#render
  * 	@param {yom.RenderManager} [renderManager] - The renderManager object
  */
-yom.GraphicPolygon.prototype.render = function() {
+yom.GraphicPolygon.prototype.render = function(renderManager) {
 	// TODO : Add code
 };
