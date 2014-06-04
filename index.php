@@ -35,8 +35,8 @@
 		}
 		?>
 		-->
-		<div id="app">
-		</div>
+		<canvas id="app" width="500" height="500">
+		</canvas>
 		
 	</body>
 	<script src="src/client/yom.js"></script>
@@ -49,11 +49,15 @@
 	</script>
 	<script src="src/client/model/Unit.js"></script>
 -->
+	<script src="src/client/core/World.js"></script>
 	<script src="src/client/geometry/Point.js"></script>
 	<script src="src/client/geometry/Circle.js"></script>
 	<script src="src/client/geometry/Line.js"></script>
 	<script src="src/client/geometry/Polyline.js"></script>
 	<script src="src/client/geometry/Polygon.js"></script>
+	<script src="src/client/display/GraphicCircle.js"></script>
+	<script src="src/client/display/RenderManager.js"></script>
+	<script src="src/client/display/DrawManager.js"></script>
 	<script>
 		/*var unit = new Unit(1, 2, 3);
 		$("#1").css("background", "yellow");
@@ -72,12 +76,11 @@
 		}).css("width", "100px").css("height", "100px").appendTo(app);*/
 
 
-		var circle = new yom.Circle();
-		alert(circle.getX());
-		var c = circle.copy();
-		c.move(1.4, 1);
-		circle.move();
-		alert(c.getX()+ " " + c.getY());
-		alert(circle.getX()+ " " + circle.getY());
+		var circle = new yom.Circle(30, 30, 15);
+		var graphicCircle = new yom.GraphicCircle(circle);
+		var world = new yom.World("app", 500, 500);
+		var renderManager = new yom.RenderManager();
+		var drawManager = new DrawManager(renderManager, world);
+		drawManager.drawCircle(graphicCircle);
 	</script>
 </html>

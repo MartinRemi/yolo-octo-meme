@@ -18,12 +18,14 @@ yom.RenderManager = function () {
 // ----- Method(s) ----- \\
 /**
  * 	Render the world how it is when the function is called
- * 	@method yom.Body#contains
+ * 	@method yom.RenderManager#contains
  *	@param {yom.World} world - The world we want to display.
- * 	@return {boolean} True if the body contains the point, else false
  */
 yom.RenderManager.prototype.display = function(world) {
 	var i;
+
+	var renderManager = new yom.RenderManager(this);
+
 	for(i = 0; i < saveWorld.length; ++i) {
 		// RENDER
 		// TODO : define getPoints()
