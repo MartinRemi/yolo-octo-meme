@@ -56,6 +56,7 @@
 	<script src="src/client/geometry/Polyline.js"></script>
 	<script src="src/client/geometry/Polygon.js"></script>
 	<script src="src/client/display/GraphicCircle.js"></script>
+	<script src="src/client/display/GraphicLine.js"></script>
 	<script src="src/client/display/RenderManager.js"></script>
 	<script src="src/client/display/DrawManager.js"></script>
 	<script>
@@ -78,9 +79,14 @@
 
 		var circle = new yom.Circle(30, 30, 15);
 		var graphicCircle = new yom.GraphicCircle(circle);
+
+		var line = new yom.Line(0, 0, 500, 500);
+		var graphicLine = new yom.GraphicLine(line);
+
 		var world = new yom.World("app", 500, 500);
 		var renderManager = new yom.RenderManager();
 		var drawManager = new yom.DrawManager(renderManager, world);
 		drawManager.drawCircle(graphicCircle);
+		drawManager.drawLine(graphicLine);
 	</script>
 </html>

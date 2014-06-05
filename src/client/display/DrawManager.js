@@ -48,3 +48,16 @@ yom.DrawManager.prototype.drawCircle = function(graphicCircle) {
 		2 * Math.PI);
 	this.context.stroke();
 };
+
+/**
+ * 	Draw a line.
+ * 	@method yom.DrawManager#drawLine
+ *	@param {yom.GraphicLine} line - The line we want to display.
+ */
+yom.DrawManager.prototype.drawLine = function(graphicLine) {
+	this.context.moveTo(graphicLine.line.firstPoint.x,
+						graphicLine.line.firstPoint.y);
+	this.context.lineTo(graphicLine.line.secondPoint.x,
+						graphicLine.line.secondPoint.y);
+	this.context.stroke();
+};

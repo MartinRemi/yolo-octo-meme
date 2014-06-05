@@ -46,15 +46,15 @@ yom.Line = function (xf, yf, xs, ys) {
     this.gradient = 0;
 
     if(xf > xs) {
-    	this.firstPoint = new Point (xs, ys);
+    	this.firstPoint = new yom.Point (xs, ys);
 
-     	this.secondPoint = new Point (xf, yf);
+     	this.secondPoint = new yom.Point (xf, yf);
 
      	this.gradient = (yf - ys) / (xf - xs);
     } else {
-     	this.firstPoint = new Point (xf, yf);
+     	this.firstPoint = new yom.Point (xf, yf);
 
-     	this.secondPoint = new Point (xs, ys);
+     	this.secondPoint = new yom.Point (xs, ys);
 
      	this.gradient = (ys - yf) / (xs - xf);
     }
