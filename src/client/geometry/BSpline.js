@@ -18,11 +18,12 @@ yom.maxBSplineId = 1;
  * 	@classdesc yom - BSpline
  * 	@constructor
  * 	@param {Array.<number>} [nodes] - List of the m+1 nodes which composed the BSpline.
+ *  @param {Array.<Point>} [points] - List of the m-n-1 points used to create the BSpline.
  *  @param {number} [t] - Parameter which take the function that define the BSpline.
  *  @param {number} [n] - Degree of the curve.
  * 	@return {yom.BSpline} The BSpline object
  */
-yom.BSpline = function (nodes, t, n) {
+yom.BSpline = function (nodes, points, t, n) {
 	/**
      * 	@property {number} id - The id of the BSpline.
      */
@@ -32,6 +33,11 @@ yom.BSpline = function (nodes, t, n) {
      * 	@property {Array.<number>} nodes - List of the m+1 nodes which composed the BSpline.
      */
 	this.nodes = nodes;
+	
+	/**
+     * 	@property {Array.<Point>} [points] - List of the m-n-1 points used to create the BSpline.
+     */
+	this.points = points;
 	
 	/**
      * 	@property {number} [t] - Parameter which take the function that define the BSpline.
@@ -47,9 +53,11 @@ yom.BSpline = function (nodes, t, n) {
      * 	@property {Array} Polynomials - polynomials depending on the nodes that define the BSpline
      */
 	this.polynomials = new Array(nodes.length);
-
+	
+	// Each polynomials are calculated here and placed in the array polynomials
 	for(var j = 0; j < this.n; j++) {
 		this.polynomials[j] = new Array(this.nodes.length - this.n - 1);
+		// First of all, we calculate initial polynomials
 		if (j==0){
 			for (var i = 0; i < this.nodes.length - this.n - 1; i++){
 				
@@ -63,6 +71,7 @@ yom.BSpline = function (nodes, t, n) {
 					break;
 			}
 		}
+		// And then, we calculate the rest of them using those previous ones.
 		else{
 			for (var i = 0; i < this.nodes.length - this.n - 1; i++){
 				this.polynomials[j][i] = ((this.t - this.nodes[i])/(this.nodes[i+1] - this.nodes[i]) * this.polynomials[i][j-1]) + ((this.nodes[i+j+1] - this.t)/(this.nodes[i+j+1] - this.nodes[i+1]) * this.polynomials[i+1][j-1]);
@@ -70,13 +79,14 @@ yom.BSpline = function (nodes, t, n) {
 		}
 	}
 	
+	/**
+     * 	@property {number} equation - function defining the BSpline
+     */
 	
-	
-	// Ajouter fonction de calcul de la BSpline (grosse somme de 0 à m-n-1 avec les Pi inconnus...
-	
-	
-	
-	
+	this.equation;
+	for (var i = 0; i < this.nodes.length - this.n - 1; i++){
+		this.equation += this.polynomials[this.n][i]*this.points[i];
+	}
 }
 
 // ----- Getter(s) ----- \\
@@ -87,6 +97,16 @@ yom.BSpline = function (nodes, t, n) {
  */
 yom.BSpline.prototype.getPolynomials = function () {
 	return this.polynomials;
+};
+
+/**
+ * 	Getter of the 'equation' property
+ * 	@method yom.BSpline#getEquation
+ * 	@return {Array} The value of the property called 'equation'
+ */
+ 
+ yom.BSpline.prototype.getEquation = function () {
+	return this.equation;
 };
 
 // ----- Method(s) ----- \\
