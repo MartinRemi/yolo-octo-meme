@@ -39,12 +39,12 @@ yom.DrawManager = function (renderManager, world) {
  * 	@method yom.DrawManager#drawCircle
  *	@param {yom.GraphicCircle} circle - The circle we want to display.
  */
-yom.DrawManager.prototype.display = function(graphicCircle) {
-	context.beginPath();
-	context.arc(graphicCircle.circle.center.x, 
+yom.DrawManager.prototype.drawCircle = function(graphicCircle) {
+	this.context.beginPath();
+	this.context.arc(graphicCircle.circle.center.x, 
 		graphicCircle.circle.center.y,
 		graphicCircle.circle.radius,
 		0,
 		2 * Math.PI);
-	context.stroke();
+	this.context.stroke();
 };

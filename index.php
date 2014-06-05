@@ -40,7 +40,7 @@
 		
 	</body>
 	<script src="src/client/yom.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="jquery-2.1.1.min.js"></script>
 <!--
 	<script src="src/client/controller/Controller.js"></script>
 	<script>
@@ -80,7 +80,7 @@
 		var graphicCircle = new yom.GraphicCircle(circle);
 		var world = new yom.World("app", 500, 500);
 		var renderManager = new yom.RenderManager();
-		var drawManager = new DrawManager(renderManager, world);
+		var drawManager = new yom.DrawManager(renderManager, world);
 		drawManager.drawCircle(graphicCircle);
 	</script>
 </html>
