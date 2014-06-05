@@ -38,7 +38,7 @@ yom.Polygon = function (coordinates) {
     /**
      *	@property {yom.Polyline} perimeter - The coordinates of the points composing the polygon.
      */
-    this.perimeter = new Polyline(coordinates);
+    this.perimeter = new yom.Polyline(coordinates);
 }
 
 // ----- Getter(s) ----- \\

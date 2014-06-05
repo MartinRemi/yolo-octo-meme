@@ -75,3 +75,24 @@ yom.DrawManager.prototype.drawPolyline = function(graphicPolyline) {
 		this.drawLine(graphicLine);
 	}
 };
+
+/**
+ * 	Draw a polygon.
+ * 	@method yom.DrawManager#drawPolygon
+ *	@param {yom.GraphicPolygon} graphicPolygon - The polygon we want to display.
+ */
+yom.DrawManager.prototype.drawPolygon = function(graphicPolygon) {
+	var i;
+	/*var coordinates = graphicPolygon.polygon.coordinates;
+	for(i = 0; i < coordinates.length; i += 2) {
+		if(i + 1 < coordinates.length) {
+			this.context.moveTo(coordinates[i], coordinates[i+1]);
+			if(i + 3 < coordinates.length) {
+				this.context.lineTo(coordinates[i+2], coordinates[i+3]);
+			}
+		}
+	}
+	this.context.stroke();*/
+	var graphicPolyline = new yom.GraphicPolyline(graphicPolygon.polygon.perimeter);
+	this.drawPolyline(graphicPolyline);
+};
