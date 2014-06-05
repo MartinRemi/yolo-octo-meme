@@ -37,14 +37,16 @@ yom.Polyline = function (coordinates) {
 	this.lines = [];
 
 	var i;
+	var index = 0;
 	for(i = 0; i < coordinates.length; i += 2) {
 		if(i + 3 < coordinates.length) {
-			this.lines = new Line(
+			this.lines[index] = new yom.Line(
 				coordinates[i],
 				coordinates[i + 1],
 				coordinates[i + 2],
 				coordinates[i + 3]
 			);
+			++index;
 		} else {
 			break;
 		}

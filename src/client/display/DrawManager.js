@@ -37,7 +37,7 @@ yom.DrawManager = function (renderManager, world) {
 /**
  * 	Draw a circle.
  * 	@method yom.DrawManager#drawCircle
- *	@param {yom.GraphicCircle} circle - The circle we want to display.
+ *	@param {yom.GraphicCircle} graphicCircle - The circle we want to display.
  */
 yom.DrawManager.prototype.drawCircle = function(graphicCircle) {
 	this.context.beginPath();
@@ -52,7 +52,7 @@ yom.DrawManager.prototype.drawCircle = function(graphicCircle) {
 /**
  * 	Draw a line.
  * 	@method yom.DrawManager#drawLine
- *	@param {yom.GraphicLine} line - The line we want to display.
+ *	@param {yom.GraphicLine} graphicLine - The line we want to display.
  */
 yom.DrawManager.prototype.drawLine = function(graphicLine) {
 	this.context.moveTo(graphicLine.line.firstPoint.x,
@@ -60,4 +60,18 @@ yom.DrawManager.prototype.drawLine = function(graphicLine) {
 	this.context.lineTo(graphicLine.line.secondPoint.x,
 						graphicLine.line.secondPoint.y);
 	this.context.stroke();
+};
+
+/**
+ * 	Draw a polyline.
+ * 	@method yom.DrawManager#drawPolyline
+ *	@param {yom.GraphicPolyline} graphicPolyline - The polyline we want to display.
+ */
+yom.DrawManager.prototype.drawPolyline = function(graphicPolyline) {
+	var i;
+	var graphicLine;
+	for(i = 0; i < graphicPolyline.polyline.lines.length; ++i) {
+		graphicLine = new yom.GraphicLine(graphicPolyline.polyline.lines[i]);
+		this.drawLine(graphicLine);
+	}
 };
