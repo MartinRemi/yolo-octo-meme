@@ -30,7 +30,7 @@ yom.GraphicPolygon = function (polygon, borderColor, insideColor) {
      * 	TODO : Add type and desc
      */
 	this.insideColor = insideColor || '#000';
-}
+};
 
 // ----- Method(s) ----- \\
 /**

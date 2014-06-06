@@ -51,7 +51,7 @@ yom.Polyline = function (coordinates) {
 			break;
 		}
 	}
-}
+};
 
 // ----- Getter(s) ----- \\
 /**
@@ -93,6 +93,14 @@ yom.Polyline.prototype.move = function (x, y) {
 	for(i = 0; i < this.lines.length; ++i) {
 		this.lines[i].move(x, y);
 	}
+
+	for(i = 0; i < this.coordinates.length; ++i) {
+		if(i % 2 == 0) {
+			this.coordinates[i] += x;
+		} else {
+			this.coordinates[i] += y;
+		}
+	}
 };
 
 /**
@@ -110,20 +118,20 @@ yom.Polyline.prototype.contains = function (x, y) {
 		}
 	}
 	return false;
-}
+};
 
 /**
  * 	Checkes if the polyline (this) contains a point (point)
- * 	@method yom.Polyline#contains
+ * 	@method yom.Polyline#containsPoint
  * 	@param {yom.Point} [point] - The point concerned
  *	@return {boolean} true if the circle contains the point, else false
  */
-yom.Polyline.prototype.contains = function (point) {
+yom.Polyline.prototype.containsPoint = function (point) {
 	var i;
 	for(i = 0; i < this.lines.length; ++i) {
-		if(this.lines[i].contains(point)) {
+		if(this.lines[i].containsPoint(point)) {
 			return true;
 		}
 	}
 	return false;
-}
+};

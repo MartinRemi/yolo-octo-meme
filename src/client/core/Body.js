@@ -24,7 +24,7 @@ yom.Body = function (shapes) {
      * 	@property {Array} shapes - The shapes that belong to the body.
      */
 	this.shapes = shapes || [];
-}
+};
 
 // ----- Method(s) ----- \\
 /**

@@ -1,3 +1,4 @@
+
 /**
  * 	@author       Rémi MARTIN <martinremi60@gmail.com>
  * 	@copyright    2014 Rémi MARTIN
@@ -13,7 +14,7 @@
  */
 yom.RenderManager = function () {
 	/* NOTHING */
-}
+};
 
 // ----- Method(s) ----- \\
 /**

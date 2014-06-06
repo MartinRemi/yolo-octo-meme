@@ -39,7 +39,7 @@ yom.Polygon = function (coordinates) {
      *	@property {yom.Polyline} perimeter - The coordinates of the points composing the polygon.
      */
     this.perimeter = new yom.Polyline(coordinates);
-}
+};
 
 // ----- Getter(s) ----- \\
 /**
@@ -78,6 +78,19 @@ yom.Polygon.prototype.copy = function () {
  */
 yom.Polygon.prototype.move = function (x, y) {
 	this.perimeter.move(x, y);
+
+	//this.coordinates = this.getPerimeter()
+
+	/*var i;
+	for(i = 0; i < this.coordinates.length; ++i) {
+		if(i % 2 == 0) {
+			this.coordinates[i] += x;
+		} else {
+			this.coordinates[i] += y;
+		}
+	}*/
+
+	//this.perimiter = new yom.Polyline(this.coordinates);
 };
 
 /**
@@ -112,16 +125,16 @@ yom.Polygon.prototype.contains = function (x, y, inside) {
 	} else {
 		return this.perimeter.contains(x, y);
 	}
-}
+};
 
 /**
  * 	Checkes if the Polygon (this) contains a point (point)
- * 	@method yom.Polygon#contains
+ * 	@method yom.Polygon#containsPoint
  * 	@param {yom.Point} [point] - The point concerned
  * 	@param {boolean} [inside] - If true, we check within the Polygon
  *	@return {boolean} true if the Polygon contains the point, else false
  */
-yom.Polygon.prototype.contains = function (point, inside) {
+yom.Polygon.prototype.containsPoint = function (point, inside) {
 	if(inside) {
 		// TODO : pixel unit? cm ? mm?
 		// TODO : Enhance by trying better directions?
@@ -143,6 +156,6 @@ yom.Polygon.prototype.contains = function (point, inside) {
 			return false;
 		}
 	} else {
-		return this.perimeter.contains(point);
+		return this.perimeter.containsPoint(point);
 	}
-}
+};

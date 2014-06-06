@@ -83,11 +83,11 @@
 		var graphicCircle = new yom.GraphicCircle(circle, '#00FFFF');
 
 		var line = new yom.Line(0, 0, 500, 500);
-		var graphicLine = new yom.GraphicLine(line, '#ff0000');
+		var graphicLine1 = new yom.GraphicLine(line, '#ff0000');
 
 		var array = [100, 0, 160, 400, 500, 0];
 		var polyline = new yom.Polyline(array);
-		var graphicPolyline = new yom.GraphicPolyline(polyline, '#C3C3C3');
+		var graphicPolyline1 = new yom.GraphicPolyline(polyline, '#C3C3C3', '#5674ef');
 
 		var arrayPolygon = [100, 150, 150, 150, 150, 100, 100, 100];
 		var polygon = new yom.Polygon(arrayPolygon);
@@ -97,13 +97,17 @@
 		var renderManager = new yom.RenderManager();
 		var drawManager = new yom.DrawManager(renderManager, world);
 		drawManager.drawCircle(graphicCircle);
-		drawManager.drawLine(graphicLine);
-		drawManager.drawPolyline(graphicPolyline);
+		drawManager.drawLine(graphicLine1);
+		drawManager.drawPolyline(graphicPolyline1);
 		drawManager.drawPolygon(graphicPolygon);
 
 		// Fill
 		graphicCircle.circle.move(30, 56);
-		graphicCircle.insideColor = "123456";
+		graphicCircle.circle.radius = 1;
+		graphicCircle.insideColor = "#123456";
 		drawManager.fillCircle(graphicCircle);
+
+		graphicPolygon.polygon.move(20, 30);
+		drawManager.fillPolygon(graphicPolygon);
 	</script>
 </html>

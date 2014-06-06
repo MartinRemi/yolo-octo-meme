@@ -1,3 +1,4 @@
+
 /**
  * 	@author       Rémi MARTIN <martinremi60@gmail.com>
  * 	@copyright    2014 Rémi MARTIN
@@ -45,7 +46,7 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
      *    @property {function()} stepBehavior - Defines the step behavior
      */
      this.stepBehavior = function() {};
-}
+};
 
 // ----- Setter(s) ----- \\
 /**

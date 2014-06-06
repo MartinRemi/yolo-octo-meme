@@ -44,7 +44,6 @@ yom.Line = function (xf, yf, xs, ys) {
      * 	@property {number} gradient - The gradient of the line.
      */
     this.gradient = 0;
-
     if(xf > xs) {
     	this.firstPoint = new yom.Point (xs, ys);
 
@@ -118,15 +117,19 @@ yom.Line.prototype.move = function (x, y) {
  *	@return {boolean} True if the point is contained by the line, else false
  */
 yom.Line.prototype.contains = function (x, y) {
-	return (this.gradient * x) + this.intercept == y;
+    if(this.firstPoint.x == this.secondPoint.x) {
+        return (this.firstPoint.x == x) && ((y <= this.secondPoint.y && y >= this.firstPoint.y) || (y <= this.firstPoint.y && y >= this.secondPoint.y));
+    } else {
+	   return ((this.gradient * x) + this.intercept == y) && (x >= this.firstPoint.x && x <= this.secondPoint.x);
+    }
 };
 
 /**
  * 	Checkes if a point point(x, y) is on the line
- * 	@method yom.Line#contains
+ * 	@method yom.Line#containsPoint
  * 	@param {yom.Point} [point] - The point concerned
  *	@return {boolean} True if the point is contained by the line, else false
  */
-yom.Line.prototype.contains = function (point) {
+yom.Line.prototype.containsPoint = function (point) {
 	return (this.gradient * point.x) + this.intercept == point.y;
 };

@@ -24,7 +24,7 @@ yom.Point = function (x, y) {
      * 	@property {number} y - The y position of the point.
      */
 	this.y = y || 0;
-}
+};
 
 // ----- Getter(s) ----- \\
 /**

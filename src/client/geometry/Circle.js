@@ -38,7 +38,7 @@ yom.Circle = function (x, y, radius) {
      */
 	this.radius = radius || 0;
 	this.radius = ( this.radius >= 0 ) ? this.radius : 0;
-}
+};
 
 // ----- Getter(s) ----- \\
 /**
@@ -103,20 +103,20 @@ yom.Circle.prototype.contains = function (x, y, inside) {
 	} else {
 		return inside && this.center.equals(x, y);
 	}
-}
+};
 
 /**
  * 	Checkes if the circle (this) contains a point (point)
- * 	@method yom.Circle#contains
+ * 	@method yom.Circle#containsPoint
  * 	@param {yom.Point} [point] - The point concerned
  * 	@param {boolean} [inside] - If true, we check within the circle
  *	@return {boolean} true if the circle contains the point, else false
  */
-yom.Circle.prototype.contains = function (point, inside) {
+yom.Circle.prototype.containsPoint = function (point, inside) {
 	if(radius >= 0) {
 		var dist = Math.pow(point.x - this.center.getX(), 2) + Math.pow(point.y - this.center.getY(), 2);
 	 	return (inside && (dist < Math.pow(this.getRadius(), 2)) || (dist == Math.pow(this.getRadius(), 2)));
 	} else {
 		return inside && this.center.equals(point);
 	}
-}
+};
