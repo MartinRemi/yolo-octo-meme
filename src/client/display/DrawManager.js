@@ -41,12 +41,18 @@ yom.DrawManager = function (renderManager, world) {
  */
 yom.DrawManager.prototype.drawCircle = function(graphicCircle) {
 	this.context.beginPath();
+
+	var borderColor = graphicCircle.borderColor || '#000';
+
 	this.context.arc(graphicCircle.circle.center.x, 
 		graphicCircle.circle.center.y,
 		graphicCircle.circle.radius,
 		0,
 		2 * Math.PI);
+
+	this.context.strokeStyle = borderColor;
 	this.context.stroke();
+	this.context.closePath();
 };
 
 /**
@@ -55,6 +61,7 @@ yom.DrawManager.prototype.drawCircle = function(graphicCircle) {
  *	@param {yom.GraphicLine} graphicLine - The line we want to display.
  */
 yom.DrawManager.prototype.drawLine = function(graphicLine) {
+	this.context.beginPath();
 	var borderColor = graphicLine.borderColor || '#000';
 
 	this.context.moveTo(graphicLine.line.firstPoint.x,
@@ -64,6 +71,7 @@ yom.DrawManager.prototype.drawLine = function(graphicLine) {
 
 	this.context.strokeStyle = borderColor;
 	this.context.stroke();
+	this.context.closePath();
 };
 
 /**
@@ -75,7 +83,8 @@ yom.DrawManager.prototype.drawPolyline = function(graphicPolyline) {
 	var i;
 	var graphicLine;
 	for(i = 0; i < graphicPolyline.polyline.lines.length; ++i) {
-		graphicLine = new yom.GraphicLine(graphicPolyline.polyline.lines[i]);
+		graphicLine = new yom.GraphicLine(graphicPolyline.polyline.lines[i],
+										graphicPolyline.borderColor);
 		this.drawLine(graphicLine);
 	}
 };
@@ -86,6 +95,7 @@ yom.DrawManager.prototype.drawPolyline = function(graphicPolyline) {
  *	@param {yom.GraphicPolygon} graphicPolygon - The polygon we want to display.
  */
 yom.DrawManager.prototype.drawPolygon = function(graphicPolygon) {
-	var graphicPolyline = new yom.GraphicPolyline(graphicPolygon.polygon.perimeter);
+	var graphicPolyline = new yom.GraphicPolyline(graphicPolygon.polygon.perimeter,
+						graphicPolygon.borderColor);
 	this.drawPolyline(graphicPolyline);
 };
