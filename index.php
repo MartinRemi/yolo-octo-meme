@@ -100,5 +100,10 @@
 		drawManager.drawLine(graphicLine);
 		drawManager.drawPolyline(graphicPolyline);
 		drawManager.drawPolygon(graphicPolygon);
+
+		// Fill
+		graphicCircle.circle.move(30, 56);
+		graphicCircle.insideColor = "123456";
+		drawManager.fillCircle(graphicCircle);
 	</script>
 </html>

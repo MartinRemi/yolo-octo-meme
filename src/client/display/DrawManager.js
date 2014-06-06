@@ -99,3 +99,31 @@ yom.DrawManager.prototype.drawPolygon = function(graphicPolygon) {
 						graphicPolygon.borderColor);
 	this.drawPolyline(graphicPolyline);
 };
+
+/**
+ * 	Fill a circle.
+ * 	@method yom.DrawManager#fillCircle
+ *	@param {yom.GraphicCircle} graphicCircle - The circle we want to display.
+ */
+yom.DrawManager.prototype.fillCircle = function(graphicCircle) {
+	this.context.beginPath();
+
+	var borderColor = graphicCircle.borderColor || '#000';
+	var insideColor = graphicCircle.insideColor || '#000';
+
+	this.context.arc(graphicCircle.circle.center.x, 
+		graphicCircle.circle.center.y,
+		graphicCircle.circle.radius,
+		0,
+		2 * Math.PI);
+
+	// Fill color
+	this.context.fillStyle = insideColor;
+	this.context.fill();
+
+	// Border coor
+	this.context.strokeStyle = borderColor;
+
+	this.context.stroke();
+	this.context.closePath();
+};
