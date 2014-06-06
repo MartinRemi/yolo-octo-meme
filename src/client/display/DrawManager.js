@@ -55,10 +55,14 @@ yom.DrawManager.prototype.drawCircle = function(graphicCircle) {
  *	@param {yom.GraphicLine} graphicLine - The line we want to display.
  */
 yom.DrawManager.prototype.drawLine = function(graphicLine) {
+	var borderColor = graphicLine.borderColor || '#000';
+
 	this.context.moveTo(graphicLine.line.firstPoint.x,
 						graphicLine.line.firstPoint.y);
 	this.context.lineTo(graphicLine.line.secondPoint.x,
 						graphicLine.line.secondPoint.y);
+
+	this.context.strokeStyle = borderColor;
 	this.context.stroke();
 };
 
@@ -82,17 +86,6 @@ yom.DrawManager.prototype.drawPolyline = function(graphicPolyline) {
  *	@param {yom.GraphicPolygon} graphicPolygon - The polygon we want to display.
  */
 yom.DrawManager.prototype.drawPolygon = function(graphicPolygon) {
-	var i;
-	/*var coordinates = graphicPolygon.polygon.coordinates;
-	for(i = 0; i < coordinates.length; i += 2) {
-		if(i + 1 < coordinates.length) {
-			this.context.moveTo(coordinates[i], coordinates[i+1]);
-			if(i + 3 < coordinates.length) {
-				this.context.lineTo(coordinates[i+2], coordinates[i+3]);
-			}
-		}
-	}
-	this.context.stroke();*/
 	var graphicPolyline = new yom.GraphicPolyline(graphicPolygon.polygon.perimeter);
 	this.drawPolyline(graphicPolyline);
 };
