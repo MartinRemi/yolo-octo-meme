@@ -119,13 +119,6 @@ yom.BSpline.prototype.copy = function () {
 	return new yom.BSpline(this.coordinates, this.t, this.n);
 };
 
-
-
-
-// /!\ A voir pour la prochaine fois, exemple tiré de Polyline.js.
-
-
-
 /**
  * 	Moves the BSpline by x for the x coordinate, and by y for the y coordinate
  * 	@method yom.BSpline#move
@@ -134,10 +127,14 @@ yom.BSpline.prototype.copy = function () {
  */
 yom.BSpline.prototype.move = function (x, y) {
 	var i;
-	for(i = 0; i < this.lines.length; ++i) {
-		this.lines[i].move(x, y);
+	for(i = 0; i < this.points.length; ++i) {
+		this.points[i].move(x, y);
 	}
 };
+
+
+
+// /!\ A faire !
 
 /**
  * 	Checkes if the BSpline (this) contains a point of coordinates (x,y)
