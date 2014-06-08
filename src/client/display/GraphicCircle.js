@@ -14,7 +14,7 @@
  *
  *	TODO : Add color
  */
-yom.GraphicCircle = function (circle, borderColor, insideColor) {
+yom.GraphicCircle = function (circle, borderColor, insideColor, image) {
 
 	/**
      * 	@property {yom.Circle} circle - The circle we want to display
@@ -30,6 +30,11 @@ yom.GraphicCircle = function (circle, borderColor, insideColor) {
      * 	TODO : Add type and desc
      */
 	this.insideColor = insideColor || '#000';
+
+	/**
+     * 	TODO : Add type and desc
+     */
+	this.image = image || yom.images.DEFAULT_IMAGE;
 };
 
 // ----- Method(s) ----- \\

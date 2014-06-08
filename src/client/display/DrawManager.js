@@ -77,14 +77,14 @@ yom.DrawManager.prototype.drawLine = function(yom_draw_graphicLine) {
 /**
  * 	Draw a polyline.
  * 	@method yom.DrawManager#drawPolyline
- *	@param {yom.GraphicPolyline} graphicPolyline - The polyline we want to display.
+ *	@param {yom.GraphicPolyline} yom_draw_graphicPolyline - The polyline we want to display.
  */
-yom.DrawManager.prototype.drawPolyline = function(graphicPolyline) {
+yom.DrawManager.prototype.drawPolyline = function(yom_draw_graphicPolyline) {
 	var i;
 	var yom_draw_graphicLine;
-	for(i = 0; i < graphicPolyline.polyline.lines.length; ++i) {
-		yom_draw_graphicLine = new yom.GraphicLine(graphicPolyline.polyline.lines[i],
-										graphicPolyline.borderColor);
+	for(i = 0; i < yom_draw_graphicPolyline.polyline.lines.length; ++i) {
+		yom_draw_graphicLine = new yom.GraphicLine(yom_draw_graphicPolyline.polyline.lines[i],
+										yom_draw_graphicPolyline.borderColor);
 		this.drawLine(yom_draw_graphicLine);
 	}
 };
@@ -95,17 +95,17 @@ yom.DrawManager.prototype.drawPolyline = function(graphicPolyline) {
  *	@param {yom.GraphicPolygon} yom_draw_graphicPolygon - The polygon we want to display.
  */
 yom.DrawManager.prototype.drawPolygon = function(yom_draw_graphicPolygon) {
-	var graphicPolyline = new yom.GraphicPolyline(yom_draw_graphicPolygon.polygon.perimeter,
+	var yom_draw_graphicPolyline = new yom.GraphicPolyline(yom_draw_graphicPolygon.polygon.perimeter,
 						yom_draw_graphicPolygon.borderColor);
-	this.drawPolyline(graphicPolyline);
+	this.drawPolyline(yom_draw_graphicPolyline);
 };
 
 /**
- * 	Fill a circle.
- * 	@method yom.DrawManager#fillCircle
+ * 	Fill a circle with color.
+ * 	@method yom.DrawManager#fillCircleWithColor
  *	@param {yom.GraphicCircle} yom_draw_graphicCircle - The circle we want to display.
  */
-yom.DrawManager.prototype.fillCircle = function(yom_draw_graphicCircle) {
+yom.DrawManager.prototype.fillCircleWithColor = function(yom_draw_graphicCircle) {
 	this.context.beginPath();
 
 	var borderColor = yom_draw_graphicCircle.borderColor || '#000';
@@ -129,11 +129,11 @@ yom.DrawManager.prototype.fillCircle = function(yom_draw_graphicCircle) {
 };
 
 /**
- * 	Fill a polygon.
- * 	@method yom.DrawManager#fillPolygon
+ * 	Fill a polygon with color.
+ * 	@method yom.DrawManager#fillPolygonWithColor
  *	@param {yom.GraphicPolygon} yom_draw_graphicPolygon - The polygon we want to display.
  */
-yom.DrawManager.prototype.fillPolygon = function(yom_draw_graphicPolygon) {
+yom.DrawManager.prototype.fillPolygonWithColor = function(yom_draw_graphicPolygon) {
 	//this.context.beginPath();
 
 	var borderColor = yom_draw_graphicPolygon.borderColor || '#000';
@@ -193,4 +193,39 @@ yom.DrawManager.prototype.fillPolygon = function(yom_draw_graphicPolygon) {
 	}
 	
 	this.drawPolyline(new yom.GraphicPolyline(yom_draw_graphicPolygon.polygon.perimeter), borderColor);
+};
+
+/**
+ * 	Fill a circle with an image.
+ * 	@method yom.DrawManager#fillCircleWithImage
+ *	@param {yom.GraphicCircle} yom_draw_graphicCircle - The circle we want to display.
+ */
+yom.DrawManager.prototype.fillCircleWithImage = function(yom_draw_graphicCircle) {
+	//this.context.beginPath();
+
+	var image = yom_draw_graphicCircle.image || yom.images.DEFAULT_IMAGE;
+
+	var img = $('<img />').get(0);
+	img.src = image;
+	var context = this.context;
+	
+	this.context.beginPath(); 
+
+	img.onload = function() {
+		var x = yom_draw_graphicCircle.circle.center.x;
+		var y = yom_draw_graphicCircle.circle.center.y;
+		var radius = yom_draw_graphicCircle.circle.radius;
+		context.arc(x, 
+			y,
+			radius,
+			0,
+			2 * Math.PI);
+		context.clip();//call the clip method so the next render is clipped in last path 
+		context.beginPath();
+		context.drawImage(img, x-radius, y - radius);
+		context.closePath();
+	};
+    
+
+    this.context.stroke();
 };

@@ -87,11 +87,11 @@
 
 		var array = [100, 0, 160, 400, 500, 0];
 		var polyline = new yom.Polyline(array);
-		var graphicPolyline1 = new yom.GraphicPolyline(polyline, '#C3C3C3', '#5674ef');
+		var graphicPolyline1 = new yom.GraphicPolyline(polyline, '#C3C3C3');
 
 		var arrayPolygon = [100, 150, 150, 150, 150, 100, 100, 100];
 		var polygon = new yom.Polygon(arrayPolygon);
-		var graphicPolygon = new yom.GraphicPolygon(polygon, '#ffb345');
+		var graphicPolygon = new yom.GraphicPolygon(polygon, '#ffb345', '#a6e409');
 
 		var world = new yom.World("app", 500, 500);
 		var renderManager = new yom.RenderManager();
@@ -102,12 +102,16 @@
 		drawManager.drawPolygon(graphicPolygon);
 
 		// Fill
-		graphicCircle.circle.move(30, 56);
-		graphicCircle.circle.radius = 1;
-		graphicCircle.insideColor = "#123456";
-		drawManager.fillCircle(graphicCircle);
+		graphicCircle.circle.move(300, 56);
+		graphicCircle.circle.radius = 20;
+		graphicCircle.insideColor = "#fedcba";
+		drawManager.fillCircleWithColor(graphicCircle);
 
-		graphicPolygon.polygon.move(20, 30);
-		drawManager.fillPolygon(graphicPolygon);
+		graphicPolygon.polygon.move(200, 30);
+		drawManager.fillPolygonWithColor(graphicPolygon);
+
+		graphicCircle.circle.move(30, 40);
+		graphicCircle.image = 'petittete.png';
+		drawManager.fillCircleWithImage(graphicCircle);
 	</script>
 </html>

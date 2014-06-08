@@ -14,5 +14,9 @@ var yom = yom || {
 	scales : {
 		X:  		1,
 		Y: 			1 
+	},
+
+	images : {
+		DEFAULT_IMAGE: 'YOM_NONE_IMAGE_TO_DISPLAY'
 	}
 };
