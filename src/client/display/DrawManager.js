@@ -229,3 +229,51 @@ yom.DrawManager.prototype.fillCircleWithImage = function(yom_draw_graphicCircle)
 
     this.context.stroke();
 };
+
+/**
+ * 	Fill a polygon with an image.
+ * 	@method yom.DrawManager#fillPolygonWithImage
+ *	@param {yom.GraphicCircle} yom_draw_graphicPolygon - The polygon we want to display.
+ */
+yom.DrawManager.prototype.fillPolygonWithImage = function(yom_draw_graphicPolygon) {
+	//this.context.beginPath();
+
+	var image = yom_draw_graphicPolygon.image || yom.images.DEFAULT_IMAGE;
+
+	var imgPolygon = $('<img />').get(0);
+	imgPolygon.src = image;
+	var context = this.context;
+	
+	this.context.beginPath();
+	var drawManager = this;
+
+	var coordinates = yom_draw_graphicPolygon.polygon.coordinates;
+	var minX = coordinates[0];
+	var minY = coordinates[1];
+
+	var i;
+	var coordinate;
+	for(i = 0; i < coordinates.length; ++i) {
+		coordinate = coordinates[i];
+		if(i % 2 == 0) {
+			if(coordinate < minX) {
+				minX = coordinate;
+			}
+		} else {
+			if(coordinate < minY) {
+				minY = coordinate;
+			}
+		}
+	}
+
+	imgPolygon.onload = function() {
+		drawManager.drawPolygon(yom_draw_graphicPolygon);
+		context.clip();//call the clip method so the next render is clipped in last path 
+		context.beginPath();
+		context.drawImage(imgPolygon, minX,  minY);
+		context.closePath();
+	};
+    
+
+    this.context.stroke();
+};

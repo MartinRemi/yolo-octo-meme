@@ -89,7 +89,7 @@
 		var polyline = new yom.Polyline(array);
 		var graphicPolyline1 = new yom.GraphicPolyline(polyline, '#C3C3C3');
 
-		var arrayPolygon = [100, 150, 150, 150, 150, 100, 100, 100];
+		var arrayPolygon = [100, 150, 150, 150, 150, 100, 120, 80, 100, 100];
 		var polygon = new yom.Polygon(arrayPolygon);
 		var graphicPolygon = new yom.GraphicPolygon(polygon, '#ffb345', '#a6e409');
 
@@ -113,5 +113,11 @@
 		graphicCircle.circle.move(30, 40);
 		graphicCircle.image = 'petittete.png';
 		drawManager.fillCircleWithImage(graphicCircle);
+		graphicCircle.circle.move(300, 400);
+		drawManager.fillCircleWithImage(graphicCircle);
+
+		graphicPolygon.polygon.move(30, 200);
+		graphicPolygon.image = 'petittete.png';
+		//drawManager.fillPolygonWithImage(graphicPolygon);
 	</script>
 </html>

@@ -58,10 +58,28 @@ yom.GraphicCircle.prototype.move = function (x, y) {
 };
 
 /**
- * 	Render the graphic circle.
- * 	@method yom.GraphicCircle#render
- * 	@param {yom.RenderManager} [renderManager] - The renderManager object
+ * 	Draw the graphic circle.
+ * 	@method yom.GraphicCircle#draw
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
-yom.GraphicCircle.prototype.render = function(renderManager) {
-	// TODO : Add code
+yom.GraphicCircle.prototype.draw = function(drawManager) {
+	drawManager.drawCircle(this);
+};
+
+/**
+ * 	Fill the graphic circle with color.
+ * 	@method yom.GraphicCircle#fillWithColor
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicCircle.prototype.fillWithColor = function(drawManager) {
+	drawManager.fillCircleWithColor(this);
+};
+
+/**
+ * 	Fill the graphic circle with image.
+ * 	@method yom.GraphicCircle#fillWithImage
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicCircle.prototype.fillWithImage = function(drawManager) {
+	drawManager.fillCircleWithImage(this);
 };

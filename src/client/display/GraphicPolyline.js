@@ -53,10 +53,30 @@ yom.GraphicPolyline.prototype.move = function (x, y) {
 };
 
 /**
- * 	Render the graphic polyline.
- * 	@method yom.GraphicPolyline#render
- * 	@param {yom.RenderManager} [renderManager] - The renderManager object
+ * 	Draw the graphic polyline.
+ * 	@method yom.GraphicPolyline#draw
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
-yom.GraphicPolyline.prototype.render = function(renderManager) {
-	// TODO : Add code
+yom.GraphicPolyline.prototype.draw = function(drawManager) {
+	drawManager.drawPolyline(this);
+};
+
+/**
+ * 	Fill the graphic polyline with color.
+ * 	@method yom.GraphicPolyline#fillWithColor
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicPolyline.prototype.fillWithColor = function(drawManager) {
+	// No filling possible, so drawing
+	drawManager.drawPolyline(this);
+};
+
+/**
+ * 	Fill the graphic polyline with image.
+ * 	@method yom.GraphicPolyline#fillWithImage
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicPolyline.prototype.fillWithImage = function(drawManager) {
+	// No filling possible, so drawing
+	drawManager.drawPolyline(this);
 };

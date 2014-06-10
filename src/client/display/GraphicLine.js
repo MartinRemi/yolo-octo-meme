@@ -53,10 +53,30 @@ yom.GraphicLine.prototype.move = function (x, y) {
 };
 
 /**
- * 	Render the graphic line.
- * 	@method yom.GraphicLine#render
- * 	@param {yom.RenderManager} [renderManager] - The renderManager object
+ * 	Draw the graphic line.
+ * 	@method yom.GraphicLine#draw
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
-yom.GraphicLine.prototype.render = function(renderManager) {
-	// TODO : Add code
+yom.GraphicLine.prototype.draw = function(drawManager) {
+	drawManager.drawLine(this);
+};
+
+/**
+ * 	Fill the graphic line with color.
+ * 	@method yom.GraphicLine#fillWithColor
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicLine.prototype.fillWithColor = function(drawManager) {
+	// No filling possible, so drawing
+	drawManager.drawLine(this);
+};
+
+/**
+ * 	Fill the graphic line with image.
+ * 	@method yom.GraphicLine#fillWithImage
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicLine.prototype.fillWithImage = function(drawManager) {
+	// No filling possible, so drawing
+	drawManager.drawLine(this);
 };

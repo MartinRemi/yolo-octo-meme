@@ -14,7 +14,7 @@
  *
  *	TODO : Add color
  */
-yom.GraphicPolygon = function (polygon, borderColor, insideColor) {
+yom.GraphicPolygon = function (polygon, borderColor, insideColor, image) {
 
 	/**
      * 	@property {yom.Polygon} polygon - The polygon we want to display
@@ -30,6 +30,11 @@ yom.GraphicPolygon = function (polygon, borderColor, insideColor) {
      * 	TODO : Add type and desc
      */
 	this.insideColor = insideColor || '#000';
+
+	/**
+     * 	TODO : Add type and desc
+     */
+	this.image = image || yom.images.DEFAULT_IMAGE;
 };
 
 // ----- Method(s) ----- \\
@@ -53,10 +58,28 @@ yom.GraphicPolygon.prototype.move = function (x, y) {
 };
 
 /**
- * 	Render the graphic line.
- * 	@method yom.GraphicLine#render
- * 	@param {yom.RenderManager} [renderManager] - The renderManager object
+ * 	Draw the graphic polygon.
+ * 	@method yom.GraphicPolygon#draw
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
-yom.GraphicPolygon.prototype.render = function(renderManager) {
-	// TODO : Add code
+yom.GraphicPolygon.prototype.draw = function(drawManager) {
+	drawManager.drawPolygon(this);
+};
+
+/**
+ * 	Fill the graphic polygon with color.
+ * 	@method yom.GraphicPolygon#fillWithColor
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicPolygon.prototype.fillWithColor = function(drawManager) {
+	drawManager.fillPolygonWithColor(this);
+};
+
+/**
+ * 	Fill the graphic polygon with image.
+ * 	@method yom.GraphicPolygon#fillWithImage
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicPolygon.prototype.fillWithImage = function(drawManager) {
+	drawManager.fillPolygonWithImage(this);
 };
