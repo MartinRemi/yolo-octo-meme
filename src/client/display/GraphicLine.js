@@ -30,6 +30,11 @@ yom.GraphicLine = function (line, borderColor, insideColor) {
      * 	TODO : Add type and desc
      */
 	this.insideColor = insideColor || '#000';
+
+	/**
+     * 	@property {number} zIndex - The z index of the line
+     */
+	this.zIndex = 0;
 };
 
 // ----- Method(s) ----- \\

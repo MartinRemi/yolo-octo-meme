@@ -30,6 +30,11 @@ yom.GraphicPolyline = function (polyline, borderColor, insideColor) {
      * 	TODO : Add type and desc
      */
 	this.insideColor = insideColor || '#000';
+
+	/**
+     * 	@property {number} zIndex - The z index of the polyline
+     */
+	this.zIndex = 0;
 };
 
 // ----- Method(s) ----- \\

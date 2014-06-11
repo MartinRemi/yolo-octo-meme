@@ -35,6 +35,11 @@ yom.GraphicPolygon = function (polygon, borderColor, insideColor, image) {
      * 	TODO : Add type and desc
      */
 	this.image = image || yom.images.DEFAULT_IMAGE;
+
+	/**
+     * 	@property {number} zIndex - The z index of the polygon
+     */
+	this.zIndex = 0;
 };
 
 // ----- Method(s) ----- \\
