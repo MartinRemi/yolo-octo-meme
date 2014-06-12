@@ -112,9 +112,9 @@
 
 		graphicCircle.circle.move(30, 40);
 		graphicCircle.image = 'petittete.png';
-		drawManager.fillCircleWithImage(graphicCircle);
-		graphicCircle.circle.move(300, 400);
-		drawManager.fillCircleWithImage(graphicCircle);
+		//drawManager.fillCircleWithImage(graphicCircle);
+		//graphicCircle.circle.move(300, 400);
+		//drawManager.fillCircleWithImage(graphicCircle);
 
 		graphicPolygon.polygon.move(30, 200);
 		graphicPolygon.image = 'petittete.png';

@@ -113,12 +113,12 @@ yom.Polygon.prototype.contains = function (x, y, inside) {
 		if(x < maxX) {
 			// We count the number of intersections with the borders of the figure
 			var cpt = 0;
-			for(i = x; i < maxX; i++) {
+			for(i = x; i <= maxX; i++) {
 				cpt = (this.perimeter.contains(i, y)) ? cpt+1 : cpt;
 			}
 
 			// If an even number of intersections with the figure, the points doesn't belong to the figure
-			return (cpt % 2 != 0);
+			return (cpt % 2 != 0) || this.contains(x, y, false);
 		} else {
 			return false;
 		}
@@ -146,12 +146,12 @@ yom.Polygon.prototype.containsPoint = function (point, inside) {
 		if(point.x < maxX) {
 			// We count the number of intersections with the borders of the figure
 			var cpt = 0;
-			for(i = point.x; i < maxX; i++) {
+			for(i = point.x; i <= maxX; i++) {
 				cpt = (this.perimeter.contains(i, point.y)) ? cpt+1 : cpt;
 			}
 
 			// If an even number of intersections with the figure, the points doesn't belong to the figure
-			return (cpt % 2 != 0);
+			return (cpt % 2 != 0) || this.containsPoint(point, false);
 		} else {
 			return false;
 		}
