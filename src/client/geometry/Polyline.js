@@ -135,3 +135,21 @@ yom.Polyline.prototype.containsPoint = function (point) {
 	}
 	return false;
 };
+
+/**
+ * 	Checkes if the polyline (this) contains a point of coordinates (x,y) and return how many times
+ * 	@method yom.Polyline#numberOfContains
+ * 	@param {number} [x=0] - The x-coordinate of the point
+ * 	@param {number} [y=0] - The y-coordinate of the point
+ *	@return {number} the number of time the point is contained
+ */
+yom.Polyline.prototype.numberOfContains = function (x, y) {
+	var i;
+	var cpt = 0;
+	for(i = 0; i < this.lines.length; ++i) {
+		if(this.lines[i].contains(x, y)) {
+			++cpt;
+		}
+	}
+	return cpt;
+};

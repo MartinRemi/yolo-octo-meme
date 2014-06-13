@@ -105,17 +105,21 @@ yom.Polygon.prototype.contains = function (x, y, inside) {
 	if(inside) {
 		// TODO : pixel unit? cm ? mm?
 		// TODO : Enhance by trying better directions?
+
 		var i;
 		var maxX = this.coordinates[0];
 		for(i = 2; i < this.coordinates.length; i+=2) {
 			maxX = (this.coordinates[i] > maxX) ? this.coordinates[i] : maxX;
 		}
+		
 		if(x < maxX) {
+			maxX += 10;
 			// We count the number of intersections with the borders of the figure
 			var cpt = 0;
 			for(i = x; i <= maxX; i++) {
-				cpt = (this.perimeter.contains(i, y)) ? cpt+1 : cpt;
+				cpt += this.perimeter.numberOfContains(i, y);
 			}
+			alert(cpt);
 
 			// If an even number of intersections with the figure, the points doesn't belong to the figure
 			return (cpt % 2 != 0) || this.contains(x, y, false);
