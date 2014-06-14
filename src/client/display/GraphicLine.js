@@ -32,7 +32,7 @@ yom.GraphicLine = function (line, zIndex, borderColor, insideColor) {
 	/**
      * 	@property {String} insideColor - The inside color for the line
      */
-	this.insideColor = insideColor || '#000';
+	this.insideColor = insideColor || yom.colors.DEFAULT_INSIDE_COLOR;
 
 	/**
      * 	@property {number} zIndex - The z index of the line
@@ -87,4 +87,13 @@ yom.GraphicLine.prototype.fillWithColor = function(drawManager) {
 yom.GraphicLine.prototype.fillWithImage = function(drawManager) {
 	// No filling possible, so drawing
 	drawManager.drawLine(this);
+};
+
+/**
+ * 	Render the line
+ * 	@method yom.GraphicLine#render
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicLine.prototype.render = function(drawManager) {
+	this.draw(drawManager);
 };

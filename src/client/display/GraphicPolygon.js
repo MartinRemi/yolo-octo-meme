@@ -33,7 +33,7 @@ yom.GraphicPolygon = function (polygon, zIndex, borderColor, insideColor, image)
 	/**
      * 	@property {String} insideColor - The inside color for the polygon
      */
-	this.insideColor = insideColor || '#000';
+	this.insideColor = insideColor || yom.colors.DEFAULT_INSIDE_COLOR;
 
 	/**
      * 	@property {String} image - The path of the image to display
@@ -91,4 +91,19 @@ yom.GraphicPolygon.prototype.fillWithColor = function(drawManager) {
  */
 yom.GraphicPolygon.prototype.fillWithImage = function(drawManager) {
 	drawManager.fillPolygonWithImage(this);
+};
+
+/**
+ * 	Render the polygon
+ * 	@method yom.GraphicPolygon#render
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicPolygon.prototype.render = function(drawManager) {
+	if(this.image != yom.images.DEFAULT_IMAGE) {
+		this.fillWithImage(drawManager);
+	} else if(this.insideColor != yom.colors.DEFAULT_INSIDE_COLOR) {
+		this.fillWithColor(drawManager);
+	} else {
+		this.draw(drawManager);
+	}
 };

@@ -32,7 +32,7 @@ yom.GraphicPolyline = function (polyline, zIndex, borderColor, insideColor) {
 	/**
      * 	@property {String} insideColor - The inside color for the polyline
      */
-	this.insideColor = insideColor || '#000';
+	this.insideColor = insideColor || yom.colors.DEFAULT_INSIDE_COLOR;
 
 	/**
      * 	@property {number} zIndex - The z index of the polyline
@@ -87,4 +87,13 @@ yom.GraphicPolyline.prototype.fillWithColor = function(drawManager) {
 yom.GraphicPolyline.prototype.fillWithImage = function(drawManager) {
 	// No filling possible, so drawing
 	drawManager.drawPolyline(this);
+};
+
+/**
+ * 	Render the polyline
+ * 	@method yom.GraphicPolyline#render
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicPolyline.prototype.render = function(drawManager) {
+	this.draw(drawManager);
 };
