@@ -120,7 +120,7 @@ yom.Line.prototype.contains = function (x, y) {
     if(this.firstPoint.x == this.secondPoint.x) {
         return (this.firstPoint.x == x) && ((y <= this.secondPoint.y && y >= this.firstPoint.y) || (y <= this.firstPoint.y && y >= this.secondPoint.y));
     } else {
-	   return ((this.gradient * x) + this.intercept == y) && (x >= this.firstPoint.x && x <= this.secondPoint.x);
+	   return (Math.round((this.gradient * x) + this.intercept) == y) && (x >= this.firstPoint.x && x <= this.secondPoint.x);
     }
 };
 
@@ -131,5 +131,5 @@ yom.Line.prototype.contains = function (x, y) {
  *	@return {boolean} True if the point is contained by the line, else false
  */
 yom.Line.prototype.containsPoint = function (point) {
-	return (this.gradient * point.x) + this.intercept == point.y;
+	return this.contains(point.x, point.y);
 };
