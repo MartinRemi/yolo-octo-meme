@@ -27,9 +27,7 @@ yom.RenderManager.prototype.display = function(world) {
 
 	var renderManager = new yom.RenderManager(this);
 
-	for(i = 0; i < saveWorld.length; ++i) {
-		// RENDER
-		// TODO : define getPoints()
-		//saveWorld[i].getPoints();
+	for(i = 0; i < world.bodies.length; ++i) {
+		world.bodies[i].render();
 	}
 };

@@ -38,7 +38,7 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
 	this.bodies = bodies || [];
 
 	/**
-     * 	@property {Array} shapes - Independant shapes, i.e. not tengible and that don't belong to a body.
+     * 	@property {Array} shapes - Independant shapes, i.e. not tengible and don't belong to a body.
      */
 	this.shapes = shapes || [];
 

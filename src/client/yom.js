@@ -22,5 +22,9 @@ var yom = yom || {
 
 	shapes : {
 		DEFAULT_ZINDEX: 1
+	}, 
+
+	colors : {
+		DEFAULT_INSIDE_COLOR: 'YOM_NONE_INSIDE_COLOR_TO_DISPLAY'
 	}
 };

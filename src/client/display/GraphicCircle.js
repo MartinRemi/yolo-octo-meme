@@ -33,7 +33,7 @@ yom.GraphicCircle = function (circle, zIndex, borderColor, insideColor, image) {
 	/**
      * 	@property {String} insideColor - The inside color for the circle
      */
-	this.insideColor = insideColor || '#000';
+	this.insideColor = insideColor || yom.colors.DEFAULT_INSIDE_COLOR;
 
 	/**
      * 	@property {String} image - The path of the image to display inside of the circle
@@ -91,4 +91,19 @@ yom.GraphicCircle.prototype.fillWithColor = function(drawManager) {
  */
 yom.GraphicCircle.prototype.fillWithImage = function(drawManager) {
 	drawManager.fillCircleWithImage(this);
+};
+
+/**
+ * 	Render the circle
+ * 	@method yom.GraphicCircle#render
+ * 	@param {yom.DrawManager} [drawManager] - The drawManager object
+ */
+yom.GraphicCircle.prototype.render = function(drawManager) {
+	if(this.image != yom.images.DEFAULT_IMAGE) {
+		this.fillWithImage(drawManager);
+	} else if(this.insideColor != yom.colors.DEFAULT_INSIDE_COLOR) {
+		this.fillWithColor(drawManager);
+	} else {
+		this.draw(drawManager);
+	}
 };
