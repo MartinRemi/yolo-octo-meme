@@ -10,11 +10,14 @@
  * 	@classdesc yom - GraphicPolyline
  * 	@constructor
  * 	@param {yom.Polyline} [polyline] - The polyline to copy
- * 	@return {yom.GraphicCicle} The GraphicCicle object
+ * 	@param {number} [zIndex] - The zIndex of the polyline
+ * 	@param {String} [borderColor] - The border color for the polyline
+ * 	@param {String} [insideColor] - The inside color for the polyline
+ * 	@return {yom.GrapphicPolyline} The GraphicPolyline object
  *
  *	TODO : Add color
  */
-yom.GraphicPolyline = function (polyline, borderColor, insideColor) {
+yom.GraphicPolyline = function (polyline, zIndex, borderColor, insideColor) {
 
 	/**
      * 	@property {yom.Polyline} polyline - The polyline we want to display
@@ -22,19 +25,19 @@ yom.GraphicPolyline = function (polyline, borderColor, insideColor) {
 	this.polyline = polyline || [];
 
 	/**
-     * 	TODO : Add type and desc
+     * 	@property {String} borderColor - The border color for the polyline
      */
 	this.borderColor = borderColor || '#000';
 
 	/**
-     * 	TODO : Add type and desc
+     * 	@property {String} insideColor - The inside color for the polyline
      */
 	this.insideColor = insideColor || '#000';
 
 	/**
      * 	@property {number} zIndex - The z index of the polyline
      */
-	this.zIndex = 0;
+	this.zIndex = zIndex || 0;
 };
 
 // ----- Method(s) ----- \\

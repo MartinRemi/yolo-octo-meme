@@ -10,11 +10,14 @@
  * 	@classdesc yom - GraphicLine
  * 	@constructor
  * 	@param {yom.Line} [line] - The line to copy
- * 	@return {yom.GraphicCicle} The GraphicCicle object
+ * 	@param {number} [zIndex] - The zIndex of the line
+ * 	@param {String} [borderColor] - The border color for the line
+ * 	@param {String} [insideColor] - The inside color for the line
+ * 	@return {yom.GraphicLine} The GraphicLine object
  *
  *	TODO : Add color
  */
-yom.GraphicLine = function (line, borderColor, insideColor) {
+yom.GraphicLine = function (line, zIndex, borderColor, insideColor) {
 
 	/**
      * 	@property {yom.Line} line - The line we want to display
@@ -22,19 +25,19 @@ yom.GraphicLine = function (line, borderColor, insideColor) {
 	this.line = line || [];
 
 	/**
-     * 	TODO : Add type and desc
+     * 	@property {String} borderColor - The border color for the line
      */
 	this.borderColor = borderColor || '#000';
 
 	/**
-     * 	TODO : Add type and desc
+     * 	@property {String} insideColor - The inside color for the line
      */
 	this.insideColor = insideColor || '#000';
 
 	/**
      * 	@property {number} zIndex - The z index of the line
      */
-	this.zIndex = 0;
+	this.zIndex = zIndex || 0;
 };
 
 // ----- Method(s) ----- \\

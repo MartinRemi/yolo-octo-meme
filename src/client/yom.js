@@ -18,5 +18,9 @@ var yom = yom || {
 
 	images : {
 		DEFAULT_IMAGE: 'YOM_NONE_IMAGE_TO_DISPLAY'
+	},
+
+	shapes : {
+		DEFAULT_ZINDEX: 1
 	}
 };

@@ -84,7 +84,9 @@ yom.DrawManager.prototype.drawPolyline = function(yom_draw_graphicPolyline) {
 	var yom_draw_graphicLine;
 	for(i = 0; i < yom_draw_graphicPolyline.polyline.lines.length; ++i) {
 		yom_draw_graphicLine = new yom.GraphicLine(yom_draw_graphicPolyline.polyline.lines[i],
-										yom_draw_graphicPolyline.borderColor);
+										yom_draw_graphicPolyline.zIndex,
+										yom_draw_graphicPolyline.borderColor,
+										yom_draw_graphicPolyline.insideColor);
 		this.drawLine(yom_draw_graphicLine);
 	}
 };
@@ -96,6 +98,7 @@ yom.DrawManager.prototype.drawPolyline = function(yom_draw_graphicPolyline) {
  */
 yom.DrawManager.prototype.drawPolygon = function(yom_draw_graphicPolygon) {
 	var yom_draw_graphicPolyline = new yom.GraphicPolyline(yom_draw_graphicPolygon.polygon.perimeter,
+						yom_draw_graphicPolygon.zIndex,
 						yom_draw_graphicPolygon.borderColor);
 	this.drawPolyline(yom_draw_graphicPolyline);
 };
@@ -188,11 +191,11 @@ yom.DrawManager.prototype.fillPolygonWithColor = function(yom_draw_graphicPolygo
 				break;
 			}
 		}
-		yom_draw_graphicLine = new yom.GraphicLine(new yom.Line(x, minYLocal, x, maxYLocal), insideColor);
+		yom_draw_graphicLine = new yom.GraphicLine(new yom.Line(x, minYLocal, x, maxYLocal), yom_draw_graphicPolygon.zIndex, insideColor);
 		this.drawLine(yom_draw_graphicLine);
 	}
 	
-	this.drawPolyline(new yom.GraphicPolyline(yom_draw_graphicPolygon.polygon.perimeter), borderColor);
+	this.drawPolyline(new yom.GraphicPolyline(yom_draw_graphicPolygon.polygon.perimeter, yom_draw_graphicPolygon.zIndex, borderColor));
 };
 
 /**

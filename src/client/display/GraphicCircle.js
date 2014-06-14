@@ -10,11 +10,15 @@
  * 	@classdesc yom - GraphicCircle
  * 	@constructor
  * 	@param {yom.Circle} [circle] - The circle to copy
+ * 	@param {number} [zIndex] - The zIndex of the circle
+ * 	@param {String} [borderColor] - The border color for the circle
+ * 	@param {String} [insideColor] - The inside color for the circle
+ * 	@param {String} [image] - The path of the image to display inside of the circle
  * 	@return {yom.GraphicCicle} The GraphicCicle object
  *
  *	TODO : Add color
  */
-yom.GraphicCircle = function (circle, borderColor, insideColor, image) {
+yom.GraphicCircle = function (circle, zIndex, borderColor, insideColor, image) {
 
 	/**
      * 	@property {yom.Circle} circle - The circle we want to display
@@ -22,24 +26,24 @@ yom.GraphicCircle = function (circle, borderColor, insideColor, image) {
 	this.circle = circle || [];
 
 	/**
-     * 	TODO : Add type and desc
+     * 	@property {String} borderColor - The border color for the circle
      */
 	this.borderColor = borderColor || '#000';
 
 	/**
-     * 	TODO : Add type and desc
+     * 	@property {String} insideColor - The inside color for the circle
      */
 	this.insideColor = insideColor || '#000';
 
 	/**
-     * 	TODO : Add type and desc
+     * 	@property {String} image - The path of the image to display inside of the circle
      */
 	this.image = image || yom.images.DEFAULT_IMAGE;
 
 	/**
      * 	@property {number} zIndex - The z index of the circle
      */
-	this.zIndex = 0;
+	this.zIndex = zIndex || 0;
 };
 
 // ----- Method(s) ----- \\

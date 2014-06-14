@@ -80,18 +80,18 @@
 
 
 		var circle = new yom.Circle(30, 30, 15);
-		var graphicCircle = new yom.GraphicCircle(circle, '#00FFFF');
+		var graphicCircle = new yom.GraphicCircle(circle, yom.shapes.DEFAULT_ZINDEX, '#00FFFF');
 
 		var line = new yom.Line(0, 0, 500, 500);
-		var graphicLine1 = new yom.GraphicLine(line, '#ff0000');
+		var graphicLine1 = new yom.GraphicLine(line, yom.shapes.DEFAULT_ZINDEX, '#ff0000');
 
 		var array = [100, 0, 160, 400, 500, 0];
 		var polyline = new yom.Polyline(array);
-		var graphicPolyline1 = new yom.GraphicPolyline(polyline, '#C3C3C3');
+		var graphicPolyline1 = new yom.GraphicPolyline(polyline, yom.shapes.DEFAULT_ZINDEX, '#C3C3C3');
 
 		var arrayPolygon = [100, 150, 150, 150, 150, 100, 120, 80, 100, 100];
 		var polygon = new yom.Polygon(arrayPolygon);
-		var graphicPolygon = new yom.GraphicPolygon(polygon, '#ffb345', '#a6e409');
+		var graphicPolygon = new yom.GraphicPolygon(polygon, yom.shapes.DEFAULT_ZINDEX, '#ffb345', '#a6e409');
 
 		var world = new yom.World("app", 500, 500);
 		var renderManager = new yom.RenderManager();

@@ -10,11 +10,15 @@
  * 	@classdesc yom - GraphicPolygon
  * 	@constructor
  * 	@param {yom.Polygon} [polygon] - The polygon to copy
- * 	@return {yom.GraphicCicle} The GraphicCicle object
+ * 	@param {number} [zIndex] - The zIndex of the polygon
+ * 	@param {String} [borderColor] - The border color for the polygon
+ * 	@param {String} [insideColor] - The inside color for the polygon
+ * 	@param {String} [image] - The path of the image to display in polygon
+ * 	@return {yom.GraphicPolygon} The GraphicPolygon object
  *
  *	TODO : Add color
  */
-yom.GraphicPolygon = function (polygon, borderColor, insideColor, image) {
+yom.GraphicPolygon = function (polygon, zIndex, borderColor, insideColor, image) {
 
 	/**
      * 	@property {yom.Polygon} polygon - The polygon we want to display
@@ -22,24 +26,24 @@ yom.GraphicPolygon = function (polygon, borderColor, insideColor, image) {
 	this.polygon = polygon || [];
 
 	/**
-     * 	TODO : Add type and desc
+     * 	@property {String} borderColor - The border color for the polygon
      */
 	this.borderColor = borderColor || '#000';
 
 	/**
-     * 	TODO : Add type and desc
+     * 	@property {String} insideColor - The inside color for the polygon
      */
 	this.insideColor = insideColor || '#000';
 
 	/**
-     * 	TODO : Add type and desc
+     * 	@property {String} image - The path of the image to display
      */
 	this.image = image || yom.images.DEFAULT_IMAGE;
 
 	/**
      * 	@property {number} zIndex - The z index of the polygon
      */
-	this.zIndex = 0;
+	this.zIndex = zIndex || 0;
 };
 
 // ----- Method(s) ----- \\
