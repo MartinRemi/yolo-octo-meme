@@ -9,16 +9,10 @@
  * 	@class DrawManager
  * 	@classdesc yom - DrawManager
  * 	@constructor
- *	@param {yom.RenderManager} renderManager - The renderManager used to context the drawing.
  *	@param {yom.World} world - The world we want to draw in.
  * 	@return {yom.DrawManager} The DrawManager object
  */
-yom.DrawManager = function (renderManager, world) {
-
-	/**
-     * 	@property {yom.RenderManager} renderManager - The renderManager used to context the drawing.
-     */
-	this.renderManager = renderManager || [];
+yom.DrawManager = function (world) {
 
 	/**
      * 	@property {yom.World} world - The world we want to draw in.

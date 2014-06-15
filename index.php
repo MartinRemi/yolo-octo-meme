@@ -94,30 +94,18 @@
 		var graphicPolygon = new yom.GraphicPolygon(polygon, yom.shapes.DEFAULT_ZINDEX, '#ffb345', '#a6e409');
 
 		var world = new yom.World("app", 500, 500);
+		var drawManager = new yom.DrawManager(world);
 		var renderManager = new yom.RenderManager();
-		var drawManager = new yom.DrawManager(renderManager, world);
-		drawManager.drawCircle(graphicCircle);
-		drawManager.drawLine(graphicLine1);
-		drawManager.drawPolyline(graphicPolyline1);
-		drawManager.drawPolygon(graphicPolygon);
+		//drawManager.drawCircle(graphicCircle);
+		//drawManager.drawLine(graphicLine1);
+		//drawManager.drawPolyline(graphicPolyline1);
+		//drawManager.drawPolygon(graphicPolygon);
 
-		// Fill
-		graphicCircle.circle.move(300, 56);
-		graphicCircle.circle.radius = 20;
-		graphicCircle.insideColor = "#fedcba";
-		drawManager.fillCircleWithColor(graphicCircle);
+		world.shapes[0] = graphicCircle;
+		world.shapes[1] = graphicLine1;
+		world.shapes[2] = graphicPolyline1;
+		world.shapes[3] = graphicPolygon;
+		renderManager.display(world, drawManager);
 
-		graphicPolygon.polygon.move(200, 30);
-		drawManager.fillPolygonWithColor(graphicPolygon);
-
-		graphicCircle.circle.move(30, 40);
-		graphicCircle.image = 'petittete.png';
-		//drawManager.fillCircleWithImage(graphicCircle);
-		//graphicCircle.circle.move(300, 400);
-		//drawManager.fillCircleWithImage(graphicCircle);
-
-		graphicPolygon.polygon.move(30, 200);
-		graphicPolygon.image = 'petittete.png';
-		//drawManager.fillPolygonWithImage(graphicPolygon);
 	</script>
 </html>
