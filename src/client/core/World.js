@@ -11,7 +11,7 @@
  * 	@constructor
  *	@param {string} idOfCanvas - The id of the canvas element (without the '#' symbol).
  * 	@param {number} [width=0] - The width of the canvas element.
- * 	@param {number} [y=0] - The height of the canvas element.
+ * 	@param {number} [height=0] - The height of the canvas element.
  *	@param {Array.<yom.Body>} [bodies] - The bodies engaged in the world
  *	@param {Array} [shapes] - Independant shapes, i.e. not tengible and that don't belong to a body
  * 	@return {yom.World} The point object
@@ -46,6 +46,8 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
      *    @property {function()} stepBehavior - Defines the step behavior
      */
      this.stepBehavior = function() {};
+
+     yom.world = this;
 };
 
 // ----- Setter(s) ----- \\

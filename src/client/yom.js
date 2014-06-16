@@ -10,6 +10,8 @@ var yom = yom || {
 		PORT: 		8888
 	},
 
+	world : {},
+
 	// ----- Scales used with the coordinates for display purposes
 	scales : {
 		X:  		1,
@@ -29,8 +31,6 @@ var yom = yom || {
 	},
 
 	inputs : {
-		map : {
-
-		}
+		
 	}
 };
