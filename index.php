@@ -61,6 +61,7 @@
 	<script src="src/client/display/GraphicPolygon.js"></script>
 	<script src="src/client/display/RenderManager.js"></script>
 	<script src="src/client/display/DrawManager.js"></script>
+	<script src="src/client/input/click_event_action.js"></script>
 	<script>
 		/*var unit = new Unit(1, 2, 3);
 		$("#1").css("background", "yellow");

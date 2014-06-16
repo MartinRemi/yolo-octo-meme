@@ -26,5 +26,11 @@ var yom = yom || {
 
 	colors : {
 		DEFAULT_INSIDE_COLOR: 'YOM_NONE_INSIDE_COLOR_TO_DISPLAY'
+	},
+
+	inputs : {
+		map : {
+
+		}
 	}
 };
