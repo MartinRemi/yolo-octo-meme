@@ -96,7 +96,7 @@ yom.Point.prototype.equals = function (x, y) {
  *	@return {number} The distance between the two points
  */
 yom.Point.prototype.distance = function (x, y) {
-	return Math.sqrt(Math.pow(x - this.center.getX(), 2) + Math.pow(y - this.center.getY()), 2);
+	return Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y), 2);
 };
 
 /**
@@ -106,5 +106,5 @@ yom.Point.prototype.distance = function (x, y) {
  *	@return {number} The distance between the two points
  */
 yom.Point.prototype.distance = function (point) {
-	return Math.sqrt(Math.pow(point.x - this.center.getX(), 2) + Math.pow(point.y - this.center.getY(), 2));
+	return Math.sqrt(Math.pow(point.x - this.x, 2) + Math.pow(point.y - this.y, 2));
 };
