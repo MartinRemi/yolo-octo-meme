@@ -66,7 +66,7 @@ yom.Polyline.prototype.getLines = function () {
 /**
  * 	Getter of the 'coordinates' property
  * 	@method yom.Polyline#getCoordinates
- * 	@return {number} The value of the property called 'coordinates'
+ * 	@return {Array.<number>} The value of the property called 'coordinates'
  */
 yom.Polyline.prototype.getCoordinates = function () {
 	return this.coordinates;

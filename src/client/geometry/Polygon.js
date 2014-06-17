@@ -45,7 +45,7 @@ yom.Polygon = function (coordinates) {
 /**
  * 	Getter of the 'perimeter' property
  * 	@method yom.Polygon#getPerimeter
- * 	@return {number} The value of the property called 'perimeter'
+ * 	@return {yom.Polyline} The value of the property called 'perimeter'
  */
 yom.Polygon.prototype.getPerimeter = function () {
 	return this.perimeter;
