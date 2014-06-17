@@ -109,5 +109,6 @@
 		world.shapes[3] = graphicPolygon;
 		renderManager.display(world, drawManager);
 
+		yom.input.mapEvent(world, world , function() {alert('test') });
 	</script>
 </html>
