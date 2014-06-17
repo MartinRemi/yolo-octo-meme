@@ -25,6 +25,9 @@ yom.input = {
 		CLICK: 0
 	},
 
+	/**
+     * 	@property {number}  EVENT_TYPE_NUMBER - The number of event types
+     */
 	EVENT_TYPE_NUMBER: 1,
 
 	// ----- Method(s) ----- \\
@@ -69,4 +72,4 @@ yom.input = {
 		}
 		this.map[body][eventType] = fct;
 	}
-}
+};

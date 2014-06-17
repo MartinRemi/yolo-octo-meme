@@ -35,7 +35,9 @@ yom.Body = function (shapes) {
 yom.Body.prototype.contains = function(x, y) {
 	var i;
 	for(i = 0; i < this.shapes.length; ++i) {
-		(this.shapes[i].contains(x, y)) ? return true : /* NOTHING */;
+		if(this.shapes[i].contains(x, y)) { 
+			return true;
+		}
 	}
 };
 
@@ -47,6 +49,8 @@ yom.Body.prototype.contains = function(x, y) {
 yom.Body.prototype.contains = function(point) {
 	var i;
 	for(i = 0; i < this.shapes.length; ++i) {
-		(this.shapes[i].contains(point)) ? return true : /* NOTHING */;
+		if(this.shapes[i].contains(point)) { 
+			return true;
+		}
 	}
 };
