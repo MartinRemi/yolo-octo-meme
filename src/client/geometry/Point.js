@@ -69,11 +69,11 @@ yom.Point.prototype.move = function (x, y) {
 
 /**
  * 	Checkes if a point point(x, y) is equal to another point
- * 	@method yom.Point#equals
+ * 	@method yom.Point#equalsPoint
  * 	@param {yom.Point} [point] - The point concerned
  *	@return {boolean} True if the point is equal to this, else false
  */
-yom.Point.prototype.equals = function (point) {
+yom.Point.prototype.equalsPoint = function (point) {
 	return (this.x == point.x) && (this.y == point.y);
 };
 
@@ -96,7 +96,7 @@ yom.Point.prototype.equals = function (x, y) {
  *	@return {number} The distance between the two points
  */
 yom.Point.prototype.distance = function (x, y) {
-	return Math.sqrt(Math.pow(x - this.center.getX()) + Math.pow(y - this.center.getY()));
+	return Math.sqrt(Math.pow(x - this.center.getX(), 2) + Math.pow(y - this.center.getY()), 2);
 };
 
 /**
@@ -106,5 +106,5 @@ yom.Point.prototype.distance = function (x, y) {
  *	@return {number} The distance between the two points
  */
 yom.Point.prototype.distance = function (point) {
-	return Math.sqrt(Math.pow(point.x - this.center.getX()) + Math.pow(point.y - this.center.getY()));
+	return Math.sqrt(Math.pow(point.x - this.center.getX(), 2) + Math.pow(point.y - this.center.getY(), 2));
 };

@@ -30,6 +30,8 @@ yom.Body = function (shapes) {
 /**
  * 	Tests if the shapes of the body contain a point (x, y)
  * 	@method yom.Body#contains
+ *	@param {number} [x=0] - The x-coordinate of the point
+ *	@param {Array} [y=0] - The y coordinate of the point
  * 	@return {boolean} True if the body contains the point, else false
  */
 yom.Body.prototype.contains = function(x, y) {
@@ -39,18 +41,21 @@ yom.Body.prototype.contains = function(x, y) {
 			return true;
 		}
 	}
+	return false;
 };
 
 /**
  * 	Tests if the shapes of the body contain a point (point) of coordinates (x, y)
- * 	@method yom.Body#contains
+ * 	@method yom.Body#containsPoint
+ *	@param {yom.Point} point - The point we want to check
  * 	@return {boolean} True if the body contains the point, else false
  */
-yom.Body.prototype.contains = function(point) {
+yom.Body.prototype.containsPoint = function(point) {
 	var i;
 	for(i = 0; i < this.shapes.length; ++i) {
 		if(this.shapes[i].contains(point)) { 
 			return true;
 		}
-	}
+	} 
+	return false;
 };
