@@ -14,7 +14,7 @@
  * 	@param {String} [borderColor] - The border color for the circle
  * 	@param {String} [insideColor] - The inside color for the circle
  * 	@param {String} [image] - The path of the image to display inside of the circle
- * 	@return {yom.GraphicCicle} The GraphicCicle object
+ * 	@return {yom.GraphicCircle} The GraphicCicle object
  *
  *	TODO : Add color
  */
@@ -23,7 +23,7 @@ yom.GraphicCircle = function (circle, zIndex, borderColor, insideColor, image) {
 	/**
      * 	@property {yom.Circle} circle - The circle we want to display
      */
-	this.circle = circle || [];
+	this.circle = circle || {};
 
 	/**
      * 	@property {String} borderColor - The border color for the circle

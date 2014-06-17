@@ -22,7 +22,7 @@ yom.GraphicPolyline = function (polyline, zIndex, borderColor, insideColor) {
 	/**
      * 	@property {yom.Polyline} polyline - The polyline we want to display
      */
-	this.polyline = polyline || [];
+	this.polyline = polyline || {};
 
 	/**
      * 	@property {String} borderColor - The border color for the polyline

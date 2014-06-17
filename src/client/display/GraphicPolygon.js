@@ -23,7 +23,7 @@ yom.GraphicPolygon = function (polygon, zIndex, borderColor, insideColor, image)
 	/**
      * 	@property {yom.Polygon} polygon - The polygon we want to display
      */
-	this.polygon = polygon || [];
+	this.polygon = polygon || {};
 
 	/**
      * 	@property {String} borderColor - The border color for the polygon

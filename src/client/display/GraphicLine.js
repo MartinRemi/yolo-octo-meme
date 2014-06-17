@@ -22,7 +22,7 @@ yom.GraphicLine = function (line, zIndex, borderColor, insideColor) {
 	/**
      * 	@property {yom.Line} line - The line we want to display
      */
-	this.line = line || [];
+	this.line = line || {};
 
 	/**
      * 	@property {String} borderColor - The border color for the line
