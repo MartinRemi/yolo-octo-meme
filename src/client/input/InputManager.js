@@ -38,7 +38,7 @@ yom.input = {
 	 * 	@param {number} [y=0] - The y coordinate where the event has been performed
 	 *	@return {Array.<yom.Body>} The bodies concerned by the event
 	 */
-	handleInput: function(x, y) {
+	handleInput: function(eventType, params) {
 		var i;
 		var j;
 		var index = 0;
@@ -47,7 +47,7 @@ yom.input = {
 
 		for(i = 0; i < yom.world.bodies; ++i) {
 			for(j = 0; j < yom.world.bodies[i].shapes; ++j) {
-				if(yom.world.bodies[i].shapes[j].contains(x, y)) {
+				if(yom.world.bodies[i].shapes[j].contains(params.x, params.y)) {
 					elements[index] = yom.world.bodies[i];
 					++index;
 					break;
