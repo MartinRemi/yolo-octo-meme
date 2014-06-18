@@ -36,7 +36,6 @@ yom.input = {
 	 *  @method yom.input#handleInput
 	 * 	@param {number} [x=0] - The x coordinate where the event has been performed
 	 * 	@param {number} [y=0] - The y coordinate where the event has been performed
-	 *	@return {Array.<yom.Body>} The bodies concerned by the event
 	 */
 	handleInput: function(eventType, params) {
 		var i;
@@ -45,20 +44,22 @@ yom.input = {
 
 		var elements = [];
 
-		for(i = 0; i < yom.world.bodies; ++i) {
-			for(j = 0; j < yom.world.bodies[i].shapes; ++j) {
-				if(yom.world.bodies[i].shapes[j].contains(params.x, params.y)) {
-					elements[index] = yom.world.bodies[i];
-					++index;
-					break;
+		if(eventType == yom.input.EventType.CLICK) {
+			for(i = 0; i < yom.world.bodies; ++i) {
+				for(j = 0; j < yom.world.bodies[i].shapes; ++j) {
+					if(yom.world.bodies[i].shapes[j].contains(params.x, params.y)) {
+						elements[index] = yom.world.bodies[i];
+						++index;
+						break;
+					}
 				}
 			}
 		}
+		//{Array.<yom.Body>} The bodies concerned by the event
 
-		return elements;
+		this.trigger(elements, eventType);
 	},
 
-	// ----- Method(s) ----- \\
 	/**
 	 *  Maps a function with a particular event on the body 'body'
 	 *  @method yom.input#mapEvent
@@ -71,5 +72,20 @@ yom.input = {
 			this.map[body] = new Array(this.EVENT_TYPE_NUMBER);
 		}
 		this.map[body][eventType] = fct;
+	},
+
+	/**
+	 *  Trigger the appropriate functions
+	 *  @method yom.input#trigger
+	 * 	@param {Array.<yom.Body>} [bodies] - The bodies concerned by the event
+	 * 	@param {number} [eventType] - The type of the event performed
+	 */
+	trigger: function(bodies, eventType) {
+		var i;
+		for(i = 0; i < bodies.length; ++i) {
+			if(bodies[i] in map) {
+				map[bodies[i]][eventType]();
+			}
+		}
 	}
 };
