@@ -48,9 +48,26 @@ var yom_mouse_up_event_action = function(e) {
 	yom.input.handleInput(yom.input.EventType.MOUSE_UP, params);
 };
 
+/**
+ *  Called when the mouse is moved
+ *  @method yom_mouse_move_event_action
+ * 	@param {Object} [e] - The event performed
+ */
+var yom_mouse_move_event_action = function(e) {
+	var posX = $(this).position().left,
+		posY = $(this).position().top;
+	var params = {
+		x: e.pageX - posX,
+		y: e.pageY - posY
+	};
+	yom.input.handleInput(yom.input.EventType.MOUSE_MOVE, params);
+};
+
 // Bind events using jquery
 $("#app").on("click", yom_click_event_action);
 
-$("#app").mousedown(yom_click_event_action);
+$("#app").mousedown(yom_mouse_down_event_action);
 
-$("#app").mouseup(yom_click_event_action);
+$("#app").mouseup(yom_mouse_up_event_action);
+
+$("#app").mousemove(yom_mouse_move_event_action);
