@@ -22,13 +22,15 @@ yom.input = {
 	 *	@enum {number}
 	 */
 	EventType: {
-		CLICK: 0
+		CLICK: 0,
+		MOUSE_DOWN: 1,
+		MOUSE_UP: 2
 	},
 
 	/**
      * 	@property {number}  EVENT_TYPE_NUMBER - The number of event types
      */
-	EVENT_TYPE_NUMBER: 1,
+	EVENT_TYPE_NUMBER: 3,
 
 	// ----- Method(s) ----- \\
 	/**
@@ -43,6 +45,8 @@ yom.input = {
 		var index = 0;
 
 		var elements = [];
+
+		alert("test");
 
 		if(eventType == yom.input.EventType.CLICK) {
 			for(i = 0; i < yom.world.bodies; ++i) {
