@@ -49,3 +49,57 @@ yom.Vector2.prototype.addVector = function(vector) {
 
 	this.y += vector.y;
 };
+
+/**
+ * 	Substract a constant to the vector (this)
+ * 	@method yom.Vector2#sub
+ *	@param {number} number - The constant to substract
+ */
+yom.Vector2.prototype.sub = function(point) {
+	this.x -= point;
+
+	this.y -= point;
+};
+
+/**
+ * 	Substract a vector to the vector (this)
+ * 	@method yom.Vector2#subVector
+ *	@param {yom.Vector2} vector - The vector to substrct
+ */
+yom.Vector2.prototype.subVector = function(vector) {
+	this.x -= vector.x;
+
+	this.y -= vector.y;
+};
+
+/**
+ * 	Multiply a constant to the vector (this)
+ * 	@method yom.Vector2#scl
+ *	@param {number} constant - The constant to multiply
+ */
+yom.Vector2.prototype.scl = function(constant) {
+	this.x *= constant;
+
+	this.y *= constant;
+};
+
+/**
+ * 	Multiply a vector to the vector (this)
+ * 	@method yom.Vector2#mulVector
+ *	@param {number} vector - The vector to multiply
+ */
+yom.Vector2.prototype.mulVector = function(vector) {
+	this.x *= vector.x;
+
+	this.y *= vector.y;
+};
+
+/**
+ * 	Normalize the vector
+ * 	@method yom.Vector2#norm
+ */
+yom.Vector2.prototype.norm = function() {
+	this.x *= constant;
+
+	this.y *= constant;
+};
