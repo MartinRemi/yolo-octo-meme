@@ -64,8 +64,9 @@ var yom = yom || {
 
 	start: function() {
 		setInterval(function() {
+			yom.world.step();
 			yom.renderManager.clear();
 			yom.renderManager.display();
-		}, 1000)
+		}, 100)
 	}
 };
