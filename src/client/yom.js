@@ -59,6 +59,13 @@ var yom = yom || {
 	},
 
 	renderManager : {
-		
+
+	},
+
+	start: function() {
+		setInterval(function() {
+			yom.renderManager.clear();
+			yom.renderManager.display();
+		}, 1000)
 	}
 };

@@ -39,20 +39,18 @@ yom.RenderManager.prototype.display = function() {
 	var j;
 	var index = 0;
 
-	var renderManager = new yom.RenderManager(this);
-
 	var shapes = [];
 
 	// ----- Get all shapes
-	for(i = 0; i < this.world.bodies.length; ++i) {
-		for(j = 0; j < this.world.bodies[i].shapes; ++j) {
-			shapes[index] = this.world.bodies[i].shapes[j];
+	for(i = 0; i < yom.world.bodies.length; ++i) {
+		for(j = 0; j < yom.world.bodies[i].shapes; ++j) {
+			shapes[index] = yom.world.bodies[i].shapes[j];
 			++index;
 		}
 	}
 
-	for(i = 0; i < this.world.shapes.length; ++i) {
-		shapes[index] = this.world.shapes[i];
+	for(i = 0; i < yom.world.shapes.length; ++i) {
+		shapes[index] = yom.world.shapes[i];
 		++index;
 	}
 
@@ -71,3 +69,11 @@ yom.RenderManager.prototype.display = function() {
 		shapes[i].render(this.drawManager);
 	}
 };
+
+/**
+ * 	Clear the content of the canvas
+ * 	@method yom.DrawManager#clear
+ */
+yom.RenderManager.prototype.clear = function() {
+	$("#" + this.world.idOfCanvas).get(0).getContext("2d").clearRect(0, 0, yom.world.width, yom.world.height);
+}

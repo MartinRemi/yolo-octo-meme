@@ -107,7 +107,8 @@
 		world.shapes[1] = graphicLine1;
 		world.shapes[2] = graphicPolyline1;
 		world.shapes[3] = graphicPolygon;
-		renderManager.display();
+		//renderManager.display();
+		yom.start();
 
 		yom.input.mapEvent(world, world , function() {alert('test') });
 	</script>
