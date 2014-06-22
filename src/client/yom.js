@@ -17,7 +17,7 @@ var yom = yom || {
 	},
 
 	/**
-	 * 	@property {yom.World} world - The world object (king of singleton)
+	 * 	@property {yom.World} world - The world object (kind of singleton)
 	 */
 	world : {},
 
@@ -55,6 +55,10 @@ var yom = yom || {
 	},
 	
 	inputs : {
+		
+	},
+
+	renderManager : {
 		
 	}
 };

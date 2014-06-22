@@ -47,8 +47,6 @@ yom.input = {
 
 		var elements = [];
 
-		alert(eventType);
-
 		if(eventType == yom.input.EventType.CLICK) {
 			for(i = 0; i < yom.world.bodies; ++i) {
 				for(j = 0; j < yom.world.bodies[i].shapes; ++j) {

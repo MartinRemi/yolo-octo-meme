@@ -97,7 +97,7 @@
 
 		var world = new yom.World("app", 500, 500);
 		var drawManager = new yom.DrawManager(world);
-		var renderManager = new yom.RenderManager();
+		var renderManager = new yom.RenderManager(world, drawManager);
 		//drawManager.drawCircle(graphicCircle);
 		//drawManager.drawLine(graphicLine1);
 		//drawManager.drawPolyline(graphicPolyline1);
@@ -107,7 +107,7 @@
 		world.shapes[1] = graphicLine1;
 		world.shapes[2] = graphicPolyline1;
 		world.shapes[3] = graphicPolygon;
-		renderManager.display(world, drawManager);
+		renderManager.display();
 
 		yom.input.mapEvent(world, world , function() {alert('test') });
 	</script>

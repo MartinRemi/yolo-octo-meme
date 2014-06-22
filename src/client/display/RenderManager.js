@@ -10,20 +10,31 @@
  * 	@class RenderManager
  * 	@classdesc yom - RenderManager
  * 	@constructor
+ *	@param {yom.World} world - The world we want to display.
+ *	@param {yom.DrawManager} drawManager - The drawManager used to display
  * 	@return {yom.RenderManager} The renderManager object
  */
-yom.RenderManager = function () {
-	/* NOTHING */
+yom.RenderManager = function (world, drawManager) {
+
+	/**
+     * 	@property {yom.World}  world - The world to render
+     */
+	this.world = world;
+
+	/**
+     * 	@property {yom.DrawManager}  drawManager - The draw manager used to render the world
+     */
+	this.drawManager = drawManager;
+
+	yom.renderManager = this;
 };
 
 // ----- Method(s) ----- \\
 /**
  * 	Render the world how it is when the function is called
  * 	@method yom.RenderManager#contains
- *	@param {yom.World} world - The world we want to display.
- *	@param {yom.DrawManager} drawManager - The drawManager used to display
  */
-yom.RenderManager.prototype.display = function(world, drawManager) {
+yom.RenderManager.prototype.display = function() {
 	var i;
 	var j;
 	var index = 0;
@@ -33,15 +44,15 @@ yom.RenderManager.prototype.display = function(world, drawManager) {
 	var shapes = [];
 
 	// ----- Get all shapes
-	for(i = 0; i < world.bodies.length; ++i) {
-		for(j = 0; j < world.bodies[i].shapes; ++j) {
-			shapes[index] = world.bodies[i].shapes[j];
+	for(i = 0; i < this.world.bodies.length; ++i) {
+		for(j = 0; j < this.world.bodies[i].shapes; ++j) {
+			shapes[index] = this.world.bodies[i].shapes[j];
 			++index;
 		}
 	}
 
-	for(i = 0; i < world.shapes.length; ++i) {
-		shapes[index] = world.shapes[i];
+	for(i = 0; i < this.world.shapes.length; ++i) {
+		shapes[index] = this.world.shapes[i];
 		++index;
 	}
 
@@ -57,6 +68,6 @@ yom.RenderManager.prototype.display = function(world, drawManager) {
 	});
 
 	for(i = 0; i < shapes.length; ++i) {
-		shapes[i].render(drawManager);
+		shapes[i].render(this.drawManager);
 	}
 };
