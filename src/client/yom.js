@@ -62,11 +62,15 @@ var yom = yom || {
 
 	},
 
+	display: {
+		STEP_INTERVAL: 100
+	},
+
 	start: function() {
 		setInterval(function() {
 			yom.world.step();
 			yom.renderManager.clear();
 			yom.renderManager.display();
-		}, 100)
+		}, yom.display.STEP_INTERVAL);
 	}
 };
