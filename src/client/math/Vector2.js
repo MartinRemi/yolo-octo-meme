@@ -30,10 +30,10 @@ yom.Vector2 = function (x, y) {
 // ----- Method(s) ----- \\
 /**
  * 	Add a constant to the vector (this)
- * 	@method yom.Body#add
+ * 	@method yom.Vector2#add
  *	@param {number} number - The constant to add
  */
-yom.Body.prototype.add = function(point) {
+yom.Vector2.prototype.add = function(point) {
 	this.x += point;
 
 	this.y += point;
@@ -41,10 +41,10 @@ yom.Body.prototype.add = function(point) {
 
 /**
  * 	Add a vector to the vector (this)
- * 	@method yom.Body#addVector
+ * 	@method yom.Vector2#addVector
  *	@param {yom.Vector2} vector - The vector to add
  */
-yom.Body.prototype.addVector = function(vector) {
+yom.Vector2.prototype.addVector = function(vector) {
 	this.x += vector.x;
 
 	this.y += vector.y;
