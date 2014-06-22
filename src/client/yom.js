@@ -72,5 +72,9 @@ var yom = yom || {
 			yom.renderManager.clear();
 			yom.renderManager.display();
 		}, yom.display.STEP_INTERVAL);
+	},
+
+	physics : {
+		DEFAULT_MASS: 1
 	}
 };

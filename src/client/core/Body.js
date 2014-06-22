@@ -24,6 +24,11 @@ yom.Body = function (shapes) {
      * 	@property {Array} shapes - The shapes that belong to the body.
      */
 	this.shapes = shapes || [];
+
+	/**
+     * 	@property {Array} forces - The forces applied to the body.
+     */
+	this.forces = [];
 };
 
 // ----- Method(s) ----- \\
