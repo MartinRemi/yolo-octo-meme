@@ -26,7 +26,7 @@ yom.Body = function (shapes) {
 	this.shapes = shapes || [];
 
 	/**
-     * 	@property {Array} forces - The forces applied to the body.
+     * 	@property {Array.<yom.Vector2>} forces - The forces applied to the body.
      */
 	this.forces = [];
 };
