@@ -46,7 +46,7 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
      *    @property {function()} stepBehavior - Defines the step behavior
      */
      this.stepBehavior = function() {
-          this.shapes[0].move(1, 1);
+          this.bodies[0];
      };
 
      yom.world = this;

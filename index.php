@@ -63,6 +63,9 @@
 	<script src="src/client/display/DrawManager.js"></script>
 	<script src="src/client/input/click_event_action.js"></script>
 	<script src="src/client/input/InputManager.js"></script>
+	<script src="src/client/core/Body.js"></script>
+	<script src="src/client/math/Vector2.js"></script>
+	<script src="src/client/physics/Force.js"></script>
 	<script>
 		/*var unit = new Unit(1, 2, 3);
 		$("#1").css("background", "yellow");
@@ -106,7 +109,11 @@
 		world.shapes[0] = graphicCircle;
 		world.shapes[1] = graphicLine1;
 		world.shapes[2] = graphicPolyline1;
-		world.shapes[3] = graphicPolygon;
+
+		world.bodies[0] = new yom.Body([graphicPolygon]);
+		world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1]), 
+			new yom.Vector2(polygon.coordinates[0] + 10, polygon.coordinates[1] + 10));
+
 		//renderManager.display();
 		yom.start();
 

@@ -43,7 +43,7 @@ yom.RenderManager.prototype.display = function() {
 
 	// ----- Get all shapes
 	for(i = 0; i < yom.world.bodies.length; ++i) {
-		for(j = 0; j < yom.world.bodies[i].shapes; ++j) {
+		for(j = 0; j < yom.world.bodies[i].shapes.length; ++j) {
 			shapes[index] = yom.world.bodies[i].shapes[j];
 			++index;
 		}

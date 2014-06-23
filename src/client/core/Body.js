@@ -9,11 +9,12 @@
  * 	@classdesc yom - Body
  * 	@constructor
  *	@param {Array} shapes - The shapes which belong to the body.
+ *	@param {number} mass - The mass of the body
  * 	@return {yom.Body} The body object
  *
  *	TODO : Set types for 'shapes'
  */
-yom.Body = function (shapes) {
+yom.Body = function (shapes, mass) {
 	/**
      * 	@property {number} id - The id of the body element.
      *	TODO : Generate random id
@@ -26,9 +27,11 @@ yom.Body = function (shapes) {
 	this.shapes = shapes || [];
 
 	/**
-     * 	@property {Array.<yom.Vector2>} forces - The forces applied to the body.
+     * 	@property {Array.<yom.Force>} forces - The forces applied to the body.
      */
 	this.forces = [];
+
+	this.mass = mass || 0;
 };
 
 // ----- Method(s) ----- \\
