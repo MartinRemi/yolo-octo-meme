@@ -46,7 +46,24 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
      *    @property {function()} stepBehavior - Defines the step behavior
      */
      this.stepBehavior = function() {
-          this.bodies[0];
+          var force = this.bodies[0].forces[0];
+          force = force.head.copy();
+          force.subVector(this.bodies[0].forces[0].applicationPoint);
+          force.div(this.bodies[0].mass); // Acceleration
+
+          // Velocity
+          force.scl(0.1);
+
+          // Offset
+          force.scl(0.1);
+
+          this.bodies[0].forces[0].applicationPoint.addVector(force);
+          this.bodies[0].forces[0].head.addVector(force);
+
+          var i;
+          for(i = 0; i < this.bodies[0].shapes.length; ++i) {
+               this.bodies[0].shapes[i].move(force.x, force.y);
+          }
      };
 
      yom.world = this;

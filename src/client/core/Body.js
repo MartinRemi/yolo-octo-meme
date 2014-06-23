@@ -31,7 +31,10 @@ yom.Body = function (shapes, mass) {
      */
 	this.forces = [];
 
-	this.mass = mass || 0;
+	/**
+     * 	@property {number} mass - The mass of the body
+     */
+	this.mass = mass || 1;
 };
 
 // ----- Method(s) ----- \\

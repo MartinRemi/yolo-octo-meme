@@ -103,3 +103,22 @@ yom.Vector2.prototype.norm = function() {
 
 	this.y *= constant;
 };
+
+/**
+ * 	Divide the vector by a number
+ * 	@method yom.Vector2#div
+ *	@param {number} number - the number
+ */
+yom.Vector2.prototype.div = function(number) {
+	this.x /= number;
+
+	this.y /= number;
+};
+
+/**
+ * 	Copy the vector
+ * 	@method yom.Vector2#copy
+ */
+yom.Vector2.prototype.copy = function() {
+	return new yom.Vector2(this.x, this.y);
+};
