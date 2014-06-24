@@ -24,7 +24,7 @@ yom.DrawManager = function (world) {
 	/**
      * 	TODO : Check type
      */
-	this.context = $("#"+idOfCanvas).get(0).getContext("2d");
+	this.context = document.getElementById(idOfCanvas).getContext("2d");
 };
 
 // ----- Method(s) ----- \\

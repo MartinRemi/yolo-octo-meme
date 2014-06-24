@@ -75,5 +75,5 @@ yom.RenderManager.prototype.display = function() {
  * 	@method yom.DrawManager#clear
  */
 yom.RenderManager.prototype.clear = function() {
-	$("#" + this.world.idOfCanvas).get(0).getContext("2d").clearRect(0, 0, yom.world.width, yom.world.height);
+	document.getElementById(this.world.idOfCanvas).getContext("2d").clearRect(0, 0, yom.world.width, yom.world.height);
 };

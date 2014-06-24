@@ -63,7 +63,10 @@ yom.World.prototype.setStepBehavior = function(stepFunction) {
 };
 
 // ----- Method(s) ----- \\
-
+/**
+ *   Called before the render manager in order to apply forces and compute new positions just before rendering
+ *   @method yom.World#step
+ */
 yom.World.prototype.applyForces = function() {
      var i;
      var j;
