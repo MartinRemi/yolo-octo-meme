@@ -72,6 +72,7 @@ var yom = yom || {
 			yom.world.applyForces();
 			yom.renderManager.clear();
 			yom.renderManager.display();
+			yom.input.start();
 		}, yom.display.STEP_INTERVAL);
 	},
 

@@ -90,5 +90,16 @@ yom.input = {
 				map[bodies[i]][eventType]();
 			}
 		}
+	},
+
+	start: function() {
+		// Bind events
+		document.getElementById(yom.world.idOfCanvas).onclick = yom_click_event_action;
+
+		document.getElementById(yom.world.idOfCanvas).onmousedown = yom_mouse_down_event_action;
+
+		document.getElementById(yom.world.idOfCanvas).onmouseup = yom_mouse_up_event_action;
+
+		document.getElementById(yom.world.idOfCanvas).onmousemove = yom_mouse_move_event_action;
 	}
 };

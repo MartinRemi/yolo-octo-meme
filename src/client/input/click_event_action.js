@@ -62,12 +62,3 @@ var yom_mouse_move_event_action = function(e) {
 	};
 	yom.input.handleInput(yom.input.EventType.MOUSE_MOVE, params);
 };
-
-// Bind events using jquery
-$("#app").on("click", yom_click_event_action);
-
-$("#app").mousedown(yom_mouse_down_event_action);
-
-$("#app").mouseup(yom_mouse_up_event_action);
-
-$("#app").mousemove(yom_mouse_move_event_action);
