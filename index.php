@@ -40,7 +40,6 @@
 		
 	</body>
 	<script src="src/client/yom.js"></script>
-	<script src="jquery-2.1.1.min.js"></script>
 <!--
 	<script src="src/client/controller/Controller.js"></script>
 	<script>
