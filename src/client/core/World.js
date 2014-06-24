@@ -46,35 +46,34 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
      *    @property {function()} stepBehavior - Defines the step behavior
      */
      this.stepBehavior = function() {
-          // var i;
-          // var j;
-          // var force;
-          // for(i = 0; i < this.bodies.length) {
-          //      force = this.bodies[i].forces[]
-          //      for(j = 0; j < this.bodies[i].forces.length) {
+          var i;
+          var j;
+          var force;
+          for(i = 0; i < this.bodies.length; ++i) {
+               force = new yom.Vector2();
+               for(j = 0; j < this.bodies[i].forces.length; ++j) {
+                    force.addVector(this.bodies[i].forces[j].head);
+                    force.subVector(this.bodies[i].forces[j].applicationPoint);
+               }
+               force.div(this.bodies[i].mass); // Acceleration
 
-          //      }
-          //      force = this.bodies[i].forces[0];
-          //      force = force.head.copy();
-          //      force.subVector(this.bodies[0].forces[0].applicationPoint);
-          //      force.div(this.bodies[0].mass); // Acceleration
+               // Velocity
+               force.scl(0.1);
+               force.addVector(this.bodies[i].velocity);
+               this.bodies[i].velocity = force.copy();
 
-          //      // Velocity
-          //      force.scl(0.1);
-          //      force.addVector(this.bodies[0].velocity);
-          //      this.bodies[0].velocity = force.copy();
+               // Offset
+               force.scl(0.1);
 
-          //      // Offset
-          //      force.scl(0.1);
+               for(j = 0; j < this.bodies[i].forces.length; ++j) {
+                    this.bodies[i].forces[j].applicationPoint.addVector(force);
+                    this.bodies[i].forces[j].head.addVector(force);
+               }
 
-          //      this.bodies[0].forces[0].applicationPoint.addVector(force);
-          //      this.bodies[0].forces[0].head.addVector(force);
-
-          //      var i;
-          //      for(i = 0; i < this.bodies[0].shapes.length; ++i) {
-          //           this.bodies[0].shapes[i].move(force.x, force.y);
-          //      }
-          // }
+               for(j = 0; j < this.bodies[i].shapes.length; ++j) {
+                    this.bodies[i].shapes[j].move(force.x, force.y);
+               }
+          }
      };
 
      yom.world = this;
