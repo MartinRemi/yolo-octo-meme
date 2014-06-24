@@ -69,6 +69,7 @@ var yom = yom || {
 	start: function() {
 		setInterval(function() {
 			yom.world.step();
+			yom.world.applyForces();
 			yom.renderManager.clear();
 			yom.renderManager.display();
 		}, yom.display.STEP_INTERVAL);

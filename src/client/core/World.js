@@ -46,34 +46,7 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
      *    @property {function()} stepBehavior - Defines the step behavior
      */
      this.stepBehavior = function() {
-          var i;
-          var j;
-          var force;
-          for(i = 0; i < this.bodies.length; ++i) {
-               force = new yom.Vector2();
-               for(j = 0; j < this.bodies[i].forces.length; ++j) {
-                    force.addVector(this.bodies[i].forces[j].head);
-                    force.subVector(this.bodies[i].forces[j].applicationPoint);
-               }
-               force.div(this.bodies[i].mass); // Acceleration
-
-               // Velocity
-               force.scl(0.1);
-               force.addVector(this.bodies[i].velocity);
-               this.bodies[i].velocity = force.copy();
-
-               // Offset
-               force.scl(0.1);
-
-               for(j = 0; j < this.bodies[i].forces.length; ++j) {
-                    this.bodies[i].forces[j].applicationPoint.addVector(force);
-                    this.bodies[i].forces[j].head.addVector(force);
-               }
-
-               for(j = 0; j < this.bodies[i].shapes.length; ++j) {
-                    this.bodies[i].shapes[j].move(force.x, force.y);
-               }
-          }
+          
      };
 
      yom.world = this;
@@ -90,6 +63,38 @@ yom.World.prototype.setStepBehavior = function(stepFunction) {
 };
 
 // ----- Method(s) ----- \\
+
+yom.World.prototype.applyForces = function() {
+     var i;
+     var j;
+     var force;
+     for(i = 0; i < this.bodies.length; ++i) {
+          force = new yom.Vector2();
+          for(j = 0; j < this.bodies[i].forces.length; ++j) {
+               force.addVector(this.bodies[i].forces[j].head);
+               force.subVector(this.bodies[i].forces[j].applicationPoint);
+          }
+          force.div(this.bodies[i].mass); // Acceleration
+
+          // Velocity
+          force.scl(0.1);
+          force.addVector(this.bodies[i].velocity);
+          this.bodies[i].velocity = force.copy();
+
+          // Offset
+          force.scl(0.1);
+
+          for(j = 0; j < this.bodies[i].forces.length; ++j) {
+               this.bodies[i].forces[j].applicationPoint.addVector(force);
+               this.bodies[i].forces[j].head.addVector(force);
+          }
+
+          for(j = 0; j < this.bodies[i].shapes.length; ++j) {
+               this.bodies[i].shapes[j].move(force.x, force.y);
+          }
+     }
+};
+
 /**
  *   Called before the render manager in order to proceed a new step of the world evolution
  *   BEHAVIOR DEFINED BY THE USER
