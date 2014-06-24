@@ -46,27 +46,35 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
      *    @property {function()} stepBehavior - Defines the step behavior
      */
      this.stepBehavior = function() {
-          var force = this.bodies[0].forces[0];
-          force = force.head.copy();
-          force.subVector(this.bodies[0].forces[0].applicationPoint);
-          force.div(this.bodies[0].mass); // Acceleration
+          // var i;
+          // var j;
+          // var force;
+          // for(i = 0; i < this.bodies.length) {
+          //      force = this.bodies[i].forces[]
+          //      for(j = 0; j < this.bodies[i].forces.length) {
 
-          // Velocity
-          force.scl(0.1);
-          force.addVector(this.bodies[0].velocity);
-          this.bodies[0].velocity = force.copy();
-          console.log(force);
+          //      }
+          //      force = this.bodies[i].forces[0];
+          //      force = force.head.copy();
+          //      force.subVector(this.bodies[0].forces[0].applicationPoint);
+          //      force.div(this.bodies[0].mass); // Acceleration
 
-          // Offset
-          force.scl(0.1);
+          //      // Velocity
+          //      force.scl(0.1);
+          //      force.addVector(this.bodies[0].velocity);
+          //      this.bodies[0].velocity = force.copy();
 
-          this.bodies[0].forces[0].applicationPoint.addVector(force);
-          this.bodies[0].forces[0].head.addVector(force);
+          //      // Offset
+          //      force.scl(0.1);
 
-          var i;
-          for(i = 0; i < this.bodies[0].shapes.length; ++i) {
-               this.bodies[0].shapes[i].move(force.x, force.y);
-          }
+          //      this.bodies[0].forces[0].applicationPoint.addVector(force);
+          //      this.bodies[0].forces[0].head.addVector(force);
+
+          //      var i;
+          //      for(i = 0; i < this.bodies[0].shapes.length; ++i) {
+          //           this.bodies[0].shapes[i].move(force.x, force.y);
+          //      }
+          // }
      };
 
      yom.world = this;
