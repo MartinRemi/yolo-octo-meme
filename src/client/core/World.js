@@ -53,6 +53,9 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
 
           // Velocity
           force.scl(0.1);
+          force.addVector(this.bodies[0].velocity);
+          this.bodies[0].velocity = force.copy();
+          console.log(force);
 
           // Offset
           force.scl(0.1);

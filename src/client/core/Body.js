@@ -35,6 +35,8 @@ yom.Body = function (shapes, mass) {
      * 	@property {number} mass - The mass of the body
      */
 	this.mass = mass || 1;
+
+	this.velocity = new yom.Vector2();
 };
 
 // ----- Method(s) ----- \\

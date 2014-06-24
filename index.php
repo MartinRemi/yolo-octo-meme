@@ -112,7 +112,7 @@
 
 		world.bodies[0] = new yom.Body([graphicPolygon], 1);
 		world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1]), 
-			new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1] + 100));
+			new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1] + 1000));
 
 		//renderManager.display();
 		yom.start();
