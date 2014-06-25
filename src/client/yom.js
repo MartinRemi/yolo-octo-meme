@@ -76,7 +76,13 @@ var yom = yom || {
 		}, yom.display.STEP_INTERVAL);
 	},
 
-	physics : {
-		DEFAULT_MASS: 1
+	physics: {
+		DEFAULT_MASS: 1,
+
+		force_type: {
+			OD: 0,		// Other Distance
+			OC: 1,		// Other Contact
+			SE: 2 		// SElf
+		}
 	}
 };
