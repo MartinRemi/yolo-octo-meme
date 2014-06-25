@@ -50,6 +50,11 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
      };
 
      yom.world = this;
+
+     /**
+     *    @property {Array.<yom.Vector2>} forces - Forces applied in the world
+     */
+     this.forces = [];
 };
 
 // ----- Setter(s) ----- \\
