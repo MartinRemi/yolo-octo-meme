@@ -96,7 +96,7 @@ yom.World.prototype.applyForces = function() {
           }
 
           for(k = 0; k < this.forces.length; ++k) {
-               if(this.forces[k].type == yom.physics.force_type.OD) {
+               if(this.forces[k].type === yom.physics.force_type.OD) {
                     force.addVector(this.forces[k].head);
                     force.subVector(this.forces[k].applicationPoint);
                }

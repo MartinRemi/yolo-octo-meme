@@ -28,7 +28,7 @@ yom.Force = function (applicationPoint, head, type) {
 	/**
      * 	@property {yom.physics.force_type} type - The type of the force
      */
-     this.type = type || yom.physics.force_type.SE;
+     this.type = (typeof type === 'undefined') ? yom.physics.force_type.SE : type;
 };
 
 // ----- Method(s) ----- \\

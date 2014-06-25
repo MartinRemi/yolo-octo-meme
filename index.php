@@ -113,6 +113,8 @@
 		world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1]), 
 			new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1] + 10));
 
+		world.forces[0] = new yom.Force(new yom.Vector2(), new yom.Vector2(-5, 0), yom.physics.force_type.OD)
+
 		//renderManager.display();
 		yom.start();
 
