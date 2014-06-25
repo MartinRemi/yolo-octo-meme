@@ -94,6 +94,11 @@ yom.World.prototype.applyForces = function() {
                }
           }
 
+          for(k = 0; k < this.forces.length; ++k) {
+               force.addVector(this.forces[k].head);
+               force.subVector(this.forces[k].applicationPoint);
+          }
+
           force.div(this.bodies[i].mass); // Acceleration
 
           // Velocity
