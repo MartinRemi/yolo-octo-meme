@@ -53,6 +53,7 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
 
      /**
      *    @property {Array.<yom.Vector2>} forces - Forces applied in the world
+     *         Only OD are used as others are nonsense
      */
      this.forces = [];
 };
@@ -95,8 +96,10 @@ yom.World.prototype.applyForces = function() {
           }
 
           for(k = 0; k < this.forces.length; ++k) {
-               force.addVector(this.forces[k].head);
-               force.subVector(this.forces[k].applicationPoint);
+               if(this.forces[k].type == yom.physics.force_type.OD) {
+                    force.addVector(this.forces[k].head);
+                    force.subVector(this.forces[k].applicationPoint);
+               }
           }
 
           force.div(this.bodies[i].mass); // Acceleration
