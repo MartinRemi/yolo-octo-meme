@@ -77,6 +77,7 @@ yom.World.prototype.applyForces = function() {
                force.subVector(this.bodies[i].forces[j].applicationPoint);
           }
 
+          // We apply to the current body, other's "OD" forces
           for(k = 0; k < this.bodies.length; ++k) {
                if(k != i) {
                     for(l = 0; l < this.bodies[k].forces.length; ++l) {
@@ -91,12 +92,12 @@ yom.World.prototype.applyForces = function() {
           force.div(this.bodies[i].mass); // Acceleration
 
           // Velocity
-          force.scl(yom.display.STEP_INTERVAL / 1000);
+          force.scl(yom.display.STEP_INTERVAL);
           force.addVector(this.bodies[i].velocity);
           this.bodies[i].velocity = force.copy();
 
           // Offset
-          force.scl(yom.display.STEP_INTERVAL / 1000);
+          force.scl(yom.display.STEP_INTERVAL);
 
           for(j = 0; j < this.bodies[i].forces.length; ++j) {
                this.bodies[i].forces[j].applicationPoint.addVector(force);

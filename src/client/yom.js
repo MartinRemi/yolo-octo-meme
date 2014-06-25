@@ -63,7 +63,7 @@ var yom = yom || {
 	},
 
 	display: {
-		STEP_INTERVAL: 100
+		STEP_INTERVAL: 0.1
 	},
 
 	start: function() {
