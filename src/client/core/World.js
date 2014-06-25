@@ -68,8 +68,7 @@ yom.World.prototype.setStepBehavior = function(stepFunction) {
  *   @method yom.World#step
  */
 yom.World.prototype.applyForces = function() {
-     var i;
-     var j;
+     var i, j, k, l;
      var force;
      for(i = 0; i < this.bodies.length; ++i) {
           force = new yom.Vector2();
@@ -77,6 +76,18 @@ yom.World.prototype.applyForces = function() {
                force.addVector(this.bodies[i].forces[j].head);
                force.subVector(this.bodies[i].forces[j].applicationPoint);
           }
+
+          for(k = 0; k < this.bodies.length; ++k) {
+               if(k != i) {
+                    for(l = 0; l < this.bodies[k].forces.length; ++l) {
+                         if(this.bodies[k].forces[l].type == yom.physics.force_type.OD) {
+                              force.addVector(this.bodies[k].forces[l].head);
+                              force.subVector(this.bodies[k].forces[l].applicationPoint);
+                         }
+                    }
+               }
+          }
+
           force.div(this.bodies[i].mass); // Acceleration
 
           // Velocity
