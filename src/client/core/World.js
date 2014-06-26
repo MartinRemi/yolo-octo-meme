@@ -79,8 +79,10 @@ yom.World.prototype.applyForces = function() {
      for(i = 0; i < this.bodies.length; ++i) {
           force = new yom.Vector2();
           for(j = 0; j < this.bodies[i].forces.length; ++j) {
-               force.addVector(this.bodies[i].forces[j].head);
-               force.subVector(this.bodies[i].forces[j].applicationPoint);
+               if(this.bodies[i].forces[j].type == yom.physics.force_type.SE) {
+                    force.addVector(this.bodies[i].forces[j].head);
+                    force.subVector(this.bodies[i].forces[j].applicationPoint);
+               }
           }
 
           // We apply to the current body, other's "OD" forces
