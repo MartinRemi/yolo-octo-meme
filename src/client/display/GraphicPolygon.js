@@ -44,6 +44,8 @@ yom.GraphicPolygon = function (polygon, zIndex, borderColor, insideColor, image)
      * 	@property {number} zIndex - The z index of the polygon
      */
 	this.zIndex = zIndex || 0;
+
+	this.centroid = polygon.centroid;
 };
 
 // ----- Method(s) ----- \\

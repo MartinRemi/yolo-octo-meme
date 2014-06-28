@@ -91,13 +91,16 @@ yom.World.prototype.applyForces = function() {
                if(k != i) {
                     for(l = 0; l < this.bodies[k].forces.length; ++l) {
                          if(this.bodies[k].forces[l].type == yom.physics.force_type.OD) {
-                              ODvector = new yom.Vector2();
-                              // Use centroid instead
-                              ODvector.addVector(this.bodies[k].forces[l].head);
-                              ODvector.subVector(this.bodies[k].forces[l].applicationPoint);
+                              // ODvector = new yom.Vector2();
+                              // // Use centroid instead
+                              // ODvector.addVector(new yom.Vector2(this.bodies[k].shapes[0].centroid.x, this.bodies[k].shapes[0].centroid.y));
+                              // ODvector.subVector(new yom.Vector2(this.bodies[i].shapes[0].centroid.x, this.bodies[i].shapes[0].centroid.y));
 
-                              // Scale vector
-                              // Multiply by intensity
+                              // // Scale vector
+                              // ODvector.div(ODvector.maxCoordinate());
+
+                              // // Multiply by intensity
+                              // ODvector.mulVector(this.bodies[k].forces[l].applicationPoint);
                          }
                     }
                }

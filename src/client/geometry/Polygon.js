@@ -39,6 +39,11 @@ yom.Polygon = function (coordinates) {
      *	@property {yom.Polyline} perimeter - The coordinates of the points composing the polygon.
      */
     this.perimeter = new yom.Polyline(coordinates);
+
+    /**
+     *  @property {yom.Point} centroid - The center of gravity of the polygon
+     */
+    this.centroid = new yom.Point(coordinates[0], coordinates[1]);
 };
 
 // ----- Getter(s) ----- \\

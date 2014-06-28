@@ -38,6 +38,8 @@ yom.GraphicPolyline = function (polyline, zIndex, borderColor, insideColor) {
      * 	@property {number} zIndex - The z index of the polyline
      */
 	this.zIndex = zIndex || 0;
+
+	this.centroid = polyline.centroid;
 };
 
 // ----- Method(s) ----- \\

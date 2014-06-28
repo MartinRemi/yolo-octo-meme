@@ -122,3 +122,11 @@ yom.Vector2.prototype.div = function(number) {
 yom.Vector2.prototype.copy = function() {
 	return new yom.Vector2(this.x, this.y);
 };
+
+/**
+ * 	Computes the max coordinate
+ * 	@method yom.Vector2#maxCoordinate
+ */
+yom.Vector2.prototype.maxCoordinate = function() {
+	return Math.max(this.x, this.y);
+};

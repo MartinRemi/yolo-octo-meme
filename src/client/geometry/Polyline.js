@@ -51,6 +51,11 @@ yom.Polyline = function (coordinates) {
 			break;
 		}
 	}
+
+	/**
+     *  @property {yom.Point} centroid - The center of gravity of the polygon
+     */
+    this.centroid = new yom.Point(coordinates[0], coordinates[1]);
 };
 
 // ----- Getter(s) ----- \\

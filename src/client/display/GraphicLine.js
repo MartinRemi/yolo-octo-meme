@@ -38,6 +38,8 @@ yom.GraphicLine = function (line, zIndex, borderColor, insideColor) {
      * 	@property {number} zIndex - The z index of the line
      */
 	this.zIndex = zIndex || 0;
+
+	this.centroid = line.centroid;
 };
 
 // ----- Method(s) ----- \\
