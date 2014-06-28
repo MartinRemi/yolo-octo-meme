@@ -78,13 +78,13 @@
 		world.shapes[1] = graphicPolyline1;
 
 		world.bodies[0] = new yom.Body([graphicPolygon], 10);
-		world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1]), 
-			new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1] + 10));
+		// world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1]), 
+			// new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1] + 10));
 
 		world.bodies[1] = new yom.Body([graphicPolyline1], 10);
-		world.bodies[1].forces[0] = new yom.Force(new yom.Vector2(), new yom.Vector2(100, 100), yom.physics.force_type.OD);
+		world.bodies[1].forces[0] = new yom.Force(new yom.Vector2(5, 5), new yom.Vector2(), yom.physics.force_type.OD);
 
-		world.forces[0] = new yom.Force(new yom.Vector2(), new yom.Vector2(-5, 0), yom.physics.force_type.OD)
+		//world.forces[0] = new yom.Force(new yom.Vector2(5, 0), new yom.Vector2(), yom.physics.force_type.OD)
 
 		//renderManager.display();
 		yom.start();

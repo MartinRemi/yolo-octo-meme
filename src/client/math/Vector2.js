@@ -124,9 +124,9 @@ yom.Vector2.prototype.copy = function() {
 };
 
 /**
- * 	Computes the max coordinate
- * 	@method yom.Vector2#maxCoordinate
+ * 	Computes the divider
+ * 	@method yom.Vector2#divider
  */
-yom.Vector2.prototype.maxCoordinate = function() {
-	return Math.max(this.x, this.y);
+yom.Vector2.prototype.divider = function() {
+	return Math.max(this.x, this.y) == 0 ? Math.min(this.x, this.y) * -1 : Math.max(this.x, this.y);
 };
