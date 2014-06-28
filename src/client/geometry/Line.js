@@ -62,6 +62,13 @@ yom.Line = function (xf, yf, xs, ys) {
      * 	@property {number} intercept - The y-intercept of the line.
      */
     this.intercept = yf - this.gradient * xf;
+
+    /**
+     *  @property {yom.Point} centroid - The center of gravity of the line
+     */
+    this.centroid = new yom.Point();
+    this.centroid.y = this.firstPoint.y + (this.secondPoint.y + this.firstPoint.y) / 2;
+    this.centroid.x = this.firstPoint.x + (this.secondPoint.x + this.firstPoint.x) / 2;
 };
 
 // ----- Getter(s) ----- \\

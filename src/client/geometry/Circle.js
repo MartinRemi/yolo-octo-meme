@@ -38,6 +38,11 @@ yom.Circle = function (x, y, radius) {
      */
 	this.radius = radius || 0;
 	this.radius = ( this.radius >= 0 ) ? this.radius : 0;
+
+	/**
+     * 	@property {yom.Point} centroid - The center of gravity of the circle
+     */
+	this.centroid = this.center;
 };
 
 // ----- Getter(s) ----- \\

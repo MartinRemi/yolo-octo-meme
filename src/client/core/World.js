@@ -76,6 +76,7 @@ yom.World.prototype.setStepBehavior = function(stepFunction) {
 yom.World.prototype.applyForces = function() {
      var i, j, k, l;
      var force;
+     var ODvector;
      for(i = 0; i < this.bodies.length; ++i) {
           force = new yom.Vector2();
           for(j = 0; j < this.bodies[i].forces.length; ++j) {
@@ -90,13 +91,19 @@ yom.World.prototype.applyForces = function() {
                if(k != i) {
                     for(l = 0; l < this.bodies[k].forces.length; ++l) {
                          if(this.bodies[k].forces[l].type == yom.physics.force_type.OD) {
-                              force.addVector(this.bodies[k].forces[l].head);
-                              force.subVector(this.bodies[k].forces[l].applicationPoint);
+                              ODvector = new yom.Vector2();
+                              // Use centroid instead
+                              ODvector.addVector(this.bodies[k].forces[l].head);
+                              ODvector.subVector(this.bodies[k].forces[l].applicationPoint);
+
+                              // Scale vector
+                              // Multiply by intensity
                          }
                     }
                }
           }
 
+          // World forces
           for(k = 0; k < this.forces.length; ++k) {
                if(this.forces[k].type === yom.physics.force_type.OD) {
                     force.addVector(this.forces[k].head);
