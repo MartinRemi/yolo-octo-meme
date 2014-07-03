@@ -101,7 +101,6 @@ yom.World.prototype.applyForces = function() {
 
                               // Multiply by intensity
                               ODvector.mulVector(this.bodies[k].forces[l].applicationPoint);
-                              console.log(ODvector);
                               force.addVector(ODvector);
                          }
                     }
