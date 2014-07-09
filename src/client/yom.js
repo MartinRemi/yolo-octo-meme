@@ -13,7 +13,7 @@ var yom = yom || {
 		/**
 		 * 	@property {number} PORT - The port number of the server
 		 */
-		PORT: 		8888
+		PORT: 		1337
 	},
 
 	/**
