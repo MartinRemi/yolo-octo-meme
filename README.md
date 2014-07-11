@@ -5,8 +5,6 @@ yolo-octo-meme
 This 2D web game engine is not meant to overperform its competitors.
 This project is led by three students in computing at INSA, Lyon, France for learning purposes.
 
-We'll soon be using Dart instead of Javascript.
-
 ## Some of its features :
 	* I/O :
 		- Basic functions to handle Input events : keyboard and eventually touchscreen events
