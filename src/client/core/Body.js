@@ -37,6 +37,12 @@ yom.Body = function (shapes, mass) {
 	this.mass = mass || 1;
 
 	this.velocity = new yom.Vector2();
+
+	/**
+     * 	@property {Array.<yom.Vector2>} centroid - The centroid of the body.
+     */
+	this.centroid = new Vector2();
+	// If nothing --> (0, 0)
 };
 
 // ----- Method(s) ----- \\
