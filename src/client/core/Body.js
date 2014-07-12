@@ -84,3 +84,17 @@ yom.Body.prototype.containsPoint = function(point) {
 	} 
 	return false;
 };
+
+/**
+ * 	Moves the body by (x, y)
+ * 	@method yom.Body#move
+ *	@param {number} x - The offset for the x-coordinate
+ *	@param {number} y - The offset for the y-coordinate
+ */
+yom.Body.prototype.move = function(x, y) {
+	var i;
+	for(i = 0; i < this.shapes.length; ++i) {
+		this.shapes[i].move(x, y);
+	}
+	this.centroid.move(x, y);
+};
