@@ -55,13 +55,7 @@ yom.Polyline = function (coordinates) {
 	/**
      *  @property {yom.Point} centroid - The center of gravity of the polygon
      */
-    this.centroid = new yom.Point(coordinates[0], coordinates[1]);
-    if(coordinates.length == 2) {
-    	this.centroid.x = coordinates[0];
-    	this.centroid.y = coordinates[1];
-    } else if(coordinates.length >= 4) {
-    	// OK... need to find out something clever
-    }
+	this.centroid = new yom.Point(coordinates[0], coordinates[1]);
 };
 
 // ----- Getter(s) ----- \\

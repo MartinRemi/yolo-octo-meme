@@ -42,8 +42,43 @@ yom.Polygon = function (coordinates) {
 
     /**
      *  @property {yom.Point} centroid - The center of gravity of the polygon
+     *	TODO: The way of calculating the centroid, isn't working of there are intersections
+     *		between the lines of the polygon
      */
-    this.centroid = new yom.Point(coordinates[0], coordinates[1]);
+    this.centroid = new yom.Point(0, 0);
+    if(coordinates.length == 2) {
+		this.centroid.x = coordinates[0];
+		this.centroid.y = coordinates[1];
+	} else if(coordinates.length >= 4) {
+		var x0, y0, x1, y1, a, signedArea;
+		signedArea = 0;
+		for(i = 0; i < coordinates.length - 3; i+=2) {
+			x0 = coordinates[i];
+			y0 = coordinates[i+1];
+			x1 = coordinates[i+2];
+			y1 = coordinates[i+3];
+
+			a = x0 * y1 - x1 * y0;
+			signedArea += a;
+			this.centroid.x += (x0 + x1) * a;
+			this.centroid.y += (y0 + y1) * a;
+		}
+
+		x0 = coordinates[coordinates.length - 2];
+		y0 = coordinates[coordinates.length - 1];
+		x1 = coordinates[0];
+		y1 = coordinates[1];
+
+		a = x0 * y1 - x1 * y0;
+		signedArea += a;
+		this.centroid.x += (x0 + x1) * a;
+		this.centroid.y += (y0 + y1) * a;
+
+		signedArea *= 0.5;
+		this.centroid.x /= (6.0*signedArea);
+		this.centroid.y /= (6.0*signedArea);
+		console.log(this.centroid);
+	}
 };
 
 // ----- Getter(s) ----- \\
