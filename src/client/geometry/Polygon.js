@@ -77,7 +77,6 @@ yom.Polygon = function (coordinates) {
 		signedArea *= 0.5;
 		this.centroid.x /= (6.0*signedArea);
 		this.centroid.y /= (6.0*signedArea);
-		console.log(this.centroid);
 	}
 };
 
