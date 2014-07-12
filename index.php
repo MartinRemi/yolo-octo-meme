@@ -79,7 +79,7 @@
 
 		world.bodies[0] = new yom.Body([graphicPolygon], 10);
 		// world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1]), 
-			// new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1] + 10));
+		// new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1] + 10));
 
 		world.bodies[1] = new yom.Body([graphicPolyline1], 10);
 		world.bodies[1].forces[0] = new yom.Force(new yom.Vector2(5, 5), new yom.Vector2(), yom.physics.force_type.OD);

@@ -130,9 +130,7 @@ yom.World.prototype.applyForces = function() {
                this.bodies[i].forces[j].head.addVector(force);
           }
 
-          for(j = 0; j < this.bodies[i].shapes.length; ++j) {
-               this.bodies[i].shapes[j].move(force.x, force.y);
-          }
+          this.bodies[i].move(force.x, force.y);
      }
 };
 

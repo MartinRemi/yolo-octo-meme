@@ -114,6 +114,7 @@ yom.Line.prototype.move = function (x, y) {
 	// The gradient is the same
 	// but we have to compute the intercept again
 	this.intercept = this.firstPoint.getY() - this.gradient * this.firstPoint.getX();
+    this.centroid.move(x, y);
 };
 
 /**

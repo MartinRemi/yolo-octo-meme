@@ -117,6 +117,8 @@ yom.Polygon.prototype.copy = function () {
  */
 yom.Polygon.prototype.move = function (x, y) {
 	this.perimeter.move(x, y);
+	
+	this.centroid.move(x, y);
 
 	//this.coordinates = this.getPerimeter()
 

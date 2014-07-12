@@ -91,6 +91,7 @@ yom.Circle.prototype.copy = function () {
  */
 yom.Circle.prototype.move = function (x, y) {
 	this.center.move(x, y);
+	this.centroid.move(x, y);
 };
 
 /**

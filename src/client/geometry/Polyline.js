@@ -129,6 +129,7 @@ yom.Polyline.prototype.move = function (x, y) {
 			this.coordinates[i] += y;
 		}
 	}
+	this.centroid.move(x, y);
 };
 
 /**
