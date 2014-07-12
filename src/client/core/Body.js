@@ -39,7 +39,7 @@ yom.Body = function (shapes, mass) {
 	this.velocity = new yom.Vector2();
 
 	/**
-     * 	@property {Array.<yom.Vector2>} centroid - The centroid of the body.
+     * 	@property {Array.<yom.Point>} centroid - The centroid of the body.
      */
 	this.centroid = new yom.Vector2();
 	// If nothing --> (0, 0)
@@ -49,6 +49,7 @@ yom.Body = function (shapes, mass) {
 		this.centroid.addVector(shapes[i].centroid);
 	}
 	this.centroid.div(shapes.length);
+	this.centroid = new yom.Point(this.centroid.x, this.centroid.y);
 };
 
 // ----- Method(s) ----- \\

@@ -98,6 +98,7 @@ yom.World.prototype.applyForces = function() {
                               
                               // Scale vector
                               ODvector.div(ODvector.divider());
+                              console.log(ODvector);
 
                               // Multiply by intensity
                               ODvector.mulVector(this.bodies[k].forces[l].applicationPoint);
