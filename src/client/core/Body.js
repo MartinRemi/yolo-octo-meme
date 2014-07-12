@@ -48,6 +48,7 @@ yom.Body = function (shapes, mass) {
 	for(i = 0; i < shapes.length; ++i) {
 		this.centroid.addVector(shapes[i].centroid);
 	}
+	this.centroid.div(shapes.length);
 };
 
 // ----- Method(s) ----- \\
