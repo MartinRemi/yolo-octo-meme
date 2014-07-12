@@ -93,8 +93,8 @@ yom.World.prototype.applyForces = function() {
                          if(this.bodies[k].forces[l].type == yom.physics.force_type.OD) {
                               ODvector = new yom.Vector2();
                               // Use centroid instead
-                              ODvector.addVector(new yom.Vector2(this.bodies[k].shapes[0].centroid.x, this.bodies[k].shapes[0].centroid.y));
-                              ODvector.subVector(new yom.Vector2(this.bodies[i].shapes[0].centroid.x, this.bodies[i].shapes[0].centroid.y));
+                              ODvector.addVector(new yom.Vector2(this.bodies[k].centroid.x, this.bodies[k].centroid.y));
+                              ODvector.subVector(new yom.Vector2(this.bodies[i].centroid.x, this.bodies[i].centroid.y));
                               
                               // Scale vector
                               ODvector.div(ODvector.divider());

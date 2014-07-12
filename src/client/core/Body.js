@@ -41,8 +41,13 @@ yom.Body = function (shapes, mass) {
 	/**
      * 	@property {Array.<yom.Vector2>} centroid - The centroid of the body.
      */
-	this.centroid = new Vector2();
+	this.centroid = new yom.Vector2();
 	// If nothing --> (0, 0)
+
+	var i;
+	for(i = 0; i < shapes.length; ++i) {
+		this.centroid.addVector(shapes[i].centroid);
+	}
 };
 
 // ----- Method(s) ----- \\
