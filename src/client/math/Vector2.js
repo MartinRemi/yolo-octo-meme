@@ -128,5 +128,5 @@ yom.Vector2.prototype.copy = function() {
  * 	@method yom.Vector2#divider
  */
 yom.Vector2.prototype.divider = function() {
-	return Math.max(this.x, this.y) == 0 ? Math.min(this.x, this.y) * -1 : Math.max(this.x, this.y);
+	return Math.max(this.x, this.y) == 0 ? Math.min(this.x, this.y) * -1 : (Math.max(this.x, this.y) < 0) ? Math.max(this.x, this.y) * -1 : Math.max(this.x, this.y);
 };

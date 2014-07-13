@@ -98,4 +98,5 @@ yom.Body.prototype.move = function(x, y) {
 		this.shapes[i].move(x, y);
 	}
 	this.centroid.move(x, y);
+	// console.log(this.centroid);
 };

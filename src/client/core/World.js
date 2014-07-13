@@ -85,6 +85,7 @@ yom.World.prototype.applyForces = function() {
                     force.subVector(this.bodies[i].forces[j].applicationPoint);
                }
           }
+          // console.log(force);
 
           // We apply to the current body, other's "OD" forces
           for(k = 0; k < this.bodies.length; ++k) {
@@ -95,10 +96,12 @@ yom.World.prototype.applyForces = function() {
                               // Use centroid instead
                               ODvector.addVector(new yom.Vector2(this.bodies[k].centroid.x, this.bodies[k].centroid.y));
                               ODvector.subVector(new yom.Vector2(this.bodies[i].centroid.x, this.bodies[i].centroid.y));
+                              // console.log(ODvector);
                               
+                              console.log(ODvector.divider());
                               // Scale vector
                               ODvector.div(ODvector.divider());
-                              console.log(ODvector);
+                              // console.log(ODvector);
 
                               // Multiply by intensity
                               ODvector.mulVector(this.bodies[k].forces[l].applicationPoint);
@@ -125,11 +128,12 @@ yom.World.prototype.applyForces = function() {
 
           // Offset
           force.scl(yom.display.STEP_INTERVAL);
+          // console.log(force);
 
-          for(j = 0; j < this.bodies[i].forces.length; ++j) {
-               this.bodies[i].forces[j].applicationPoint.addVector(force);
-               this.bodies[i].forces[j].head.addVector(force);
-          }
+          // for(j = 0; j < this.bodies[i].forces.length; ++j) {
+          //      this.bodies[i].forces[j].applicationPoint.addVector(force);
+          //      this.bodies[i].forces[j].head.addVector(force);
+          // }
 
           this.bodies[i].move(force.x, force.y);
      }
