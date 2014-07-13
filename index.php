@@ -51,7 +51,7 @@
 		}).css("width", "100px").css("height", "100px").appendTo(app);*/
 
 
-		var circle = new yom.Circle(30, 30, 15);
+		var circle = new yom.Circle(250, 250, 15);
 		var graphicCircle = new yom.GraphicCircle(circle, yom.shapes.DEFAULT_ZINDEX, '#00FFFF');
 
 		var line = new yom.Line(0, 0, 500, 500);
@@ -78,11 +78,12 @@
 		world.shapes[1] = graphicPolyline1;
 
 		world.bodies[0] = new yom.Body([graphicPolygon], 10);
+		world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(0,0), new yom.Vector2(1, 0));
 		// world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1]), 
 		// new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1] + 10));
 
-		world.bodies[1] = new yom.Body([graphicPolyline1], 10);
-		world.bodies[1].forces[0] = new yom.Force(new yom.Vector2(5, 5), new yom.Vector2(), yom.physics.force_type.OD);
+		world.bodies[1] = new yom.Body([graphicCircle], 10);
+		world.bodies[1].forces[0] = new yom.Force(new yom.Vector2(10, 10), new yom.Vector2(), yom.physics.force_type.OD);
 
 		//world.forces[0] = new yom.Force(new yom.Vector2(5, 0), new yom.Vector2(), yom.physics.force_type.OD)
 
