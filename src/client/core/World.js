@@ -147,3 +147,11 @@ yom.World.prototype.applyForces = function() {
 yom.World.prototype.step = function() {
      this.stepBehavior();
 };
+
+/**
+ *   Called before the render manager in order to detect colliding
+ *   @method yom.World#detectColliding
+ */
+yom.World.prototype.detectColliding = function() {
+
+}
