@@ -98,9 +98,8 @@ yom.World.prototype.applyForces = function() {
                               ODvector.subVector(new yom.Vector2(this.bodies[i].centroid.x, this.bodies[i].centroid.y));
                               // console.log(ODvector);
                               
-                              console.log(ODvector.divider());
                               // Scale vector
-                              ODvector.div(ODvector.divider());
+                              ODvector.norm();
                               // console.log(ODvector);
 
                               // Multiply by intensity
