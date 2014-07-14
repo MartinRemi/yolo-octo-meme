@@ -99,7 +99,7 @@ yom.Vector2.prototype.mulVector = function(vector) {
  * 	@method yom.Vector2#norm
  */
 yom.Vector2.prototype.norm = function() {
-	var length = Math.sqrt(Math.pow(this.x, 2), Math.pow(this.y, 2));
+	var length = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
 	this.x /= length;
 
 	this.y /= length;
