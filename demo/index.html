@@ -1,0 +1,51 @@
+<html>
+	<head>
+	</head>
+
+	<body>
+		<canvas id="app" width="500" height="500">
+		</canvas>
+		
+	</body>
+	<script src="../src/client/yom.js"></script>
+	<script src="../src/client/core/World.js"></script>
+	<script src="../src/client/geometry/Point.js"></script>
+	<script src="../src/client/geometry/Circle.js"></script>
+	<script src="../src/client/geometry/Line.js"></script>
+	<script src="../src/client/geometry/Polyline.js"></script>
+	<script src="../src/client/geometry/Polygon.js"></script>
+	<script src="../src/client/display/GraphicCircle.js"></script>
+	<script src="../src/client/display/GraphicLine.js"></script>
+	<script src="../src/client/display/GraphicPolyline.js"></script>
+	<script src="../src/client/display/GraphicPolygon.js"></script>
+	<script src="../src/client/display/RenderManager.js"></script>
+	<script src="../src/client/display/DrawManager.js"></script>
+	<script src="../src/client/input/click_event_action.js"></script>
+	<script src="../src/client/input/InputManager.js"></script>
+	<script src="../src/client/core/Body.js"></script>
+	<script src="../src/client/math/Vector2.js"></script>
+	<script src="../src/client/physics/Force.js"></script>
+	<script>
+
+		var arrayPolygon = [0, 400, 0, 500, 500, 500, 500, 400];
+		var polygon = new yom.Polygon(arrayPolygon);
+		var graphicPolygon = new yom.GraphicPolygon(polygon, yom.shapes.DEFAULT_ZINDEX, '#ffb345', '#a6e409');
+
+		var circle = new yom.Circle(50, 50, 50);
+		var graphicCircle = new yom.GraphicCircle(circle, yom.shapes.DEFAULT_ZINDEX, '#fff80d', '#fff80d');
+
+		var world = new yom.World("app", 500, 500);
+		var drawManager = new yom.DrawManager(world);
+		var renderManager = new yom.RenderManager(world, drawManager);
+		
+		world.bodies[0] = new yom.Body([graphicPolygon], 10);
+		world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(10, 10), new yom.Vector2(), yom.physics.force_type.OD);
+
+		world.bodies[1] = new yom.Body([graphicCircle], 10);
+		world.bodies[1].forces[0] = new yom.Force(new yom.Vector2(10, 10), new yom.Vector2(), yom.physics.force_type.OD);
+
+		yom.start();
+
+		yom.input.mapEvent(world, world , function() {alert('test') });
+	</script>
+</html>

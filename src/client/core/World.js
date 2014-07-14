@@ -121,12 +121,12 @@ yom.World.prototype.applyForces = function() {
           force.div(this.bodies[i].mass); // Acceleration
 
           // Velocity
-          force.scl(yom.display.STEP_INTERVAL);
+          force.mul(yom.display.STEP_INTERVAL);
           force.addVector(this.bodies[i].velocity);
           this.bodies[i].velocity = force.copy();
 
           // Offset
-          force.scl(yom.display.STEP_INTERVAL);
+          force.mul(yom.display.STEP_INTERVAL);
           // console.log(force);
 
           // for(j = 0; j < this.bodies[i].forces.length; ++j) {

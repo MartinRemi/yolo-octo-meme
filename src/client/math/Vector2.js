@@ -74,10 +74,10 @@ yom.Vector2.prototype.subVector = function(vector) {
 
 /**
  * 	Multiply a constant to the vector (this)
- * 	@method yom.Vector2#scl
+ * 	@method yom.Vector2#mul
  *	@param {number} constant - The constant to multiply
  */
-yom.Vector2.prototype.scl = function(constant) {
+yom.Vector2.prototype.mul = function(constant) {
 	this.x *= constant;
 
 	this.y *= constant;
