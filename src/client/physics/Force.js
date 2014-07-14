@@ -5,6 +5,8 @@
 
  /**
  * 	Creates a new Force.
+ *   When the force is an "OD" force, the direction is set by default (from others to the current object)
+ *   so you only have to set the application point vector which will define the intensity
  *
  * 	@class Force
  * 	@classdesc yom - Force
