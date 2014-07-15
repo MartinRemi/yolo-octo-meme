@@ -49,6 +49,9 @@ yom.World = function (idOfCanvas, width, height, bodies, shapes) {
           
      };
 
+     /** 
+      *   World singleton
+      */
      yom.world = this;
 
      /**
