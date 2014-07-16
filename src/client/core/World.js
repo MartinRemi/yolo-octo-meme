@@ -88,7 +88,6 @@ yom.World.prototype.applyForces = function() {
                     force.subVector(this.bodies[i].forces[j].applicationPoint);
                }
           }
-          // console.log(force);
 
           // We apply to the current body, other's "OD" forces
           for(k = 0; k < this.bodies.length; ++k) {
@@ -128,7 +127,6 @@ yom.World.prototype.applyForces = function() {
 
           // Offset
           force.mul(yom.display.STEP_INTERVAL);
-          // console.log(force);
 
           // for(j = 0; j < this.bodies[i].forces.length; ++j) {
           //      this.bodies[i].forces[j].applicationPoint.addVector(force);
