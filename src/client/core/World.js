@@ -99,11 +99,9 @@ yom.World.prototype.applyForces = function() {
                               // Use centroid instead
                               ODvector.addVector(new yom.Vector2(this.bodies[k].centroid.x, this.bodies[k].centroid.y));
                               ODvector.subVector(new yom.Vector2(this.bodies[i].centroid.x, this.bodies[i].centroid.y));
-                              // console.log(ODvector);
                               
                               // Scale vector
                               ODvector.norm();
-                              // console.log(ODvector);
 
                               // Multiply by intensity
                               ODvector.mulVector(this.bodies[k].forces[l].applicationPoint);
