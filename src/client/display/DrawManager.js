@@ -180,6 +180,8 @@ yom.DrawManager.prototype.fillPolygonWithColor = function(yom_draw_graphicPolygo
 			this.context.lineTo(coordinates[i], coordinates[i+1]);
 		}
 	}
+	this.context.closePath();
+
 	this.context.lineWidth = 1;
 	this.context.fillStyle = insideColor;
 	this.context.fill();
