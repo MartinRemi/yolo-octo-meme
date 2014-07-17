@@ -1,6 +1,7 @@
 /**
+ * 	@author       Sergueï LALLEMENT <serguei.l@orange.fr>
  * 	@author       Jean MARCHAL <jmarchal8869@gmail.com>
- * 	@copyright    2014 Jean MARCHAL
+ * 	@copyright    2014 Jean MARCHAL - Sergueï Lallement
  */
 
 /**
@@ -19,11 +20,13 @@ yom.maxBSplineId = 1;
  * 	@constructor
  * 	@param {Array.<number>} [nodes] - List of the m+1 nodes which composed the BSpline.
  *  @param {Array.<Point>} [points] - List of the m-n-1 points used to create the BSpline.
- *  @param {number} [t] - Parameter which take the function that define the BSpline.
  *  @param {number} [n] - Degree of the curve.
+ *  @param {Point} [origin] - Origin of the curve.
+ *  @param {number} [length] - Length of the curve.
+ *  @param {number} [precision] - Quality of the precision (optional, = 500 if undefined)
  * 	@return {yom.BSpline} The BSpline object
  */
-yom.BSpline = function (nodes, points, t, n) {
+yom.BSpline = function (nodes, points, n, origin, length, precision) {
 	/**
      * 	@property {number} id - The id of the BSpline.
      */
@@ -38,78 +41,98 @@ yom.BSpline = function (nodes, points, t, n) {
      * 	@property {Array.<Point>} [points] - List of the m-n-1 points used to create the BSpline.
      */
 	this.points = points;
-	
-	/**
-     * 	@property {number} [t] - Parameter which take the function that define the BSpline.
-     */
-	 this.t = t;
 	 
 	 /**
      * 	@property {number} [n] - Degree of the curve.
      */
 	 this.n = n;
 
-	/**
-     * 	@property {Array} Polynomials - polynomials depending on the nodes that define the BSpline
+	 /**
+     * 	@property {number} [n] - Length of the curve in x.
      */
-	this.polynomials = new Array(nodes.length);
+	 this.length = length || 100;
+	 
 	
-	// Each polynomials are calculated here and placed in the array polynomials
-	for(var j = 0; j < this.n; j++) {
-		this.polynomials[j] = new Array(this.nodes.length - this.n - 1);
-		// First of all, we calculate initial polynomials
-		if (j==0){
-			for (var i = 0; i < this.nodes.length - this.n - 1; i++){
-				
-				if (i+1 < this.nodes.length - this.n - 1){
-					if (this.t>=this.nodes[i] && this.t<=this.nodes[i+1])
-						this.polynomials[j][i] = 1;
-					else
-						this.polynomials[j][i] = 0;
-				}
-				else
-					break;
-			}
-		}
-		// And then, we calculate the rest of them using those previous ones.
-		else{
-			for (var i = 0; i < this.nodes.length - this.n - 1; i++){
-				this.polynomials[j][i] = ((this.t - this.nodes[i])/(this.nodes[i+1] - this.nodes[i]) * this.polynomials[i][j-1]) + ((this.nodes[i+j+1] - this.t)/(this.nodes[i+j+1] - this.nodes[i+1]) * this.polynomials[i+1][j-1]);
-			}
-		}
-	}
-	
-	/**
-     * 	@property {number} equation - function defining the BSpline
+	 /**
+     * 	@property {number} [n] - Origin of the curve.
      */
+	 this.origin = origin || new yom.Vector2(0,0);
+
+	 /**
+     * 	@property {number} [n] - Precision of the curve.
+     */
+	 this.precision = precision || 500;
+
+
+	/**
+     * 	@property {Array} subdiv - array that define all the points of the BSpline
+	 * between 0 and precision
+     */
+	this.subdiv = new Array(this.precision+1);
 	
-	this.equation;
-	for (var i = 0; i < this.nodes.length - this.n - 1; i++){
-		this.equation += this.polynomials[this.n][i]*this.points[i];
-	}
+	this.compute();
 }
 
 // ----- Getter(s) ----- \\
 /**
- * 	Getter of the 'polynomials' property
- * 	@method yom.BSpline#getPolynomials
- * 	@return {Array} The value of the property called 'polynomials'
- */
-yom.BSpline.prototype.getPolynomials = function () {
-	return this.polynomials;
-};
-
-/**
  * 	Getter of the 'equation' property
- * 	@method yom.BSpline#getEquation
- * 	@return {Array} The value of the property called 'equation'
+ * 	@method yom.BSpline#getPoint
+ * 	@param {number} t parameter of the curve between 0 and 1
+ * 	@return {Array} The height of the point
  */
  
- yom.BSpline.prototype.getEquation = function () {
-	return this.equation;
+yom.BSpline.prototype.getPoint = function (t) {
+	return this.subdiv[Math.round(t*this.precision+1)];
 };
 
 // ----- Method(s) ----- \\
+/**
+ * 	Generate all the points of the curve with a quantum of '1/this.precision'
+ * 	@method yom.BSpline#compute
+ * 	@return {}
+ */
+yom.BSpline.prototype.compute = function () {
+	var tt = 0.0, val;
+	var k,i,j;
+	polynomials = new Array(this.n+1);
+	for(j = 0; j < polynomials.length; ++j) {
+		polynomials[j] = new Array(this.nodes.length - this.n +2) ;
+	}
+	var size = polynomials[0].length;
+	for(k = 0; k <= this.precision; ++k){
+		for(j = 0; j < polynomials.length; j++) {
+			if (j==0){
+				for (i = 0; i <= size; i++){
+					if (i <= this.nodes.length - this.n){
+						if (this.nodes[i]<=tt && tt<=this.nodes[i+1])
+							polynomials[j][i] = 1;
+						else
+							polynomials[j][i] = 0;
+					} else {
+						break;
+					}
+				}
+			} else {
+				for (i = 0; i <= size; i++){
+					var temp = ((tt - this.nodes[i])/(this.nodes[i+j] - this.nodes[i]) * (polynomials[j-1][i] || 0) );
+					polynomials[j][i] = temp
+							+ ((this.nodes[i+j+1] - tt)/(this.nodes[i+j+1] - this.nodes[i+1]) * (polynomials[j-1][i+1]) || 0);
+					if(isNaN(polynomials[j][i])){
+						polynomials[j][i] = 0;
+					}
+				}
+			}
+		}
+		val = 0;
+		for (i = 0; i <= this.nodes.length - this.n; i++){
+			val += polynomials[this.n][i]*(this.points[i] || 0);
+			
+		}
+		this.subdiv[k] = val;
+		tt += 1.0/this.precision;
+	}
+};
+
 /**
  * 	Copies this into a new object of type 'yom.BSpline'
  * 	@method yom.BSpline#copy
@@ -131,7 +154,6 @@ yom.BSpline.prototype.move = function (x, y) {
 		this.points[i].move(x, y);
 	}
 };
-
 
 
 // /!\ A faire !
