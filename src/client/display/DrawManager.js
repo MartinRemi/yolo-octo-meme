@@ -270,7 +270,6 @@ yom.DrawManager.prototype.fillPolygonWithImage = function(yom_draw_graphicPolygo
 		context.drawImage(imgPolygon, minX,  minY);
 		context.closePath();
 	};
-    
 
     this.context.stroke();
 };
