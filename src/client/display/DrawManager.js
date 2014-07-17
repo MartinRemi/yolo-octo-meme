@@ -167,65 +167,24 @@ yom.DrawManager.prototype.fillCircleWithColor = function(yom_draw_graphicCircle)
  *	@param {yom.GraphicPolygon} yom_draw_graphicPolygon - The polygon we want to display.
  */
 yom.DrawManager.prototype.fillPolygonWithColor = function(yom_draw_graphicPolygon) {
-	//this.context.beginPath();
 
 	var borderColor = yom_draw_graphicPolygon.borderColor || '#000';
 	var insideColor = yom_draw_graphicPolygon.insideColor || '#000';
-
-	// TODO: Try to find minX, minY, maxX, maxY
-	// and fill with lines when contains
-	var coordinates = yom_draw_graphicPolygon.polygon.coordinates;
-	var minX = coordinates[0];
-	var minY = coordinates[1];
-	var maxX = coordinates[0];
-	var maxY = coordinates[1];
-
-	var i;
-	var coordinate;
-	for(i = 0; i < coordinates.length; ++i) {
-		coordinate = coordinates[i];
-		if(i % 2 == 0) {
-			if(coordinate < minX) {
-				minX = coordinate;
-			}
-			if(coordinate > maxX) {
-				maxX = coordinate;
-
-			}
-		} else {
-			if(coordinate < minY) {
-				minY = coordinate;
-			}
-			if(coordinate > maxY) {
-				maxY = coordinate;
-
-			}
-		}
-	}
-
-	var x;
-	var y;
-	var minYLocal = minY;
-	var maxYLocal = minY;
-	var yom_draw_graphicLine;
-	for(x = minX; x <= maxX; ++x) {
-		for(y = minY; y <= maxY; ++y) {
-			if(yom_draw_graphicPolygon.polygon.contains(x, y, true)) {
-				minYLocal = y;
-				break;
-			}
-		}
-		for(y = maxY; y >= minY; --y) {
-			if(yom_draw_graphicPolygon.polygon.contains(x, y, true)) {
-				maxYLocal = y;
-				break;
-			}
-		}
-		yom_draw_graphicLine = new yom.GraphicLine(new yom.Line(x, minYLocal, x, maxYLocal), yom_draw_graphicPolygon.zIndex, insideColor);
-		this.drawLine(yom_draw_graphicLine);
-	}
 	
-	this.drawPolyline(new yom.GraphicPolyline(yom_draw_graphicPolygon.polygon.perimeter, yom_draw_graphicPolygon.zIndex, borderColor));
+	this.context.beginPath();
+	var i;
+	var coordinates = yom_draw_graphicPolygon.polygon.coordinates;
+	if(coordinates.length > 2) {
+		this.context.moveTo(coordinates[0], coordinates[1]);
+		for(i = 2; i < coordinates.length - 1; i += 2) {
+			this.context.lineTo(coordinates[i], coordinates[i+1]);
+		}
+	}
+	this.context.lineWidth = 1;
+	this.context.fillStyle = insideColor;
+	this.context.fill();
+	this.context.strokeStyle = borderColor;
+	this.context.stroke();
 };
 
 /**
