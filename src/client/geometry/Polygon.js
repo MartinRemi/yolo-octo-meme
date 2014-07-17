@@ -38,6 +38,7 @@ yom.Polygon = function (coordinates) {
     /**
      *	@property {yom.Polyline} perimeter - The coordinates of the points composing the polygon.
      */
+    // This and its perimeter share the same array /!\
     this.perimeter = new yom.Polyline(coordinates);
 
     /**
@@ -116,22 +117,10 @@ yom.Polygon.prototype.copy = function () {
  * 	@param {number} [y=0] - The y-coordinate offset
  */
 yom.Polygon.prototype.move = function (x, y) {
+	// We don't have to move the coordinates as the polyline does it (same array)
 	this.perimeter.move(x, y);
 	
 	this.centroid.move(x, y);
-
-	//this.coordinates = this.getPerimeter()
-
-	/*var i;
-	for(i = 0; i < this.coordinates.length; ++i) {
-		if(i % 2 == 0) {
-			this.coordinates[i] += x;
-		} else {
-			this.coordinates[i] += y;
-		}
-	}*/
-
-	//this.perimiter = new yom.Polyline(this.coordinates);
 };
 
 /**
