@@ -86,6 +86,42 @@ yom.DrawManager.prototype.drawPolyline = function(yom_draw_graphicPolyline) {
 };
 
 /**
+ * 	Draw a Bspline.
+ * 	@method yom.DrawManager#drawBSpline
+ *	@param {yom.GraphicBSpline} graphic - The B-spline we want to display.
+ */
+yom.DrawManager.prototype.drawBSpline = function(graphic) {
+	var precision = 8; // TODO : make this constant defined somewhere else
+
+	var diff = 1./(precision*graphic.bspline.nodes.length);
+	// begin path
+	this.context.beginPath();
+	this.context.strokeStyle =  graphic.borderColor;
+	var borderColor = graphic.borderColor || '#000';
+	// constant
+	var p1 = new yom.Vector2(0,0);
+	var p2 = new yom.Vector2(graphic.bspline.origin.x, graphic.bspline.origin.y); // origin
+	var length = graphic.bspline.length; // length of the curve in x
+	
+	var i,j,dy;
+	var t = 0;
+	// draw a subline between each points
+	for(i = 0; i < precision*graphic.bspline.nodes.length; ++i) {
+		dy = graphic.bspline.getPoint(t);
+		p1.x = p2.x; // swap points
+		p1.y = p2.y;
+		p2.x += diff*length;
+		p2.y = graphic.bspline.origin.y+dy;
+		this.context.moveTo(p1.x, p1.y);
+		this.context.lineTo(p2.x, p2.y);
+		this.context.stroke();
+		t += diff;
+	}
+	// end the path
+	this.context.closePath();
+};
+
+/**
  * 	Draw a polygon.
  * 	@method yom.DrawManager#drawPolygon
  *	@param {yom.GraphicPolygon} yom_draw_graphicPolygon - The polygon we want to display.
