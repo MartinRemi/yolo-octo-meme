@@ -122,6 +122,29 @@ yom.DrawManager.prototype.drawBSpline = function(graphic) {
 };
 
 /**
+ * 	Draw a Bezier Curve.
+ * 	@method yom.DrawManager#drawCurve
+ *	@param {yom.GraphicCurve} graphic - The Curve we want to display.
+ */
+yom.DrawManager.prototype.drawCurve = function(graphic) {
+	this.context.beginPath();
+	this.context.moveTo(graphic.curve.points[0].x,graphic.curve.points[0].y);
+	for(var i=1; i<graphic.curve.points.length; ++i){
+		this.context.bezierCurveTo(
+			graphic.curve.controlPoints[2*(i-1)].x,graphic.curve.controlPoints[2*(i-1)].y,
+			graphic.curve.controlPoints[2*(i-1)+1].x,graphic.curve.controlPoints[2*(i-1)+1].y,
+			graphic.curve.points[i].x,graphic.curve.points[i].y);
+	}
+	if(typeof graphic.insideColor !== "undefined"){
+		this.context.fillStyle = graphic.insideColor || '#222';
+		this.context.fill();
+	}
+	this.context.lineWidth = graphic.lineWidth;
+	this.context.strokeStyle = graphic.borderColor || '#000';
+	this.context.stroke();
+};
+
+/**
  * 	Draw a polygon.
  * 	@method yom.DrawManager#drawPolygon
  *	@param {yom.GraphicPolygon} yom_draw_graphicPolygon - The polygon we want to display.
@@ -269,4 +292,24 @@ yom.DrawManager.prototype.fillPolygonWithImage = function(yom_draw_graphicPolygo
 	};
 
     this.context.stroke();
+};
+
+/**
+ * 	Fill a Bezier Curve.
+ * 	@method yom.DrawManager#drawCurve
+ *	@param {yom.GraphicCurve} graphic - The Curve we want to fill.
+ */
+yom.DrawManager.prototype.fillCurveWithColor = function(graphic) {
+	this.context.beginPath();
+	this.context.moveTo(graphic.curve.points[0].x,graphic.curve.points[0].y);
+	for(var i=1; i<graphic.curve.points.length; ++i){
+		this.context.bezierCurveTo(
+			graphic.curve.controlPoints[2*(i-1)].x,graphic.curve.controlPoints[2*(i-1)].y,
+			graphic.curve.controlPoints[2*(i-1)+1].x,graphic.curve.controlPoints[2*(i-1)+1].y,
+			graphic.curve.points[i].x,graphic.curve.points[i].y);
+	}
+	this.context.fillStyle = graphic.insideColor || '#222';
+	this.context.fill();
+	this.context.strokeStyle = graphic.borderColor || '#000';
+	this.context.stroke();
 };
