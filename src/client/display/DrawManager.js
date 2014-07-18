@@ -86,6 +86,7 @@ yom.DrawManager.prototype.drawPolyline = function(yom_draw_graphicPolyline) {
 			this.context.lineTo(coordinates[i], coordinates[i+1]);
 		}
 	}
+	this.context.lineWidth = yom_draw_graphicPolyline.lineWidth;
 	this.context.strokeStyle = borderColor;
 	this.context.stroke();
 	this.context.closePath();

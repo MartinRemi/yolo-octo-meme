@@ -12,12 +12,13 @@
  * 	@param {yom.Polyline} [polyline] - The polyline to copy
  * 	@param {number} [zIndex] - The zIndex of the polyline
  * 	@param {String} [borderColor] - The border color for the polyline
+ *	@param {number} [lineWidth=1] - The border width (optionnal 1 is by default)
  * 	@param {String} [insideColor] - The inside color for the polyline
  * 	@return {yom.GrapphicPolyline} The GraphicPolyline object
  *
  *	TODO : Add color
  */
-yom.GraphicPolyline = function (polyline, zIndex, borderColor, insideColor) {
+yom.GraphicPolyline = function (polyline, zIndex, borderColor, lineWidth, insideColor) {
 
 	/**
      * 	@property {yom.Polyline} polyline - The polyline we want to display
@@ -40,6 +41,11 @@ yom.GraphicPolyline = function (polyline, zIndex, borderColor, insideColor) {
 	this.zIndex = zIndex || 0;
 
 	this.centroid = polyline.centroid;
+
+	/**
+	 *	@property {number} lineWidth - The border width (optionnal 1 is by default)
+	 */
+	this.lineWidth = lineWidth || 1;
 };
 
 // ----- Method(s) ----- \\

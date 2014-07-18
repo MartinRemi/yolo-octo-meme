@@ -55,7 +55,7 @@
 		var graphicCircle = new yom.GraphicCircle(circle, yom.shapes.DEFAULT_ZINDEX, '#00FFFF');
 
 		var line = new yom.Line(0, 0, 500, 500);
-		var graphicLine1 = new yom.GraphicLine(line, yom.shapes.DEFAULT_ZINDEX, '#ff0000');
+		var graphicLine1 = new yom.GraphicLine(line, yom.shapes.DEFAULT_ZINDEX, '#ff0000', 1);
 
 		var array = [100, 0, 160, 400, 500, 0];
 		var polyline = new yom.Polyline(array);
