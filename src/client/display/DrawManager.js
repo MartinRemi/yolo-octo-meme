@@ -44,6 +44,7 @@ yom.DrawManager.prototype.drawCircle = function(yom_draw_graphicCircle) {
 		0,
 		2 * Math.PI);
 
+	this.context.lineWidth = yom_draw_graphicCircle.lineWidth;
 	this.context.strokeStyle = borderColor;
 	this.context.stroke();
 	this.context.closePath();
@@ -191,6 +192,8 @@ yom.DrawManager.prototype.fillCircleWithColor = function(yom_draw_graphicCircle)
 		yom_draw_graphicCircle.circle.radius,
 		0,
 		2 * Math.PI);
+
+	this.context.lineWidth = yom_draw_graphicCircle.lineWidth;
 
 	// Fill color
 	this.context.fillStyle = insideColor;

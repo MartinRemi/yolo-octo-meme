@@ -52,7 +52,7 @@
 
 
 		var circle = new yom.Circle(250, 250, 15);
-		var graphicCircle = new yom.GraphicCircle(circle, yom.shapes.DEFAULT_ZINDEX, '#00FFFF');
+		var graphicCircle = new yom.GraphicCircle(circle, yom.shapes.DEFAULT_ZINDEX, '#00FFFF', 1);
 
 		var line = new yom.Line(0, 0, 500, 500);
 		var graphicLine1 = new yom.GraphicLine(line, yom.shapes.DEFAULT_ZINDEX, '#ff0000', 1);

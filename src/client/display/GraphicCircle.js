@@ -12,13 +12,14 @@
  * 	@param {yom.Circle} [circle] - The circle to copy
  * 	@param {number} [zIndex] - The zIndex of the circle
  * 	@param {String} [borderColor] - The border color for the circle
+ *	@param {number} [lineWidth=1] - The border width (optionnal 1 is by default)
  * 	@param {String} [insideColor] - The inside color for the circle
  * 	@param {String} [image] - The path of the image to display inside of the circle
  * 	@return {yom.GraphicCircle} The GraphicCicle object
  *
  *	TODO : Add color
  */
-yom.GraphicCircle = function (circle, zIndex, borderColor, insideColor, image) {
+yom.GraphicCircle = function (circle, zIndex, borderColor, lineWidth, insideColor, image) {
 
 	/**
      * 	@property {yom.Circle} circle - The circle we want to display
@@ -46,6 +47,11 @@ yom.GraphicCircle = function (circle, zIndex, borderColor, insideColor, image) {
 	this.zIndex = zIndex || 0;
 
 	this.centroid = circle.centroid;
+
+	/**
+	 *	@property {number} lineWidth - The border width (optionnal 1 is by default)
+	 */
+	this.lineWidth = lineWidth || 1;
 };
 
 // ----- Method(s) ----- \\
