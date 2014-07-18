@@ -12,12 +12,13 @@
  * 	@param {yom.Line} [line] - The line to copy
  * 	@param {number} [zIndex] - The zIndex of the line
  * 	@param {String} [borderColor] - The border color for the line
+ *	@param {number} [lineWidth=1] - The border width (optionnal 1 is by default)
  * 	@param {String} [insideColor] - The inside color for the line
  * 	@return {yom.GraphicLine} The GraphicLine object
  *
  *	TODO : Add color
  */
-yom.GraphicLine = function (line, zIndex, borderColor, insideColor) {
+yom.GraphicLine = function (line, zIndex, borderColor, lineWidth, insideColor) {
 
 	/**
      * 	@property {yom.Line} line - The line we want to display
@@ -40,6 +41,11 @@ yom.GraphicLine = function (line, zIndex, borderColor, insideColor) {
 	this.zIndex = zIndex || 0;
 
 	this.centroid = line.centroid;
+
+	/**
+	 *	@property {number} lineWidth - The border width (optionnal 1 is by default)
+	 */
+	this.lineWidth = lineWidth || 1;
 };
 
 // ----- Method(s) ----- \\

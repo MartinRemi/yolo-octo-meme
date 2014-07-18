@@ -63,6 +63,7 @@ yom.DrawManager.prototype.drawLine = function(yom_draw_graphicLine) {
 	this.context.lineTo(yom_draw_graphicLine.line.secondPoint.x,
 						yom_draw_graphicLine.line.secondPoint.y);
 
+	this.context.lineWidth = yom_draw_graphicLine.lineWidth;
 	this.context.strokeStyle = borderColor;
 	this.context.stroke();
 	this.context.closePath();
