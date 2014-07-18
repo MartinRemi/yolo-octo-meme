@@ -30,3 +30,4 @@ To use our game engine, make sure to follow the instructions given in the "insta
 
 ## Credits
 Jean Marchal - Contributor
+Sergueï Lallement - Contributor

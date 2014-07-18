@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<title>yom - Bézier Curve example</title>
+	</head>
+
+	<body>
+		<canvas id="app" width="500" height="500">
+		</canvas>
+		
+	</body>
+	<script src="../src/client/yom.js"></script>
+	<script src="../src/client/core/World.js"></script>
+	<script src="../src/client/geometry/Point.js"></script>
+	<script src="../src/client/geometry/Circle.js"></script>
+	<script src="../src/client/geometry/Line.js"></script>
+	<script src="../src/client/geometry/Polyline.js"></script>
+	<script src="../src/client/geometry/Polygon.js"></script>
+	<script src="../src/client/geometry/BSpline.js"></script>
+	<script src="../src/client/geometry/Curve.js"></script>
+	<script src="../src/client/display/GraphicCircle.js"></script>
+	<script src="../src/client/display/GraphicLine.js"></script>
+	<script src="../src/client/display/GraphicPolyline.js"></script>
+	<script src="../src/client/display/GraphicPolygon.js"></script>
+	<script src="../src/client/display/GraphicBSpline.js"></script>
+	<script src="../src/client/display/GraphicCurve.js"></script>
+	<script src="../src/client/display/RenderManager.js"></script>
+	<script src="../src/client/display/DrawManager.js"></script>
+	<script src="../src/client/input/click_event_action.js"></script>
+	<script src="../src/client/input/InputManager.js"></script>
+	<script src="../src/client/core/Body.js"></script>
+	<script src="../src/client/math/Vector2.js"></script>
+	<script src="../src/client/physics/Force.js"></script>
+	<script>
+		// Mandatory objects
+		var world = new yom.World("app", 500, 500);
+		var drawManager = new yom.DrawManager(world);
+		var renderManager = new yom.RenderManager(world, drawManager);
+
+		// Curve 1
+		var points = [new yom.Vector2(10,10),
+					  new yom.Vector2(200,200),
+					  new yom.Vector2(400,400)];
+		var cpoints = [new yom.Vector2(100,10),
+					  new yom.Vector2(100,200),
+					  new yom.Vector2(300,200),
+					  new yom.Vector2(300,400)];
+
+		var cur = new yom.Curve(points,cpoints);
+		var graphicCurve1 = new yom.GraphicCurve(cur, yom.shapes.DEFAULT_ZINDEX, '#FF00FF');
+
+		// Curve 2
+		var points2 = [new yom.Vector2(120,20), new yom.Vector2(300,20)];
+		var cpoints2 = [new yom.Vector2(120,100), new yom.Vector2(300,100)];
+		var cur2 = new yom.Curve(points2,cpoints2);
+		var graphicCurve2 = new yom.GraphicCurve(cur2, yom.shapes.DEFAULT_ZINDEX, '#FFFF00', 4, '#FF0000');
+
+		// Curve 3
+		var points3 = [new yom.Vector2(300,100), 
+					   new yom.Vector2(400,150),
+					   new yom.Vector2(400,50),
+					   new yom.Vector2(300,100)];
+		var cpoints3 = [new yom.Vector2(300,150), 
+					   new yom.Vector2(360,150),
+					   new yom.Vector2(440,150),
+					   new yom.Vector2(440,50),
+					   new yom.Vector2(360,50),
+					   new yom.Vector2(300,50)];
+		var cur3 = new yom.Curve(points3,cpoints3);
+		var graphicCurve3 = new yom.GraphicCurve(cur3, yom.shapes.DEFAULT_ZINDEX, '#333333', 4, '#11FF22');
+
+		// Add shapes to the world
+		world.shapes[0] = graphicCurve1;
+		world.shapes[1] = graphicCurve2;
+		world.shapes[2] = graphicCurve3;
+
+		// Start the steps and rendering of the world
+		yom.start();
+	</script>
+</html>
