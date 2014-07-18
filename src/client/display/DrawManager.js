@@ -75,14 +75,19 @@ yom.DrawManager.prototype.drawLine = function(yom_draw_graphicLine) {
  */
 yom.DrawManager.prototype.drawPolyline = function(yom_draw_graphicPolyline) {
 	var i;
-	var yom_draw_graphicLine;
-	for(i = 0; i < yom_draw_graphicPolyline.polyline.lines.length; ++i) {
-		yom_draw_graphicLine = new yom.GraphicLine(yom_draw_graphicPolyline.polyline.lines[i],
-										yom_draw_graphicPolyline.zIndex,
-										yom_draw_graphicPolyline.borderColor,
-										yom_draw_graphicPolyline.insideColor);
-		this.drawLine(yom_draw_graphicLine);
+	this.context.beginPath();
+	var borderColor = yom_draw_graphicPolyline.borderColor || '#000';
+	var coordinates = yom_draw_graphicPolyline.polyline.coordinates;
+
+	if(coordinates.length >= 2) {
+		this.context.moveTo(coordinates[0], coordinates[1]);
+		for(i = 2; i < coordinates.length - 1; i += 2) {
+			this.context.lineTo(coordinates[i], coordinates[i+1]);
+		}
 	}
+	this.context.strokeStyle = borderColor;
+	this.context.stroke();
+	this.context.closePath();
 };
 
 /**
