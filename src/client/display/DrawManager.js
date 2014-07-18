@@ -155,10 +155,22 @@ yom.DrawManager.prototype.drawCurve = function(graphic) {
  *	@param {yom.GraphicPolygon} yom_draw_graphicPolygon - The polygon we want to display.
  */
 yom.DrawManager.prototype.drawPolygon = function(yom_draw_graphicPolygon) {
-	var yom_draw_graphicPolyline = new yom.GraphicPolyline(yom_draw_graphicPolygon.polygon.perimeter,
-						yom_draw_graphicPolygon.zIndex,
-						yom_draw_graphicPolygon.borderColor);
-	this.drawPolyline(yom_draw_graphicPolyline);
+	var borderColor = yom_draw_graphicPolygon.borderColor || '#000';
+	
+	this.context.beginPath();
+	var i;
+	var coordinates = yom_draw_graphicPolygon.polygon.coordinates;
+	if(coordinates.length > 2) {
+		this.context.moveTo(coordinates[0], coordinates[1]);
+		for(i = 2; i < coordinates.length - 1; i += 2) {
+			this.context.lineTo(coordinates[i], coordinates[i+1]);
+		}
+	}
+	this.context.closePath();
+
+	this.context.lineWidth = 1;
+	this.context.strokeStyle = borderColor;
+	this.context.stroke();
 };
 
 /**
