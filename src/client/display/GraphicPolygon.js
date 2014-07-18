@@ -12,13 +12,14 @@
  * 	@param {yom.Polygon} [polygon] - The polygon to copy
  * 	@param {number} [zIndex] - The zIndex of the polygon
  * 	@param {String} [borderColor] - The border color for the polygon
+ *	@param {number} [lineWidth=1] - The border width (optionnal 1 is by default)
  * 	@param {String} [insideColor] - The inside color for the polygon
  * 	@param {String} [image] - The path of the image to display in polygon
  * 	@return {yom.GraphicPolygon} The GraphicPolygon object
  *
  *	TODO : Add color
  */
-yom.GraphicPolygon = function (polygon, zIndex, borderColor, insideColor, image) {
+yom.GraphicPolygon = function (polygon, zIndex, borderColor, lineWidth, insideColor, image) {
 
 	/**
      * 	@property {yom.Polygon} polygon - The polygon we want to display
@@ -46,6 +47,11 @@ yom.GraphicPolygon = function (polygon, zIndex, borderColor, insideColor, image)
 	this.zIndex = zIndex || 0;
 
 	this.centroid = polygon.centroid;
+
+	/**
+	 *	@property {number} lineWidth - The border width (optionnal 1 is by default)
+	 */
+	this.lineWidth = lineWidth || 1;
 };
 
 // ----- Method(s) ----- \\

@@ -170,7 +170,7 @@ yom.DrawManager.prototype.drawPolygon = function(yom_draw_graphicPolygon) {
 	}
 	this.context.closePath();
 
-	this.context.lineWidth = 1;
+	this.context.lineWidth = yom_draw_graphicPolygon.lineWidth;
 	this.context.strokeStyle = borderColor;
 	this.context.stroke();
 };
@@ -224,7 +224,7 @@ yom.DrawManager.prototype.fillPolygonWithColor = function(yom_draw_graphicPolygo
 	}
 	this.context.closePath();
 
-	this.context.lineWidth = 1;
+	this.context.lineWidth = yom_draw_graphicPolygon.lineWidth;
 	this.context.fillStyle = insideColor;
 	this.context.fill();
 	this.context.strokeStyle = borderColor;

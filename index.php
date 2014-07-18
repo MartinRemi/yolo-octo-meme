@@ -59,11 +59,11 @@
 
 		var array = [100, 0, 160, 400, 500, 0];
 		var polyline = new yom.Polyline(array);
-		var graphicPolyline1 = new yom.GraphicPolyline(polyline, yom.shapes.DEFAULT_ZINDEX, '#C3C3C3');
+		var graphicPolyline1 = new yom.GraphicPolyline(polyline, yom.shapes.DEFAULT_ZINDEX, '#C3C3C3', 1);
 
 		var arrayPolygon = [100, 150, 150, 150, 150, 100, 120, 80, 100, 100];
 		var polygon = new yom.Polygon(arrayPolygon);
-		var graphicPolygon = new yom.GraphicPolygon(polygon, yom.shapes.DEFAULT_ZINDEX, '#ffb345', '#a6e409');
+		var graphicPolygon = new yom.GraphicPolygon(polygon, yom.shapes.DEFAULT_ZINDEX, '#ffb345', 1, '#a6e409');
 
 		var world = new yom.World("app", 500, 500);
 		var drawManager = new yom.DrawManager(world);
