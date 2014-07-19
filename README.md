@@ -11,8 +11,8 @@ This project is led by three students in computing at INSA, Lyon, France for lea
 		- Sound management 
 	* Mathematics :
 		- Features to handle matrix (i.e. the gameboard)
-		- Collisions
 	* Physics :
+		- collision
 		- acceleration
 	* Network :
 		- Save game state
