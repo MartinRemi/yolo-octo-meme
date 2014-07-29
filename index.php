@@ -26,6 +26,7 @@
 	<script src="src/client/display/GraphicLine.js"></script>
 	<script src="src/client/display/GraphicPolyline.js"></script>
 	<script src="src/client/display/GraphicPolygon.js"></script>
+	<script src="src/client/display/GraphicText.js"></script>
 	<script src="src/client/display/RenderManager.js"></script>
 	<script src="src/client/display/DrawManager.js"></script>
 	<script src="src/client/input/click_event_action.js"></script>

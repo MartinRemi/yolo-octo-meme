@@ -21,7 +21,7 @@
  *
  *	TODO : Add color
  */
-yom.GraphicText = function (text, zIndex, font, x, y borderColor, lineWidth, insideColor) {
+yom.GraphicText = function (text, zIndex, font, x, y, borderColor, lineWidth, insideColor) {
 
 	/**
      * 	@property {String} text - The text we want to display

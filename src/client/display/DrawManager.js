@@ -348,6 +348,6 @@ yom.DrawManager.prototype.drawText = function(yom_draw_graphicText) {
 	this.context.font = '40px san-serif';
 	this.context.textBaseline = 'bottom';
 	this.context.lineWidth = yom_draw_graphicText.lineWidth;
-	this.context.strokeText(yom_draw_graphicText.text);
+	this.context.strokeText(yom_draw_graphicText.text, yom_draw_graphicText.x, yom_draw_graphicText.y);
 	this.context.closePath();
 };
