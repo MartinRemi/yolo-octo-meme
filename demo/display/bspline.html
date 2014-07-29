@@ -1,0 +1,48 @@
+<html>
+	<head>
+	</head>
+
+	<body>
+		<canvas id="app" width="500" height="500">
+		</canvas>
+		
+	</body>
+	<script src="../../src/client/yom.js"></script>
+	<script src="../../src/client/core/World.js"></script>
+	<script src="../../src/client/geometry/Point.js"></script>
+	<script src="../../src/client/geometry/Circle.js"></script>
+	<script src="../../src/client/geometry/Line.js"></script>
+	<script src="../../src/client/geometry/Polyline.js"></script>
+	<script src="../../src/client/geometry/Polygon.js"></script>
+	<script src="../../src/client/geometry/BSpline.js"></script>
+	<script src="../../src/client/display/GraphicCircle.js"></script>
+	<script src="../../src/client/display/GraphicLine.js"></script>
+	<script src="../../src/client/display/GraphicPolyline.js"></script>
+	<script src="../../src/client/display/GraphicPolygon.js"></script>
+	<script src="../../src/client/display/GraphicBSpline.js"></script>
+	<script src="../../src/client/display/RenderManager.js"></script>
+	<script src="../../src/client/display/DrawManager.js"></script>
+	<script src="../../src/client/input/click_event_action.js"></script>
+	<script src="../../src/client/input/InputManager.js"></script>
+	<script src="../../src/client/core/Body.js"></script>
+	<script src="../../src/client/math/Vector2.js"></script>
+	<script src="../../src/client/physics/Force.js"></script>
+	<script>
+		var world = new yom.World("app", 500, 500);
+		var drawManager = new yom.DrawManager(world);
+		var renderManager = new yom.RenderManager(world, drawManager);
+
+		// the B-Spline
+		var nodes1 = [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]; // exemple of input for nodes
+		var nodes2 = new Array(12);
+		for(var i=0;i<nodes2.length;++i) {
+			nodes2[i] = (i)/(nodes2.length-1);
+		}
+		var bspline = new yom.BSpline(nodes2, [200,-60,100,200,0,100,0,300,50], 2, new yom.Vector2(100,100), 250);
+		var graphic_bs = new yom.GraphicBSpline(bspline, yom.shapes.DEFAULT_ZINDEX, '#FF00FF');
+		world.shapes[0] = graphic_bs;
+		// ---
+
+		yom.start();
+	</script>
+</html>
