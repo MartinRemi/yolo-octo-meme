@@ -55,7 +55,7 @@ yom.GraphicLine = function (line, zIndex, borderColor, lineWidth, insideColor) {
  * 	@return {yom.GraphicLine} The new GraphicLine object
  */
 yom.GraphicLine.prototype.copy = function () {
-	return new yom.GraphicLine(this.line);
+	return new yom.GraphicLine(this.line, this.zIndex, this.borderColor, this.lineWidth, this.insideColor);
 };
 
 /**
