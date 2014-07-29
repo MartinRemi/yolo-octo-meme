@@ -334,4 +334,20 @@ yom.DrawManager.prototype.fillCurveWithColor = function(graphic) {
 	this.context.fill();
 	this.context.strokeStyle = graphic.borderColor || '#000';
 	this.context.stroke();
+	this.context.closePath();
+};
+
+/**
+ * 	Draw text
+ * 	@method yom.DrawManager#drawText
+ *	@param {yom.GraphicText} graphic - The Curve we want to fill.
+ */
+yom.DrawManager.prototype.drawText = function(yom_draw_graphicText) {
+	this.context.beginPath();
+	this.context.strokeStyle = yom_draw_graphicText.borderColor;
+	this.context.font = '40px san-serif';
+	this.context.textBaseline = 'bottom';
+	this.context.lineWidth = yom_draw_graphicText.lineWidth;
+	this.context.strokeText(yom_draw_graphicText.text);
+	this.context.closePath();
 };
