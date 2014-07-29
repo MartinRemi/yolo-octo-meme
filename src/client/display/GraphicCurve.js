@@ -55,7 +55,7 @@ yom.GraphicCurve = function (curve, zIndex, borderColor, lineWidth, insideColor)
  * 	@return {yom.GraphicCurve} The new GraphicCurve object
  */
 yom.GraphicCurve.prototype.copy = function () {
-	return new yom.GraphicCurve(this.curve);
+	return new yom.GraphicCurve(this.curve, this.zIndex, this.borderColor, this.lineWidth, this.insideColor);
 };
 
 /**
