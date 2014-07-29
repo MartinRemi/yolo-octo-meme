@@ -55,7 +55,7 @@ yom.GraphicPolyline = function (polyline, zIndex, borderColor, lineWidth, inside
  * 	@return {yom.GraphicPolyline} The new GraphicPolyline object
  */
 yom.GraphicPolyline.prototype.copy = function () {
-	return new yom.GraphicPolyline(this.polyline);
+	return new yom.GraphicPolyline(this.polyline, this.zIndex, this.borderColor, this.lineWidth, this.insideColor);
 };
 
 /**
