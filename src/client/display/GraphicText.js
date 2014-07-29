@@ -12,6 +12,8 @@
  * 	@param {String} [text] - The text to display
  * 	@param {number} [zIndex] - The zIndex of the text
  * 	@param {String} [font] - Various style information such as font, italics, bold, size etc
+ * 	@param {number} [x] - The x-coordinate of the text
+ *	@param {number} [y] - The y-coordinate of the text
  * 	@param {String} [borderColor] - The border color for the text
  *	@param {number} [lineWidth=1] - The border width (optionnal 1 is by default)
  * 	@param {String} [insideColor] - The inside color for the text
@@ -19,7 +21,7 @@
  *
  *	TODO : Add color
  */
-yom.GraphicText = function (text, zIndex, font, borderColor, lineWidth, insideColor) {
+yom.GraphicText = function (text, zIndex, font, x, y borderColor, lineWidth, insideColor) {
 
 	/**
      * 	@property {String} text - The text we want to display
@@ -49,6 +51,16 @@ yom.GraphicText = function (text, zIndex, font, borderColor, lineWidth, insideCo
 	this.lineWidth = lineWidth || 1;
 
 	this.font = font || '';
+
+	/**
+	 *	@property {number} x - The x-coordinate of the text
+	 */
+	this.x = x;
+
+	 /**
+	 *	@property {number} y - The y-coordinate of the text
+	 */
+	this.y = y;
 };
 
 // ----- Method(s) ----- \\
@@ -69,7 +81,8 @@ yom.GraphicText.prototype.copy = function () {
  * TODO: Make it work
  */
 yom.GraphicText.prototype.move = function (x, y) {
-	
+	this.x += x;
+	this.y += y;
 };
 
 /**
