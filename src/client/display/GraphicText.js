@@ -100,7 +100,7 @@ yom.GraphicText.prototype.draw = function(drawManager) {
  * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
 yom.GraphicText.prototype.fillWithColor = function(drawManager) {
-	
+	drawManager.fillTextWithColor(this);
 };
 
 /**
@@ -109,7 +109,7 @@ yom.GraphicText.prototype.fillWithColor = function(drawManager) {
  * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
 yom.GraphicText.prototype.fillWithImage = function(drawManager) {
-	
+	// NOTHING
 };
 
 /**
@@ -118,5 +118,9 @@ yom.GraphicText.prototype.fillWithImage = function(drawManager) {
  * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
 yom.GraphicText.prototype.render = function(drawManager) {
-	this.draw(drawManager);
+	if(this.insideColor != yom.colors.DEFAULT_INSIDE_COLOR) {
+		this.fillWithColor(drawManager);
+	} else {
+		this.draw(drawManager);
+	}
 };

@@ -340,14 +340,37 @@ yom.DrawManager.prototype.fillCurveWithColor = function(graphic) {
 /**
  * 	Draw text
  * 	@method yom.DrawManager#drawText
- *	@param {yom.GraphicText} graphic - The Curve we want to fill.
+ *	@param {yom.GraphicText} yom_draw_graphicText - The text we want to draw.
  */
 yom.DrawManager.prototype.drawText = function(yom_draw_graphicText) {
 	this.context.beginPath();
+
 	this.context.strokeStyle = yom_draw_graphicText.borderColor;
 	this.context.font = yom_draw_graphicText.font;
 	this.context.textBaseline = 'bottom';
 	this.context.lineWidth = yom_draw_graphicText.lineWidth;
+
 	this.context.strokeText(yom_draw_graphicText.text, yom_draw_graphicText.x, yom_draw_graphicText.y);
+
+	this.context.closePath();
+};
+
+/**
+ * 	Fill text with color
+ * 	@method yom.DrawManager#fillTextWithColor
+ *	@param {yom.GraphicText} yom_fill_color_graphicText - The text we want to fill.
+ */
+yom.DrawManager.prototype.fillTextWithColor = function(yom_fill_color_graphicText) {
+	this.context.beginPath();
+
+	this.context.strokeStyle = yom_fill_color_graphicText.borderColor;
+	this.context.fillStyle = yom_fill_color_graphicText.insideColor;
+	this.context.font = yom_fill_color_graphicText.font;
+	this.context.textBaseline = 'bottom';
+	this.context.lineWidth = yom_fill_color_graphicText.lineWidth;
+
+	this.context.fillText(yom_fill_color_graphicText.text, yom_fill_color_graphicText.x, yom_fill_color_graphicText.y);
+	this.context.strokeText(yom_fill_color_graphicText.text, yom_fill_color_graphicText.x, yom_fill_color_graphicText.y);
+
 	this.context.closePath();
 };
