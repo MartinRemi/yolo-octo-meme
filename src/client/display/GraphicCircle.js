@@ -61,7 +61,7 @@ yom.GraphicCircle = function (circle, zIndex, borderColor, lineWidth, insideColo
  * 	@return {yom.GraphicCircle} The new GraphicCircle object
  */
 yom.GraphicCircle.prototype.copy = function () {
-	return new yom.GraphicCircle(this.circle);
+	return new yom.GraphicCircle(this.circle, this.zIndex, this.borderColor, this.lineWidth, this.insideColor, this.image);
 };
 
 /**
