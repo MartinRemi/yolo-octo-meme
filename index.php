@@ -77,6 +77,7 @@
 		//world.shapes[0] = graphicCircle;
 		world.shapes[0] = graphicLine1;
 		world.shapes[1] = graphicPolyline1;
+		world.shapes[2] = new yom.GraphicText('Remi', 50, '40px arial', 340, 234, '#F05340', 1, '000000');
 
 		world.bodies[0] = new yom.Body([graphicPolygon], 10);
 		world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(0,0), new yom.Vector2(1, 0));

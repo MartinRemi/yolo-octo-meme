@@ -345,7 +345,7 @@ yom.DrawManager.prototype.fillCurveWithColor = function(graphic) {
 yom.DrawManager.prototype.drawText = function(yom_draw_graphicText) {
 	this.context.beginPath();
 	this.context.strokeStyle = yom_draw_graphicText.borderColor;
-	this.context.font = '40px san-serif';
+	this.context.font = yom_draw_graphicText.font;
 	this.context.textBaseline = 'bottom';
 	this.context.lineWidth = yom_draw_graphicText.lineWidth;
 	this.context.strokeText(yom_draw_graphicText.text, yom_draw_graphicText.x, yom_draw_graphicText.y);
