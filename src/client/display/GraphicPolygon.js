@@ -61,7 +61,7 @@ yom.GraphicPolygon = function (polygon, zIndex, borderColor, lineWidth, insideCo
  * 	@return {yom.GraphicPolygon} The new GraphicPolygon object
  */
 yom.GraphicPolygon.prototype.copy = function () {
-	return new yom.GraphicPolygon(this.polygon);
+	return new yom.GraphicPolygon(this.polygon, this.zIndex, this.borderColor, this.lineWidth, this.insideColor, this.image);
 };
 
 /**
