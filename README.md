@@ -10,7 +10,11 @@ This project is led by three students in computing at INSA, Lyon, France for lea
 ## Some of its features :
 	* I/O :
 		- Basic functions to handle Input events : keyboard and eventually touchscreen events
-		- Sound management 
+		- Sound management
+	* Display
+		- Basic geometric shapes
+		- Curves
+		- Text
 	* Mathematics :
 		- Features to handle matrix (i.e. the gameboard)
 	* Physics :
