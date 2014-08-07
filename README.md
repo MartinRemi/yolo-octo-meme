@@ -1,8 +1,6 @@
 yolo-octo-meme
 ==============
 
-PAUSED, needs a big refactoring
-
 ## Description : 
 This 2D web game engine is not meant to overperform its competitors.
 This project is led by three students in computing at INSA, Lyon, France for learning purposes.
