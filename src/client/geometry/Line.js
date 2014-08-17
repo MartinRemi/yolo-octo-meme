@@ -141,3 +141,13 @@ yom.Line.prototype.contains = function (x, y) {
 yom.Line.prototype.containsPoint = function (point) {
 	return this.contains(point.x, point.y);
 };
+
+/**
+ *  Computes the normal vector of the line
+ *  @method yom.Line#normal
+ *  @return {yom.Vector2} True if the point is contained by the line, else false
+ */
+yom.Line.prototype.normal = function (point) {
+    // n(-y,x)
+    return new yom.Vector2(- this.gradient, 1);
+};
