@@ -123,3 +123,14 @@ yom.Vector2.prototype.div = function(number) {
 yom.Vector2.prototype.copy = function() {
 	return new yom.Vector2(this.x, this.y);
 };
+
+/**
+ *	Computes the normal of a line
+ * 	@method yom.Vector2#lineNormal
+ *	@param {yom.Line} line - The line to get the vector
+ */
+yom.Vector2.prototype.lineNormal = function(line) {
+	var normal = line.normal();
+	this.x = normal.x;
+	this.y = normal.y;
+};
