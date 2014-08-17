@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>YOM - Demo - Square collision</title>
+	</head>
+
+	<body>
+		<canvas id="app" width="500" height="500">
+		</canvas>
+		
+	</body>
+	<script src="../../src/client/yom.js"></script>
+	<script src="../../src/client/core/World.js"></script>
+	<script src="../../src/client/geometry/Point.js"></script>
+	<script src="../../src/client/geometry/Circle.js"></script>
+	<script src="../../src/client/geometry/Line.js"></script>
+	<script src="../../src/client/geometry/Polyline.js"></script>
+	<script src="../../src/client/geometry/Polygon.js"></script>
+	<script src="../../src/client/geometry/BSpline.js"></script>
+	<script src="../../src/client/display/GraphicCircle.js"></script>
+	<script src="../../src/client/display/GraphicLine.js"></script>
+	<script src="../../src/client/display/GraphicPolyline.js"></script>
+	<script src="../../src/client/display/GraphicPolygon.js"></script>
+	<script src="../../src/client/display/GraphicBSpline.js"></script>
+	<script src="../../src/client/display/RenderManager.js"></script>
+	<script src="../../src/client/display/DrawManager.js"></script>
+	<script src="../../src/client/input/click_event_action.js"></script>
+	<script src="../../src/client/input/InputManager.js"></script>
+	<script src="../../src/client/core/Body.js"></script>
+	<script src="../../src/client/math/Vector2.js"></script>
+	<script src="../../src/client/physics/Force.js"></script>
+	<script>
+		var world = new yom.World("app", 500, 500);
+		var drawManager = new yom.DrawManager(world);
+		var renderManager = new yom.RenderManager(world, drawManager);
+
+		
+
+		yom.start();
+	</script>
+</html>
