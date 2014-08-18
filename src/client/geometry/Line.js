@@ -149,5 +149,5 @@ yom.Line.prototype.containsPoint = function (point) {
  */
 yom.Line.prototype.normal = function (point) {
     // n(-y,x)
-    return new yom.Vector2(- this.gradient, 1);
+    return new yom.Vector2(this.gradient * -1, 1);
 };
