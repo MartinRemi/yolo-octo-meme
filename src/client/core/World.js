@@ -73,6 +73,14 @@ yom.World.prototype.setStepBehavior = function(stepFunction) {
 
 // ----- Method(s) ----- \\
 /**
+ *   Called before making a movement permanent. Detect colliding after a unit has been moved
+ *   @method yom.doesCollide
+ */
+yom.World.prototype.doesCollide = function(body) {
+
+};
+
+/**
  *   Called before the render manager in order to apply forces and compute new positions just before rendering
  *   @method yom.World#step
  */
@@ -134,6 +142,11 @@ yom.World.prototype.applyForces = function() {
           // }
 
           this.bodies[i].move(force.x, force.y);
+
+          // test if collision with new movement
+          if(this.doesCollide(i)) {
+               // do something
+          }
      }
 };
 
@@ -145,11 +158,3 @@ yom.World.prototype.applyForces = function() {
 yom.World.prototype.step = function() {
      this.stepBehavior();
 };
-
-/**
- *   Called before the render manager in order to detect colliding
- *   @method yom.World#detectColliding
- */
-yom.World.prototype.detectColliding = function() {
-
-}
