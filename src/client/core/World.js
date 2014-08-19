@@ -74,10 +74,11 @@ yom.World.prototype.setStepBehavior = function(stepFunction) {
 // ----- Method(s) ----- \\
 /**
  *   Called before making a movement permanent. Detect colliding after a unit has been moved
+ *   @param {number} [numBody=-1] - The index of the body that has been moved
  *   @method yom.doesCollide
  */
-yom.World.prototype.doesCollide = function(body) {
-
+yom.World.prototype.doesCollide = function(numBody) {
+     // TODO: write code
 };
 
 /**
