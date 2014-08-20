@@ -146,7 +146,7 @@ yom.World.prototype.applyForces = function() {
 
           // test if collision with new movement
           if(this.doesCollide(i)) {
-               // do something
+               console.log("collide");
           }
      }
 };
