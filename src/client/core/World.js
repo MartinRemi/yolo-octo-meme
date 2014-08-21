@@ -81,9 +81,15 @@ yom.World.prototype.doesCollide = function(numBody) {
      if(numBody >= 0 && numBody < this.bodies.length) {
           var body = this.bodies[numBody];
           var i;
+          var j;
+          var perimeter;
+          var normal = new yom.Vector2();
           for(i = 0; i < body.shapes.length; ++i) {
                if(body.shapes[i].perimeter) {
-                    console.log('voui :)');
+                    lines = body.shapes[i].perimeter.lines;
+                    for(j = 0; j < lines.length; ++j) {
+                         normal.lineNormal(lines[j]);
+                    }
                }
           }
      }
