@@ -89,6 +89,8 @@ yom.World.prototype.doesCollide = function(numBody) {
                     lines = body.shapes[i].perimeter.lines;
                     for(j = 0; j < lines.length; ++j) {
                          normal.lineNormal(lines[j]);
+
+                         // TODO: points projection && check if collide or not
                     }
                }
           }
