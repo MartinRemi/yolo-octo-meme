@@ -78,7 +78,15 @@ yom.World.prototype.setStepBehavior = function(stepFunction) {
  *   @method yom.doesCollide
  */
 yom.World.prototype.doesCollide = function(numBody) {
-     // TODO: write code
+     if(numBody >= 0 && numBody < this.bodies.length) {
+          var body = this.bodies[numBody];
+          var i;
+          for(i = 0; i < body.shapes.length; ++i) {
+               if(body.shapes[i].perimeter) {
+                    console.log('voui :)');
+               }
+          }
+     }
 };
 
 /**
