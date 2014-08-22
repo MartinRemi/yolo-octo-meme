@@ -86,15 +86,16 @@ yom.World.prototype.doesCollide = function(numBody) {
           var normal = new yom.Vector2();
           for(i = 0; i < body.shapes.length; ++i) {
                if(body.shapes[i].perimeter) {
-                    lines = body.shapes[i].perimeter.lines;
+                    lines = body.shapes[i].polygon.perimeter.lines;
                     for(j = 0; j < lines.length; ++j) {
                          normal.lineNormal(lines[j]);
 
-                         // TODO: points projection && check if collide or not
+                         console.log(normal.dotProduct(new yom.Vector2(lines[j].firstPoint.x, lines[j].firstPoint.y)));
                     }
                }
           }
      }
+     console.log('yolo');
 };
 
 /**
