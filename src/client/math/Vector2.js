@@ -12,7 +12,7 @@
  * 	@classdesc yom - Vector2
  * 	@constructor
  *	@param {number} [x=0] - The x-coordinate of the vector
-  *	@param {number} [y=0] - The y-coordinate of the vector
+ *	@param {number} [y=0] - The y-coordinate of the vector
  * 	@return {yom.Vector2} The body object
  */
 yom.Vector2 = function (x, y) {
@@ -133,4 +133,14 @@ yom.Vector2.prototype.lineNormal = function(line) {
 	var normal = line.normal();
 	this.x = normal.x;
 	this.y = normal.y;
+};
+
+/**
+ *	Computes the dot product of two yom.Vector2
+ * 	@method yom.Vector2#dotProduct
+ *	@param {yom.Vector2} vector - The second vector of the product
+ *	@return {number} The result of the dot product
+ */
+yom.Vector2.prototype.dotProduct = function(vector) {
+	return this.x * vector.x + this.y * vector.y;
 };
