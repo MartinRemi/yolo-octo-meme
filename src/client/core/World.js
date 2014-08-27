@@ -99,6 +99,42 @@ yom.World.prototype.doesCollide = function(numBody) {
 };
 
 /**
+ *   Called to detect collisions (not tested)
+ *   @param {number} body
+ *   @method yom.testCollision
+ */
+yom.World.prototype.testCollision = function(numBody) {
+	var body = this.bodies[numBody];
+	var other;
+	// naive algorithm to test collisions
+	for(var i = numBody+1; i < this.bodies.length; ++i) {
+		other = this.bodies[i];
+		for(var bs = 0; bs < body.shapes.length; ++bs){
+			for(var os = 0; os < other.shapes.length; ++os){
+				if(testCollisionShapes(body.shapes[bs],other.shapes[os])){
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
+/**
+ *   Called to detect collisions (not tested)
+ *   @param {yom.Shape} shaoe
+ *   @method yom.testCollisionShapes
+ */
+yom.World.prototype.testCollisionShapes = function(shape1, shape2) {
+	// type checking
+	if(typeof shape1 == yom.Circle && typeof shape2 == yom.Circle){
+		return yom.Collisions.CircleCircle(shape1,shape2);
+	}
+	// todo
+	return false;
+}
+
+/**
  *   Called before the render manager in order to apply forces and compute new positions just before rendering
  *   @method yom.World#step
  */
@@ -165,6 +201,9 @@ yom.World.prototype.applyForces = function() {
           if(this.doesCollide(i)) {
                console.log("collide");
           }
+		  /*if(this.testCollisions(this.bodies[i])) {
+               console.log("collide");
+          }*/
      }
 };
 
