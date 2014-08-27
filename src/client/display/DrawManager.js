@@ -347,6 +347,7 @@ yom.DrawManager.prototype.drawText = function(yom_draw_graphicText) {
 
 	this.context.strokeStyle = yom_draw_graphicText.borderColor;
 	this.context.font = yom_draw_graphicText.font;
+	this.context.textAlign = yom_draw_graphicText.textAlign;
 	this.context.textBaseline = 'bottom';
 	this.context.lineWidth = yom_draw_graphicText.lineWidth;
 
@@ -366,6 +367,7 @@ yom.DrawManager.prototype.fillTextWithColor = function(yom_fill_color_graphicTex
 	this.context.strokeStyle = yom_fill_color_graphicText.borderColor;
 	this.context.fillStyle = yom_fill_color_graphicText.insideColor;
 	this.context.font = yom_fill_color_graphicText.font;
+	this.context.textAlign = yom_fill_color_graphicText.textAlign;
 	this.context.textBaseline = 'bottom';
 	this.context.lineWidth = yom_fill_color_graphicText.lineWidth;
 
