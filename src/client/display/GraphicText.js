@@ -21,7 +21,7 @@
  *
  *	TODO : Add color
  */
-yom.GraphicText = function (text, zIndex, font, x, y, borderColor, lineWidth, insideColor) {
+yom.GraphicText = function (text, zIndex, font, x, y, borderColor, lineWidth, insideColor, textAlign) {
 
 	/**
      * 	@property {String} text - The text we want to display
@@ -61,6 +61,11 @@ yom.GraphicText = function (text, zIndex, font, x, y, borderColor, lineWidth, in
 	 *	@property {number} y - The y-coordinate of the text
 	 */
 	this.y = y;
+	
+	/**
+	 *	@property {String} textAlign - The textAlign
+	 */
+	 this.textAlign = textAlign || 'center'; //start, end, left, center, or right
 };
 
 // ----- Method(s) ----- \\
