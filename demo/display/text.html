@@ -34,8 +34,10 @@
 		var drawManager = new yom.DrawManager(world);
 		var renderManager = new yom.RenderManager(world, drawManager);
 
-		world.shapes[0] = new yom.GraphicText('Remi', 50, '40px arial', 340, 234, '#F05340', 1, '000000');
-		world.shapes[1] = new yom.GraphicText('Remi', 50, '40px arial', 140, 234, '#F05340', 1);
+		world.shapes[0] = new yom.GraphicText('Remi', '40px arial', 340, 234, 
+						{z: 50, borderColor:'#F05340', borderWidth:1, fillColor: '#000000'});
+		world.shapes[1] = new yom.GraphicText('Remi', '40px arial', 140, 234, 
+						{z: 50, borderColor: '#F05340', borderWith: 1});
 
 		yom.start();
 	</script>

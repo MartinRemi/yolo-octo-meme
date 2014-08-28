@@ -10,48 +10,26 @@
  * 	@classdesc yom - GraphicPolygon
  * 	@constructor
  * 	@param {yom.Polygon} [polygon] - The polygon to copy
- * 	@param {number} [zIndex] - The zIndex of the polygon
- * 	@param {String} [borderColor] - The border color for the polygon
- *	@param {number} [lineWidth=1] - The border width (optionnal 1 is by default)
- * 	@param {String} [insideColor] - The inside color for the polygon
- * 	@param {String} [image] - The path of the image to display in polygon
+ * 	@param {Object} [style] - The style (attributes : borderWidth, borderColor, fillColor, z, image)
  * 	@return {yom.GraphicPolygon} The GraphicPolygon object
  *
  *	TODO : Add color
  */
-yom.GraphicPolygon = function (polygon, zIndex, borderColor, lineWidth, insideColor, image) {
+yom.GraphicPolygon = function (polygon, style) {
 
 	/**
      * 	@property {yom.Polygon} polygon - The polygon we want to display
      */
 	this.polygon = polygon || {};
-
+	
 	/**
-     * 	@property {String} borderColor - The border color for the polygon
+     * 	@property {Object} style - The style of the shape
      */
-	this.borderColor = borderColor || '#000';
+	this.style = style || {borderWidth: 1, borderColor: '#000000'};
 
-	/**
-     * 	@property {String} insideColor - The inside color for the polygon
-     */
-	this.insideColor = insideColor || yom.colors.DEFAULT_INSIDE_COLOR;
-
-	/**
-     * 	@property {String} image - The path of the image to display
-     */
-	this.image = image || yom.images.DEFAULT_IMAGE;
-
-	/**
-     * 	@property {number} zIndex - The z index of the polygon
-     */
-	this.zIndex = zIndex || 0;
 
 	this.centroid = polygon.centroid;
-
-	/**
-	 *	@property {number} lineWidth - The border width (optionnal 1 is by default)
-	 */
-	this.lineWidth = lineWidth || 1;
+	
 };
 
 // ----- Method(s) ----- \\
@@ -61,7 +39,7 @@ yom.GraphicPolygon = function (polygon, zIndex, borderColor, lineWidth, insideCo
  * 	@return {yom.GraphicPolygon} The new GraphicPolygon object
  */
 yom.GraphicPolygon.prototype.copy = function () {
-	return new yom.GraphicPolygon(this.polygon, this.zIndex, this.borderColor, this.lineWidth, this.insideColor, this.image);
+	return new yom.GraphicPolygon(this.polygon, this.style);
 };
 
 /**
@@ -107,7 +85,7 @@ yom.GraphicPolygon.prototype.fillWithImage = function(drawManager) {
  * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
 yom.GraphicPolygon.prototype.render = function(drawManager) {
-	if(this.image != yom.images.DEFAULT_IMAGE) {
+	if(typeof(this.style.image) !== 'undefined' ){//this.image != yom.images.DEFAULT_IMAGE) {
 		this.fillWithImage(drawManager);
 	} else if(this.insideColor != yom.colors.DEFAULT_INSIDE_COLOR) {
 		this.fillWithColor(drawManager);

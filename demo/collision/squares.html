@@ -33,13 +33,15 @@
 		var drawManager = new yom.DrawManager(world);
 		var renderManager = new yom.RenderManager(world, drawManager);
 
+		var basic_style = {z:yom.shapes.DEFAULT_ZINDEX, borderColor:'#ffb345', borderWidth:1, fillColor:'#a6e409'};
+		
 		var arrayPolygon = [100, 150, 150, 150, 150, 100, 100, 100];
 		var polygon = new yom.Polygon(arrayPolygon);
-		var graphicPolygon = new yom.GraphicPolygon(polygon, yom.shapes.DEFAULT_ZINDEX, '#ffb345', 1, '#a6e409');
+		var graphicPolygon = new yom.GraphicPolygon(polygon, basic_style);
 
 		var arrayPolygon2 = [200, 250, 250, 250, 250, 200, 200, 200];
 		var polygon2 = new yom.Polygon(arrayPolygon2);
-		var graphicPolygon2 = new yom.GraphicPolygon(polygon2, yom.shapes.DEFAULT_ZINDEX, '#ffb345', 1, '#a6e409');
+		var graphicPolygon2 = new yom.GraphicPolygon(polygon2, basic_style);
 
 		world.bodies[0] = new yom.Body([graphicPolygon], 10);
 		world.bodies[1] = new yom.Body([graphicPolygon2], 10);

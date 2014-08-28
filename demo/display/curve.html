@@ -46,13 +46,14 @@
 					  new yom.Vector2(300,400)];
 
 		var cur = new yom.Curve(points,cpoints);
-		var graphicCurve1 = new yom.GraphicCurve(cur, yom.shapes.DEFAULT_ZINDEX, '#FF00FF');
+		var graphicCurve1 = new yom.GraphicCurve(cur, {borderWidth: 1, borderColor:'#FF00FF'});
 
 		// Curve 2
 		var points2 = [new yom.Vector2(120,20), new yom.Vector2(300,20)];
 		var cpoints2 = [new yom.Vector2(120,100), new yom.Vector2(300,100)];
 		var cur2 = new yom.Curve(points2,cpoints2);
-		var graphicCurve2 = new yom.GraphicCurve(cur2, yom.shapes.DEFAULT_ZINDEX, '#FFFF00', 4, '#FF0000');
+		var graphicCurve2 = new yom.GraphicCurve(cur2, 
+				{z:yom.shapes.DEFAULT_ZINDEX, borderColor: '#FFFF00', borderWidth:4, fillColor: '#FF0000'});
 
 		// Curve 3
 		var points3 = [new yom.Vector2(300,100), 
@@ -66,7 +67,8 @@
 					   new yom.Vector2(360,50),
 					   new yom.Vector2(300,50)];
 		var cur3 = new yom.Curve(points3,cpoints3);
-		var graphicCurve3 = new yom.GraphicCurve(cur3, yom.shapes.DEFAULT_ZINDEX, '#333333', 4, '#11FF22');
+		var graphicCurve3 = new yom.GraphicCurve(cur3, 
+				{z: yom.shapes.DEFAULT_ZINDEX, borderColor: '#333333', borderWidth: 4, fillColor: '#11FF22'});
 
 		// Add shapes to the world
 		world.shapes[0] = graphicCurve1;

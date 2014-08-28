@@ -10,42 +10,23 @@
  * 	@classdesc yom - GraphicPolyline
  * 	@constructor
  * 	@param {yom.Polyline} [polyline] - The polyline to copy
- * 	@param {number} [zIndex] - The zIndex of the polyline
- * 	@param {String} [borderColor] - The border color for the polyline
- *	@param {number} [lineWidth=1] - The border width (optionnal 1 is by default)
- * 	@param {String} [insideColor] - The inside color for the polyline
+ * 	@param {Object} [style] - The style (attributes : borderWidth, borderColor, fillColor, z)
  * 	@return {yom.GrapphicPolyline} The GraphicPolyline object
  *
  *	TODO : Add color
  */
-yom.GraphicPolyline = function (polyline, zIndex, borderColor, lineWidth, insideColor) {
+yom.GraphicPolyline = function (polyline, style) {
 
 	/**
      * 	@property {yom.Polyline} polyline - The polyline we want to display
      */
 	this.polyline = polyline || {};
-
+	
 	/**
-     * 	@property {String} borderColor - The border color for the polyline
+     * 	@property {Object} style - The style of the shape
      */
-	this.borderColor = borderColor || '#000';
+	this.style = style || {borderWidth: 1, borderColor: '#000000', z: 0};
 
-	/**
-     * 	@property {String} insideColor - The inside color for the polyline
-     */
-	this.insideColor = insideColor || yom.colors.DEFAULT_INSIDE_COLOR;
-
-	/**
-     * 	@property {number} zIndex - The z index of the polyline
-     */
-	this.zIndex = zIndex || 0;
-
-	this.centroid = polyline.centroid;
-
-	/**
-	 *	@property {number} lineWidth - The border width (optionnal 1 is by default)
-	 */
-	this.lineWidth = lineWidth || 1;
 };
 
 // ----- Method(s) ----- \\

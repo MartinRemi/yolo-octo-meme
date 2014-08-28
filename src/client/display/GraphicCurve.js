@@ -10,40 +10,21 @@
  * 	@classdesc yom - GraphicCurve
  * 	@constructor
  * 	@param {yom.Curve} [curve] - The curve to copy
- * 	@param {number} [zIndex] - The zIndex of the curve
- * 	@param {String} [borderColor] - The border color for the curve
- * 	@param {number} [lineWidth] - The border width (optionnal 1 is by default)
- * 	@param {String} [insideColor] - The inside color for the curve 
- * 									(optionnal if unspecified it won't be filled)
+ * 	@param {Object} [style] - The style (attributes : borderWidth, borderColor, fillColor, z)
  * 	@return {yom.GrapphicCurve} The GraphicCurve object
  *
  */
-yom.GraphicCurve = function (curve, zIndex, borderColor, lineWidth, insideColor) {
+yom.GraphicCurve = function (curve, style) {
 
 	/**
      * 	@property {yom.curve} curve - The curve we want to display
      */
 	this.curve = curve || {};
-
+	
 	/**
-     * 	@property {String} borderColor - The border color for the curve
+     * 	@property {Object} style - The style of the shape
      */
-	this.borderColor = borderColor || '#000';
-
-	/**
-     * 	@property {String} insideColor - The inside color for the curve
-     */
-	this.insideColor = insideColor;
-
-	/**
-     * 	@property {number} zIndex - The z index of the curve
-     */
-	this.zIndex = zIndex || 0;
-
-	/**
-     * 	@property {number} lineWidth - The line width of the border of the curve
-     */
-	this.lineWidth = lineWidth || 1;
+	this.style = style || {borderWidth: 1, borderColor: '#000000'};
 
 	this.centroid = curve.centroid;
 };
@@ -55,7 +36,7 @@ yom.GraphicCurve = function (curve, zIndex, borderColor, lineWidth, insideColor)
  * 	@return {yom.GraphicCurve} The new GraphicCurve object
  */
 yom.GraphicCurve.prototype.copy = function () {
-	return new yom.GraphicCurve(this.curve, this.zIndex, this.borderColor, this.lineWidth, this.insideColor);
+	return new yom.GraphicCurve(this.curve, this.style);
 };
 
 /**

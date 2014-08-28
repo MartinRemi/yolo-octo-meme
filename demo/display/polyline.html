@@ -37,7 +37,8 @@
 		// Drawn polyline
 		var arrayPolyline = [100, 150, 150, 150, 150, 100, 120, 80, 100, 100];
 		var polyline = new yom.Polyline(arrayPolyline);
-		var graphicPolyline = new yom.GraphicPolyline(polyline, yom.shapes.DEFAULT_ZINDEX, '#ffb345', 4);
+		var graphicPolyline = new yom.GraphicPolyline(polyline, 
+				{z:yom.shapes.DEFAULT_ZINDEX, borderColor:'#ffb345', borderWidth:4});
 
 		// Add shapes to the world
 		world.shapes[0] = graphicPolyline;

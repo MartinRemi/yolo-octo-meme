@@ -28,15 +28,67 @@ yom.DrawManager = function (world) {
 };
 
 // ----- Method(s) ----- \\
+
+/**
+ * Create a new style from an other without the property of border
+ * @method yom.DrawManager#styleNoBorder
+ *	@param {Object} style - The style
+ */
+yom.DrawManager.prototype.styleNoBorder = function(style){
+	return {fillColor: style.fillColor};
+}
+
+/**
+ * 	Set the context with the defined style
+ * 	@method yom.DrawManager#drawWithStyle
+ *	@param {Object} style - The style
+ *	@param {bool} justBorder - If only stroke (and no shape filling)
+ */
+yom.DrawManager.prototype.styleApply = function(style, justBorder){
+	justBorder = justBorder || false;
+	// Filling
+	if(typeof style.fillColor !== 'undefined' && !justBorder){
+		this.context.fillStyle = style.fillColor || '#000';
+	}
+	
+	// Border
+	if(typeof style.borderWidth !== 'undefined'){
+		this.context.lineWidth = style.borderWidth;
+		this.context.strokeStyle = style.borderColor || '';
+	}
+}
+
+/**
+ * 	Stoke and fill with the defined style
+ * 	@method yom.DrawManager#drawWithStyle
+ *	@param {Object} style - The style
+ *	@param {bool} justBorder - If only stroke (and no shape filling)
+ */
+yom.DrawManager.prototype.drawWithStyle = function(style, justBorder){
+	justBorder = justBorder || false;
+	// Filling
+	if(typeof style.fillColor !== 'undefined' && !justBorder){
+		this.context.fillStyle = style.fillColor || '#000';
+		this.context.fill();
+	}
+	
+	// Border
+	if(typeof style.borderWidth !== 'undefined'){
+		this.context.lineWidth = style.borderWidth;
+		this.context.strokeStyle = style.borderColor || '';
+		this.context.stroke();
+	}
+}
+
 /**
  * 	Draw a circle.
  * 	@method yom.DrawManager#drawCircle
  *	@param {yom.GraphicCircle} yom_draw_graphicCircle - The circle we want to display.
  */
-yom.DrawManager.prototype.drawCircle = function(yom_draw_graphicCircle) {
+yom.DrawManager.prototype.drawCircle = function(yom_draw_graphicCircle, justBorder) {
+	justBorder = justBorder || false;
 	this.context.beginPath();
-
-	var borderColor = yom_draw_graphicCircle.borderColor || '#000';
+	var style = yom_draw_graphicCircle.style;
 
 	this.context.arc(yom_draw_graphicCircle.circle.center.x, 
 		yom_draw_graphicCircle.circle.center.y,
@@ -44,9 +96,8 @@ yom.DrawManager.prototype.drawCircle = function(yom_draw_graphicCircle) {
 		0,
 		2 * Math.PI);
 
-	this.context.lineWidth = yom_draw_graphicCircle.lineWidth;
-	this.context.strokeStyle = borderColor;
-	this.context.stroke();
+	this.drawWithStyle(yom_draw_graphicCircle.style);
+	
 	this.context.closePath();
 };
 
@@ -64,9 +115,7 @@ yom.DrawManager.prototype.drawLine = function(yom_draw_graphicLine) {
 	this.context.lineTo(yom_draw_graphicLine.line.secondPoint.x,
 						yom_draw_graphicLine.line.secondPoint.y);
 
-	this.context.lineWidth = yom_draw_graphicLine.lineWidth;
-	this.context.strokeStyle = borderColor;
-	this.context.stroke();
+	this.drawWithStyle(yom_draw_graphicLine.style);
 	this.context.closePath();
 };
 
@@ -78,7 +127,7 @@ yom.DrawManager.prototype.drawLine = function(yom_draw_graphicLine) {
 yom.DrawManager.prototype.drawPolyline = function(yom_draw_graphicPolyline) {
 	var i;
 	this.context.beginPath();
-	var borderColor = yom_draw_graphicPolyline.borderColor || '#000';
+	//var borderColor = yom_draw_graphicPolyline.borderColor || '#000';
 	var coordinates = yom_draw_graphicPolyline.polyline.coordinates;
 
 	if(coordinates.length >= 2) {
@@ -87,9 +136,7 @@ yom.DrawManager.prototype.drawPolyline = function(yom_draw_graphicPolyline) {
 			this.context.lineTo(coordinates[i], coordinates[i+1]);
 		}
 	}
-	this.context.lineWidth = yom_draw_graphicPolyline.lineWidth;
-	this.context.strokeStyle = borderColor;
-	this.context.stroke();
+	this.drawWithStyle(yom_draw_graphicPolyline.style);
 	this.context.closePath();
 };
 
@@ -104,8 +151,8 @@ yom.DrawManager.prototype.drawBSpline = function(graphic) {
 	var diff = 1./(precision*graphic.bspline.nodes.length);
 	// begin path
 	this.context.beginPath();
-	this.context.strokeStyle =  graphic.borderColor;
-	var borderColor = graphic.borderColor || '#000';
+	this.styleApply(graphic.style);
+	
 	// constant
 	var p1 = new yom.Vector2(0,0);
 	var p2 = new yom.Vector2(graphic.bspline.origin.x, graphic.bspline.origin.y); // origin
@@ -143,13 +190,7 @@ yom.DrawManager.prototype.drawCurve = function(graphic) {
 			graphic.curve.controlPoints[2*(i-1)+1].x,graphic.curve.controlPoints[2*(i-1)+1].y,
 			graphic.curve.points[i].x,graphic.curve.points[i].y);
 	}
-	if(typeof graphic.insideColor !== "undefined"){
-		this.context.fillStyle = graphic.insideColor || '#222';
-		this.context.fill();
-	}
-	this.context.lineWidth = graphic.lineWidth;
-	this.context.strokeStyle = graphic.borderColor || '#000';
-	this.context.stroke();
+	this.drawWithStyle(graphic.style);
 };
 
 /**
@@ -171,9 +212,7 @@ yom.DrawManager.prototype.drawPolygon = function(yom_draw_graphicPolygon) {
 	}
 	this.context.closePath();
 
-	this.context.lineWidth = yom_draw_graphicPolygon.lineWidth;
-	this.context.strokeStyle = borderColor;
-	this.context.stroke();
+	this.drawWithStyle(yom_draw_graphicPolygon.style, true);
 };
 
 /**
@@ -182,28 +221,8 @@ yom.DrawManager.prototype.drawPolygon = function(yom_draw_graphicPolygon) {
  *	@param {yom.GraphicCircle} yom_draw_graphicCircle - The circle we want to display.
  */
 yom.DrawManager.prototype.fillCircleWithColor = function(yom_draw_graphicCircle) {
-	this.context.beginPath();
-
-	var borderColor = yom_draw_graphicCircle.borderColor || '#000';
-	var insideColor = yom_draw_graphicCircle.insideColor || '#000';
-
-	this.context.arc(yom_draw_graphicCircle.circle.center.x, 
-		yom_draw_graphicCircle.circle.center.y,
-		yom_draw_graphicCircle.circle.radius,
-		0,
-		2 * Math.PI);
-
-	this.context.lineWidth = yom_draw_graphicCircle.lineWidth;
-
-	// Fill color
-	this.context.fillStyle = insideColor;
-	this.context.fill();
-
-	// Border coor
-	this.context.strokeStyle = borderColor;
-
-	this.context.stroke();
-	this.context.closePath();
+	yom_draw_graphicCircle = new GraphicCircle(yom_draw_graphicCircle.circle,
+								this.styleNoBorder(yom_draw_graphicCircle.style));
 };
 
 /**
@@ -227,11 +246,7 @@ yom.DrawManager.prototype.fillPolygonWithColor = function(yom_draw_graphicPolygo
 	}
 	this.context.closePath();
 
-	this.context.lineWidth = yom_draw_graphicPolygon.lineWidth;
-	this.context.fillStyle = insideColor;
-	this.context.fill();
-	this.context.strokeStyle = borderColor;
-	this.context.stroke();
+	this.drawWithStyle(yom_draw_graphicPolygon.style);
 };
 
 /**
@@ -330,11 +345,7 @@ yom.DrawManager.prototype.fillCurveWithColor = function(graphic) {
 			graphic.curve.controlPoints[2*(i-1)+1].x,graphic.curve.controlPoints[2*(i-1)+1].y,
 			graphic.curve.points[i].x,graphic.curve.points[i].y);
 	}
-	this.context.fillStyle = graphic.insideColor || '#222';
-	this.context.fill();
-	this.context.strokeStyle = graphic.borderColor || '#000';
-	this.context.stroke();
-	this.context.closePath();
+	this.drawWithStyle(graphic.style, true);
 };
 
 /**
@@ -345,11 +356,11 @@ yom.DrawManager.prototype.fillCurveWithColor = function(graphic) {
 yom.DrawManager.prototype.drawText = function(yom_draw_graphicText) {
 	this.context.beginPath();
 
-	this.context.strokeStyle = yom_draw_graphicText.borderColor;
 	this.context.font = yom_draw_graphicText.font;
 	this.context.textAlign = yom_draw_graphicText.textAlign;
 	this.context.textBaseline = 'bottom';
-	this.context.lineWidth = yom_draw_graphicText.lineWidth;
+	this.context.strokeStyle = yom_draw_graphicText.style.borderColor;
+	this.context.lineWidth = yom_draw_graphicText.style.borderWidth;
 
 	this.context.strokeText(yom_draw_graphicText.text, yom_draw_graphicText.x, yom_draw_graphicText.y);
 
@@ -364,15 +375,17 @@ yom.DrawManager.prototype.drawText = function(yom_draw_graphicText) {
 yom.DrawManager.prototype.fillTextWithColor = function(yom_fill_color_graphicText) {
 	this.context.beginPath();
 
-	this.context.strokeStyle = yom_fill_color_graphicText.borderColor;
-	this.context.fillStyle = yom_fill_color_graphicText.insideColor;
+	this.context.fillStyle = yom_fill_color_graphicText.style.fillColor;
 	this.context.font = yom_fill_color_graphicText.font;
 	this.context.textAlign = yom_fill_color_graphicText.textAlign;
 	this.context.textBaseline = 'bottom';
-	this.context.lineWidth = yom_fill_color_graphicText.lineWidth;
 
 	this.context.fillText(yom_fill_color_graphicText.text, yom_fill_color_graphicText.x, yom_fill_color_graphicText.y);
-	this.context.strokeText(yom_fill_color_graphicText.text, yom_fill_color_graphicText.x, yom_fill_color_graphicText.y);
-
+	if(typeof yom_fill_color_graphicText.style.borderWidth !== 'undefined'
+			&& yom_fill_color_graphicText.style.borderWidth > 0) {
+		this.context.strokeStyle = yom_fill_color_graphicText.style.borderColor;
+		this.context.lineWidth = yom_fill_color_graphicText.style.borderWidth;
+		this.context.strokeText(yom_fill_color_graphicText.text, yom_fill_color_graphicText.x, yom_fill_color_graphicText.y);
+	}
 	this.context.closePath();
 };

@@ -36,8 +36,10 @@
 
 		var circleA = new yom.Circle(50,200,30);
 		var circleB = new yom.Circle(300,200,30);
-		var gcircleA = new yom.GraphicCircle(circleA, yom.shapes.DEFAULT_ZINDEX, '#00FF00', 5);
-		var gcircleB = new yom.GraphicCircle(circleB, yom.shapes.DEFAULT_ZINDEX, '#0000FF', 5);
+		var style_base = {borderColor:'#00FF00', borderWidth:5};
+		var style_red = {borderColor:'#FF0000', borderWidth:5};
+		var gcircleA = new yom.GraphicCircle(circleA, style_base);
+		var gcircleB = new yom.GraphicCircle(circleB, {borderColor:'#0000FF', borderWidth:5});
 		world.shapes[0] = gcircleA;
 		world.shapes[1] = gcircleB;
 		
@@ -46,9 +48,9 @@
 				nb++;
 				circleA = new yom.Circle(50+(nb*5.0%400),200,30);
 				if(yom.Collisions.CircleCircle(circleA, circleB)){
-					gcircleA = new yom.GraphicCircle(circleA, yom.shapes.DEFAULT_ZINDEX, '#FF0000', 5);
+					gcircleA = new yom.GraphicCircle(circleA, style_red);
 				}else{
-					gcircleA = new yom.GraphicCircle(circleA, yom.shapes.DEFAULT_ZINDEX, '#00FF00', 5);
+					gcircleA = new yom.GraphicCircle(circleA, style_base);
 				}
 				world.shapes[0] = gcircleA;
 		}, 80);

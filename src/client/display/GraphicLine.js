@@ -10,42 +10,25 @@
  * 	@classdesc yom - GraphicLine
  * 	@constructor
  * 	@param {yom.Line} [line] - The line to copy
- * 	@param {number} [zIndex] - The zIndex of the line
- * 	@param {String} [borderColor] - The border color for the line
- *	@param {number} [lineWidth=1] - The border width (optionnal 1 is by default)
- * 	@param {String} [insideColor] - The inside color for the line
+ * 	@param {Object} [style] - The style (attributes : borderWidth, borderColor, fillColor, z)
  * 	@return {yom.GraphicLine} The GraphicLine object
  *
  *	TODO : Add color
  */
-yom.GraphicLine = function (line, zIndex, borderColor, lineWidth, insideColor) {
+yom.GraphicLine = function (line, style) {
 
 	/**
      * 	@property {yom.Line} line - The line we want to display
      */
 	this.line = line || {};
-
+	
 	/**
-     * 	@property {String} borderColor - The border color for the line
+     * 	@property {Object} style - The style of the shape
      */
-	this.borderColor = borderColor || '#000';
-
-	/**
-     * 	@property {String} insideColor - The inside color for the line
-     */
-	this.insideColor = insideColor || yom.colors.DEFAULT_INSIDE_COLOR;
-
-	/**
-     * 	@property {number} zIndex - The z index of the line
-     */
-	this.zIndex = zIndex || 0;
+	this.style = style || {borderWidth: 1, borderColor: '#000000'};
 
 	this.centroid = line.centroid;
 
-	/**
-	 *	@property {number} lineWidth - The border width (optionnal 1 is by default)
-	 */
-	this.lineWidth = lineWidth || 1;
 };
 
 // ----- Method(s) ----- \\
@@ -55,7 +38,7 @@ yom.GraphicLine = function (line, zIndex, borderColor, lineWidth, insideColor) {
  * 	@return {yom.GraphicLine} The new GraphicLine object
  */
 yom.GraphicLine.prototype.copy = function () {
-	return new yom.GraphicLine(this.line, this.zIndex, this.borderColor, this.lineWidth, this.insideColor);
+	return new yom.GraphicLine(this.line, this.style);
 };
 
 /**
@@ -93,7 +76,6 @@ yom.GraphicLine.prototype.fillWithColor = function(drawManager) {
  * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
 yom.GraphicLine.prototype.fillWithImage = function(drawManager) {
-	// No filling possible, so drawing
 	drawManager.drawLine(this);
 };
 

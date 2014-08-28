@@ -10,13 +10,11 @@
  * 	@classdesc yom - GraphicBSpline
  * 	@constructor
  * 	@param {yom.bspline} [bspline] - The bspline to copy
- * 	@param {number} [zIndex] - The zIndex of the polyline
- * 	@param {String} [borderColor] - The border color for the bspline
- * 	@param {String} [insideColor] - The inside color for the bspline
+ * 	@param {Object} [style] - The style (attributes : borderWidth, borderColor, fillColor, z)
  * 	@return {yom.GraphicBSpline} The GraphicBSpline object
  *
  */
-yom.GraphicBSpline = function (bspline, zIndex, borderColor, insideColor) {
+yom.GraphicBSpline = function (bspline, style) {
 
 	/**
      * 	@property {yom.Polyline} polyline - The polyline we want to display
@@ -24,19 +22,9 @@ yom.GraphicBSpline = function (bspline, zIndex, borderColor, insideColor) {
 	this.bspline = bspline || {};
 
 	/**
-     * 	@property {String} borderColor - The border color for the polyline
+     * 	@property {Object} style - The style of the shape
      */
-	this.borderColor = borderColor || '#000';
-
-	/**
-     * 	@property {String} insideColor - The inside color for the polyline
-     */
-	this.insideColor = insideColor || yom.colors.DEFAULT_INSIDE_COLOR;
-
-	/**
-     * 	@property {number} zIndex - The z index of the polyline
-     */
-	this.zIndex = zIndex || 0;
+	this.style = style || {borderWidth: 1, borderColor: '#000000'};
 
 	this.centroid = bspline.centroid;
 };

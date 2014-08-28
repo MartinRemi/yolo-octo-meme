@@ -10,45 +10,27 @@
  * 	@classdesc yom - GraphicText
  * 	@constructor
  * 	@param {String} [text] - The text to display
- * 	@param {number} [zIndex] - The zIndex of the text
  * 	@param {String} [font] - Various style information such as font, italics, bold, size etc
  * 	@param {number} [x] - The x-coordinate of the text
  *	@param {number} [y] - The y-coordinate of the text
- * 	@param {String} [borderColor] - The border color for the text
- *	@param {number} [lineWidth=1] - The border width (optionnal 1 is by default)
- * 	@param {String} [insideColor] - The inside color for the text
+ * 	@param {Object} [style] - The style (attributes : borderWidth, borderColor, fillColor, z)
  * 	@return {yom.GraphicText} The GraphicCicle object
  *
  *	TODO : Add color
  */
-yom.GraphicText = function (text, zIndex, font, x, y, borderColor, lineWidth, insideColor, textAlign) {
+yom.GraphicText = function (text, font, x, y, style, textAlign) {
 
 	/**
      * 	@property {String} text - The text we want to display
      */
 	this.text = text || '';
-
+	
 	/**
-     * 	@property {String} borderColor - The border color for the text
+     * 	@property {Object} style - The style of the shape
      */
-	this.borderColor = borderColor || '#000';
-
-	/**
-     * 	@property {String} insideColor - The inside color for the text
-     */
-	this.insideColor = insideColor || yom.colors.DEFAULT_INSIDE_COLOR;
-
-	/**
-     * 	@property {number} zIndex - The z index of the text
-     */
-	this.zIndex = zIndex || 0;
+	this.style = style || {fillColor: '#000'};
 
 	this.centroid = new yom.Vector2();
-
-	/**
-	 *	@property {number} lineWidth - The border width (optionnal 1 is by default)
-	 */
-	this.lineWidth = lineWidth || 1;
 
 	this.font = font || '';
 
@@ -109,7 +91,7 @@ yom.GraphicText.prototype.fillWithColor = function(drawManager) {
 };
 
 /**
- * 	Fill the graphic circle with image.
+ * 	Fill the graphic text with image.
  * 	@method yom.GraphicText#fillWithImage
  * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
@@ -123,7 +105,8 @@ yom.GraphicText.prototype.fillWithImage = function(drawManager) {
  * 	@param {yom.DrawManager} [drawManager] - The drawManager object
  */
 yom.GraphicText.prototype.render = function(drawManager) {
-	if(this.insideColor != yom.colors.DEFAULT_INSIDE_COLOR) {
+	
+	if(typeof(this.style.fillColor) !== 'undefined'){ //(this.insideColor != yom.colors.DEFAULT_INSIDE_COLOR) {
 		this.fillWithColor(drawManager);
 	} else {
 		this.draw(drawManager);

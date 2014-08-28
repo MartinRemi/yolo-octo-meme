@@ -39,11 +39,11 @@
 		var origin = new yom.Vector2(250,250);
 		var vec =  [new yom.Vector2(0,0), new yom.Vector2(0,0), new yom.Vector2(0,0)]
 		var line = [new yom.Line(origin.x, origin.y, origin.x, origin.y), new yom.Line(origin.x, origin.y, origin.x, origin.y), new yom.Line(origin.x, origin.y, origin.x, origin.y)];
-		var graphicLine =  [new yom.GraphicLine(line[0], yom.shapes.DEFAULT_ZINDEX, '#ff0000', 2),
-							new yom.GraphicLine(line[1], yom.shapes.DEFAULT_ZINDEX, '#000000', 5),
-							new yom.GraphicLine(line[2], yom.shapes.DEFAULT_ZINDEX, '#000000', 10)];
+		var graphicLine =  [new yom.GraphicLine(line[0], {borderColor: '#ff0000', borderWidth:2}),
+							new yom.GraphicLine(line[1], {borderColor:  '#000000', borderWidth:5}),
+							new yom.GraphicLine(line[2], {borderColor:  '#000000', borderWidth:10})];
 		var circle = new yom.Circle(origin.x, origin.y, 240);
-		var graphicCircle = new yom.GraphicCircle(circle, yom.shapes.DEFAULT_ZINDEX, '#000000', 5);
+		var graphicCircle = new yom.GraphicCircle(circle, {borderColor: '#000000', borderWidth:5});
 
 		// Add shapes to the world
 		world.shapes[0] = graphicLine[0];
@@ -67,9 +67,10 @@
 			v3.addVector(origin);
 			v3.y += 12.0;
 			mark[i] = new yom.Line(v1.x,v1.y, v2.x,v2.y);
-			graphicMark[i] = new yom.GraphicLine(mark[i], yom.shapes.DEFAULT_ZINDEX, '#555555', 5)
+			graphicMark[i] = new yom.GraphicLine(mark[i], {borderColor:'#555555', borderWidth:5});
 			world.shapes[world.shapes.length] = graphicMark[i];
-			world.shapes[world.shapes.length] =  new yom.GraphicText(i.toString(), 50, '24px arial', v3.x, v3.y, '#33DDFF', 0, '#33DDFF');
+			world.shapes[world.shapes.length] =  new yom.GraphicText(i.toString(), '24px arial', v3.x, v3.y,
+				{z:50, fillColor:'#33DDFF'});
 		}
 		
 		// update the lines of the clock

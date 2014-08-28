@@ -46,7 +46,7 @@
 				return;
 			
 			line[line.length] = new yom.Line(world.width/2, world.width/2, world.width/2, world.width/2);
-			world.shapes[world.shapes.length] = new yom.GraphicLine(line[line.length-1], yom.shapes.DEFAULT_ZINDEX, '#55EE00', 1);
+			world.shapes[world.shapes.length] = new yom.GraphicLine(line[line.length-1], {borderColor:'#55EE00', borderWidth:1});
 			line[line.length-1].firstPoint.x += v1.x;
 			line[line.length-1].firstPoint.y += v1.y;
 			line[line.length-1].secondPoint.x += v1.x+v2.x;
