@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<title>YOM - Demo - Graphic Line Tree example</title>
+	</head>
+
+	<body>
+		<canvas id="app" width="500" height="500">
+		</canvas>
+		
+	</body>
+	<script src="../../src/client/yom.js"></script>
+	<script src="../../src/client/core/World.js"></script>
+	<script src="../../src/client/geometry/Point.js"></script>
+	<script src="../../src/client/geometry/Circle.js"></script>
+	<script src="../../src/client/geometry/Line.js"></script>
+	<script src="../../src/client/geometry/Polyline.js"></script>
+	<script src="../../src/client/geometry/Polygon.js"></script>
+	<script src="../../src/client/geometry/BSpline.js"></script>
+	<script src="../../src/client/display/GraphicCircle.js"></script>
+	<script src="../../src/client/display/GraphicLine.js"></script>
+	<script src="../../src/client/display/GraphicPolyline.js"></script>
+	<script src="../../src/client/display/GraphicPolygon.js"></script>
+	<script src="../../src/client/display/GraphicBSpline.js"></script>
+	<script src="../../src/client/display/RenderManager.js"></script>
+	<script src="../../src/client/display/DrawManager.js"></script>
+	<script src="../../src/client/input/click_event_action.js"></script>
+	<script src="../../src/client/input/InputManager.js"></script>
+	<script src="../../src/client/core/Body.js"></script>
+	<script src="../../src/client/math/Vector2.js"></script>
+	<script src="../../src/client/physics/Force.js"></script>
+	<script>
+		// Mandatory objects
+		var world = new yom.World("app", 500, 500);
+		var drawManager = new yom.DrawManager(world);
+		var renderManager = new yom.RenderManager(world, drawManager);
+
+		var line = [];
+		
+		/** Example of recursive function to draw trees
+		* v1 : origin
+		* v2 : vector for the direction
+		* angle : angle of variation */
+		function rec_draw1(v1, v2, angle, acc){
+			acc = acc || 0;
+			if(acc >= 8)
+				return;
+			
+			line[line.length] = new yom.Line(world.width/2, world.width/2, world.width/2, world.width/2);
+			world.shapes[world.shapes.length] = new yom.GraphicLine(line[line.length-1], {borderColor:'#55EE00', borderWidth:1});
+			line[line.length-1].firstPoint.x += v1.x;
+			line[line.length-1].firstPoint.y += v1.y;
+			line[line.length-1].secondPoint.x += v1.x+v2.x;
+			line[line.length-1].secondPoint.y += v1.y+v2.y;
+			var v3 = v2.copy();
+			v3.rotate(angle);
+			acc++;
+			rec_draw1(new yom.Vector2(v1.x+v2.x,v1.y+v2.y),
+						  new yom.Vector2(v3.x,v3.y), angle, acc);
+			v3.rotate(-angle*2.0);
+			rec_draw1(new yom.Vector2(v1.x+v2.x,v1.y+v2.y),
+						  new yom.Vector2(v3.x,v3.y), angle, acc);
+		}
+		
+		var nb = 0;
+		setInterval(function() {
+				nb++;
+				world.shapes = [];
+				// variation of the angle in the time
+				rec_draw1(new yom.Vector2(0,0), new yom.Vector2(0,-20), nb/30);
+		}, 80);
+
+		// Start the steps and rendering of the world
+		yom.start();
+	</script>
+	<a href="../index.html">Back...</a>
+</html>

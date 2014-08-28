@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>YOM - Demo - Square collision</title>
+	</head>
+
+	<body>
+		<canvas id="app" width="500" height="500">
+		</canvas>
+		
+	</body>
+	<script src="../../src/client/yom.js"></script>
+	<script src="../../src/client/core/World.js"></script>
+	<script src="../../src/client/geometry/Point.js"></script>
+	<script src="../../src/client/geometry/Circle.js"></script>
+	<script src="../../src/client/geometry/Line.js"></script>
+	<script src="../../src/client/geometry/Polyline.js"></script>
+	<script src="../../src/client/geometry/Polygon.js"></script>
+	<script src="../../src/client/geometry/BSpline.js"></script>
+	<script src="../../src/client/geometry/Collisions.js"></script>
+	<script src="../../src/client/display/GraphicCircle.js"></script>
+	<script src="../../src/client/display/GraphicLine.js"></script>
+	<script src="../../src/client/display/GraphicPolyline.js"></script>
+	<script src="../../src/client/display/GraphicPolygon.js"></script>
+	<script src="../../src/client/display/GraphicBSpline.js"></script>
+	<script src="../../src/client/display/RenderManager.js"></script>
+	<script src="../../src/client/display/DrawManager.js"></script>
+	<script src="../../src/client/input/click_event_action.js"></script>
+	<script src="../../src/client/input/InputManager.js"></script>
+	<script src="../../src/client/core/Body.js"></script>
+	<script src="../../src/client/math/Vector2.js"></script>
+	<script src="../../src/client/physics/Force.js"></script>
+	<script>
+		var world = new yom.World("app", 500, 500);
+		var drawManager = new yom.DrawManager(world);
+		var renderManager = new yom.RenderManager(world, drawManager);
+
+		var circleA = new yom.Circle(50,200,30);
+		var circleB = new yom.Circle(300,200,30);
+		var style_base = {borderColor:'#00FF00', borderWidth:5};
+		var style_red = {borderColor:'#FF0000', borderWidth:5};
+		var gcircleA = new yom.GraphicCircle(circleA, style_base);
+		var gcircleB = new yom.GraphicCircle(circleB, {borderColor:'#0000FF', borderWidth:5});
+		world.shapes[0] = gcircleA;
+		world.shapes[1] = gcircleB;
+		
+		nb = 0;
+		setInterval(function() {
+				nb++;
+				circleA = new yom.Circle(50+(nb*5.0%400),200,30);
+				if(yom.Collisions.CircleCircle(circleA, circleB)){
+					gcircleA = new yom.GraphicCircle(circleA, style_red);
+				}else{
+					gcircleA = new yom.GraphicCircle(circleA, style_base);
+				}
+				world.shapes[0] = gcircleA;
+		}, 80);
+		
+		yom.start();
+	</script>
+	<a href="../index.html">Back...</a>
+</html>
