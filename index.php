@@ -1,5 +1,10 @@
 <html>
 	<head>
+		<style>
+			#app {
+				background: #2c3e50;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -52,19 +57,59 @@
 		}).css("width", "100px").css("height", "100px").appendTo(app);*/
 
 
-		var circle = new yom.Circle(250, 250, 15);
-		var graphicCircle = new yom.GraphicCircle(circle, yom.shapes.DEFAULT_ZINDEX, '#00FFFF', 1);
+		var circle = new yom.Circle(250, 250, 50);
+		var graphicCircle = new yom.GraphicCircle(
+			circle,
+			{
+				z: 55,
+				borderColor:'#34495e',
+				borderWidth:3,
+				fillColor: '#3498db'
+			}
+		);
 
 		var line = new yom.Line(0, 0, 500, 500);
-		var graphicLine1 = new yom.GraphicLine(line, yom.shapes.DEFAULT_ZINDEX, '#ff0000', 1);
+		var graphicLine1 = new yom.GraphicLine(
+			line,
+			{
+				z: 50,
+				borderColor:'#ff0000',
+				borderWidth:1,
+			}
+		);
 
 		var array = [100, 0, 160, 400, 500, 0];
 		var polyline = new yom.Polyline(array);
-		var graphicPolyline1 = new yom.GraphicPolyline(polyline, yom.shapes.DEFAULT_ZINDEX, '#C3C3C3', 1);
+		var graphicPolyline1 = new yom.GraphicPolyline(polyline,
+			{
+				z: 50,
+				borderColor:'#C3C3C3',
+				borderWidth:1
+			}
+		);
 
-		var arrayPolygon = [100, 150, 150, 150, 150, 100, 120, 80, 100, 100];
-		var polygon = new yom.Polygon(arrayPolygon);
-		var graphicPolygon = new yom.GraphicPolygon(polygon, yom.shapes.DEFAULT_ZINDEX, '#ffb345', 1, '#a6e409');
+		// var arrayPolygon = [100, 150, 150, 150, 150, 100, 120, 80, 100, 100];
+		// var polygon = new yom.Polygon(arrayPolygon);
+		// var graphicPolygon = new yom.GraphicPolygon(
+		// 	polygon,
+		// 	{
+		// 		z: 60,
+		// 		borderColor:'#FFB345',
+		// 		borderWidth:1,
+		// 		fillColor: '#A6E409'
+		// 	}
+		// );
+
+		var circle2 = new yom.Circle(100, 150, 20);
+		var graphicCircle2 = new yom.GraphicCircle(
+			circle2,
+			{
+		 		z: 60,
+		 		borderColor:'#FFB345',
+		 		borderWidth:1,
+		 		fillColor: '#A6E409'
+		 	}
+		);
 
 		var world = new yom.World("app", 500, 500);
 		var drawManager = new yom.DrawManager(world);
@@ -77,19 +122,20 @@
 		//world.shapes[0] = graphicCircle;
 		world.shapes[0] = graphicLine1;
 		world.shapes[1] = graphicPolyline1;
-		world.shapes[2] = new yom.GraphicText('Remi', 50, '40px arial', 340, 234, '#F05340', 1, '000000');
+		world.shapes[2] = new yom.GraphicText('YOM', '40px arial', 250, 270, 
+						{z: 58, borderWidth:1, fillColor: '#34495e', borderColor: '#3498db'});
 
-		world.bodies[0] = new yom.Body([graphicPolygon], 10);
-		world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(0,0), new yom.Vector2(1, 0));
+		world.bodies[0] = new yom.Body([graphicCircle2], 10);
+		//world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(0,0), new yom.Vector2(2, 0));
 		// world.bodies[0].forces[0] = new yom.Force(new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1]), 
 		// new yom.Vector2(polygon.coordinates[0], polygon.coordinates[1] + 10));
 
 		world.bodies[1] = new yom.Body([graphicCircle], 10);
-		world.bodies[1].forces[0] = new yom.Force(new yom.Vector2(10, 10), new yom.Vector2(), yom.physics.force_type.OD);
+		world.bodies[1].forces[0] = new yom.Force(new yom.Vector2(1, 1), new yom.Vector2(), yom.physics.force_type.OD);
 
 		//world.forces[0] = new yom.Force(new yom.Vector2(5, 0), new yom.Vector2(), yom.physics.force_type.OD)
 
-		renderManager.display();
+		//renderManager.display();
 		yom.start();
 
 		yom.input.mapEvent(world, world , function() {alert('test') });

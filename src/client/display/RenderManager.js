@@ -56,9 +56,9 @@ yom.RenderManager.prototype.display = function() {
 
 	// ----- Sort shapes
 	shapes.sort(function(a, b) {
-		if(a.zIndex > b.zIndex) {
+		if(a.style.z > b.style.z) {
 			return 1
-		} else if(a.zIndex < b.zIndex) {
+		} else if(a.style.z < b.style.z) {
 			return -1;
 		} else {
 			return 0;

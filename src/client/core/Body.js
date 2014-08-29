@@ -46,7 +46,7 @@ yom.Body = function (shapes, mass) {
 
 	var i;
 	for(i = 0; i < shapes.length; ++i) {
-		//this.centroid.addVector(new yom.Vector2(shapes[i].centroid.x, shapes[i].centroid.y));
+		this.centroid.addVector(new yom.Vector2(shapes[i].centroid.x, shapes[i].centroid.y));
 	}
 	this.centroid.div(shapes.length);
 	this.centroid = new yom.Point(this.centroid.x, this.centroid.y);
