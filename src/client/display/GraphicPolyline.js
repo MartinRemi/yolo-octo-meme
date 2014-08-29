@@ -27,6 +27,7 @@ yom.GraphicPolyline = function (polyline, style) {
      */
 	this.style = style || {borderWidth: 1, borderColor: '#000000', z: 0};
 
+	this.centroid = polyline.centroid;
 };
 
 // ----- Method(s) ----- \\

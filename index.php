@@ -89,7 +89,7 @@
 
 		//world.forces[0] = new yom.Force(new yom.Vector2(5, 0), new yom.Vector2(), yom.physics.force_type.OD)
 
-		//renderManager.display();
+		renderManager.display();
 		yom.start();
 
 		yom.input.mapEvent(world, world , function() {alert('test') });

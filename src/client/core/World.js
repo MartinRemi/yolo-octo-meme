@@ -95,7 +95,6 @@ yom.World.prototype.doesCollide = function(numBody) {
                }
           }
      }
-     console.log('yolo');
 };
 
 /**
