@@ -29,9 +29,9 @@ yom.Circle = function (x, y, radius) {
 	this.id = yom.maxCircleId++;
 
 	/**
-     * 	@property {yom.Point} centre - The center of the cicle.
+     * 	@property {yom.Vector2} centre - The center of the cicle.
      */
-	this.center = new yom.Point (x || 0, y || 0);
+	this.center = new yom.Vector2 (x || 0, y || 0);
 
 	/**
      * 	@property {number} radius - The radius of the circle. (i.e. distance between center and each other point of the circle)
@@ -40,7 +40,7 @@ yom.Circle = function (x, y, radius) {
 	this.radius = ( this.radius >= 0 ) ? this.radius : 0;
 
 	/**
-     * 	@property {yom.Point} centroid - The center of gravity of the circle
+     * 	@property {yom.Vector2} centroid - The center of gravity of the circle
      */
 	this.centroid = this.center;
 };
@@ -90,8 +90,8 @@ yom.Circle.prototype.copy = function () {
  * 	@param {number} [y=0] - The y-coordinate offset
  */
 yom.Circle.prototype.move = function (x, y) {
-	this.center.move(x, y);
-	this.centroid.move(x, y);
+	this.center.translate(x, y);
+	this.centroid.translate(x, y);
 };
 
 /**
@@ -114,7 +114,7 @@ yom.Circle.prototype.contains = function (x, y, inside) {
 /**
  * 	Checkes if the circle (this) contains a point (point)
  * 	@method yom.Circle#containsPoint
- * 	@param {yom.Point} [point] - The point concerned
+ * 	@param {yom.Vector2} [point] - The point concerned
  * 	@param {boolean} [inside] - If true, we check within the circle
  *	@return {boolean} true if the circle contains the point, else false
  */

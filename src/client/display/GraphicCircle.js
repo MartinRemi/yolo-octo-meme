@@ -27,7 +27,7 @@ yom.GraphicCircle = function (circle, style) {
      */
 	this.style = style || {borderWidth: 1, borderColor: '#000000'};
 
-	this.centroid = circle.center;
+	this.centroid = circle.centroid;
 };
 
 // ----- Method(s) ----- \\
