@@ -33,27 +33,27 @@ yom.Line = function (xf, yf, xs, ys) {
 	/**
      * 	@property {yom.Point} firstPoint - The first point of the line.
      */
-	this.firstPoint = new yom.Point ();
+	this.firstPoint = new yom.Vector2 ();
 
 	/**
      * 	@property {yom.Point} secondPoint - The second point of the line.
      */
-	this.secondPoint = new yom.Point ();
+	this.secondPoint = new yom.Vector2 ();
 
 	/**
      * 	@property {number} gradient - The gradient of the line.
      */
     this.gradient = 0;
     if(xf > xs) {
-    	this.firstPoint = new yom.Point (xs, ys);
+    	this.firstPoint = new yom.Vector2 (xs, ys);
 
-     	this.secondPoint = new yom.Point (xf, yf);
+     	this.secondPoint = new yom.Vector2 (xf, yf);
 
      	this.gradient = (yf - ys) / (xf - xs);
     } else {
-     	this.firstPoint = new yom.Point (xf, yf);
+     	this.firstPoint = new yom.Vector2 (xf, yf);
 
-     	this.secondPoint = new yom.Point (xs, ys);
+     	this.secondPoint = new yom.Vector2 (xs, ys);
 
      	this.gradient = (ys - yf) / (xs - xf);
     }
@@ -97,8 +97,8 @@ yom.Line.prototype.getSecondPoint = function () {
  * 	@return {yom.Line} The new line object
  */
 yom.Line.prototype.copy = function () {
-	return new yom.Line(this.firstPoint.getX(), this.firstPoint.getY(),
-	 					this.secondPoint.getX(), this.secondPoint.getY());
+	return new yom.Line(this.firstPoint.x, this.firstPoint.y,
+	 					this.secondPoint.x, this.secondPoint.y);
 };
 
 /**
@@ -108,8 +108,8 @@ yom.Line.prototype.copy = function () {
  * 	@param {number} [y=0] - The y-coordinate offset
  */
 yom.Line.prototype.move = function (x, y) {
-	this.firstPoint.move(x, y);
-	this.secondPoint.move(x, y);
+	this.firstPoint.translate(x,y);
+	this.secondPoint.translate(x,y);
 
 	// The gradient is the same
 	// but we have to compute the intercept again
@@ -126,9 +126,11 @@ yom.Line.prototype.move = function (x, y) {
  */
 yom.Line.prototype.contains = function (x, y) {
     if(this.firstPoint.x == this.secondPoint.x) {
-        return (this.firstPoint.x == x) && ((y <= this.secondPoint.y && y >= this.firstPoint.y) || (y <= this.firstPoint.y && y >= this.secondPoint.y));
+        return (this.firstPoint.x == x) && ((y <= this.secondPoint.y && y >= this.firstPoint.y) 
+				|| (y <= this.firstPoint.y && y >= this.secondPoint.y));
     } else {
-	   return (Math.round((this.gradient * x) + this.intercept) == y) && (x >= this.firstPoint.x && x <= this.secondPoint.x);
+	   return (Math.round((this.gradient * x) + this.intercept) == y) 
+				&& (x >= this.firstPoint.x && x <= this.secondPoint.x);
     }
 };
 

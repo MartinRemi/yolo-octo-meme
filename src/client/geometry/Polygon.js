@@ -42,11 +42,11 @@ yom.Polygon = function (coordinates) {
     this.perimeter = new yom.Polyline(coordinates);
 
     /**
-     *  @property {yom.Point} centroid - The center of gravity of the polygon
+     *  @property {yom.Vector2} centroid - The center of gravity of the polygon
      *	TODO: The way of calculating the centroid, isn't working of there are intersections
      *		between the lines of the polygon
      */
-    this.centroid = new yom.Point(0, 0);
+    this.centroid = new yom.Vector2(0, 0);
     if(coordinates.length == 2) {
 		this.centroid.x = coordinates[0];
 		this.centroid.y = coordinates[1];
@@ -165,7 +165,7 @@ yom.Polygon.prototype.contains = function (x, y, inside) {
 /**
  * 	Checkes if the Polygon (this) contains a point (point)
  * 	@method yom.Polygon#containsPoint
- * 	@param {yom.Point} [point] - The point concerned
+ * 	@param {yom.Vector2} [point] - The point concerned
  * 	@param {boolean} [inside] - If true, we check within the Polygon
  *	@return {boolean} true if the Polygon contains the point, else false
  */

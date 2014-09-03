@@ -345,6 +345,7 @@ yom.DrawManager.prototype.fillCurveWithColor = function(graphic) {
 			graphic.curve.controlPoints[2*(i-1)+1].x,graphic.curve.controlPoints[2*(i-1)+1].y,
 			graphic.curve.points[i].x,graphic.curve.points[i].y);
 	}
+	console.log(graphic.style);
 	this.drawWithStyle(graphic.style, true);
 };
 

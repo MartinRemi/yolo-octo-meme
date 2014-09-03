@@ -40,6 +40,17 @@ yom.Vector2.prototype.add = function(number) {
 };
 
 /**
+ * 	Add a vector (x,y) to the vector (this)
+ * 	@method yom.Vector2#addVector
+ *	@param {number} nx - x coordinate of the vector to add
+ *	@param {number} ny - y coordinate of the vector to add
+ */
+yom.Vector2.prototype.translate = function(nx,ny) {
+	this.x += nx;
+	this.y += ny;
+};
+
+/**
  * 	Add a vector to the vector (this)
  * 	@method yom.Vector2#addVector
  *	@param {yom.Vector2} vector - The vector to add

@@ -26,6 +26,8 @@ yom.GraphicCircle = function (circle, style) {
      * 	@property {Object} style - The style of the shape
      */
 	this.style = style || {borderWidth: 1, borderColor: '#000000'};
+
+	this.centroid = circle.centroid;
 };
 
 // ----- Method(s) ----- \\
