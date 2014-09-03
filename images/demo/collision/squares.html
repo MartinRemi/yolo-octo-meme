@@ -1,6 +1,7 @@
+
 <html>
 	<head>
-		<title>YOM - Demo - Graphic Circle</title>
+		<title>YOM - Demo - Square collision</title>
 	</head>
 
 	<body>
@@ -29,27 +30,35 @@
 	<script src="../../src/client/math/Vector2.js"></script>
 	<script src="../../src/client/physics/Force.js"></script>
 	<script>
-		// Mandatory objects
 		var world = new yom.World("app", 500, 500);
 		var drawManager = new yom.DrawManager(world);
 		var renderManager = new yom.RenderManager(world, drawManager);
 
-		// Drawn circle
-		var circle = new yom.Circle(250, 250, 15);
-		var graphicCircle = new yom.GraphicCircle(circle, 
-				{z: yom.shapes.DEFAULT_ZINDEX, borderColor: '#00FFFF', borderWidth: 5});
+		var basic_style = {z:yom.shapes.DEFAULT_ZINDEX, borderColor:'#ffb345', borderWidth:1, fillColor:'#a6e409'};
+		
+		var arrayPolygon = [100, 150, 150, 150, 150, 100, 100, 100];
+		var polygon = new yom.Polygon(arrayPolygon);
+		var graphicPolygon = new yom.GraphicPolygon(polygon, basic_style);
 
-		// Filled circle
-		var circle2 = new yom.Circle(150, 150, 35);
-		var graphicCircle2 = new yom.GraphicCircle(circle2, 
-				{z: yom.shapes.DEFAULT_ZINDEX, borderColor: '#00FFFF', borderWidth: 1, fillColor: '#f05340'} );
+		var arrayPolygon2 = [200, 250, 250, 250, 250, 200, 200, 200];
+		var polygon2 = new yom.Polygon(arrayPolygon2);
+		var graphicPolygon2 = new yom.GraphicPolygon(polygon2, basic_style);
 
-		// Add shapes to the world
-		world.shapes[0] = graphicCircle;
-		world.shapes[1] = graphicCircle2;
+		world.bodies[0] = new yom.Body([graphicPolygon], 10);
+		world.bodies[1] = new yom.Body([graphicPolygon2], 10);
+		world.bodies[1].forces[0] = new yom.Force(new yom.Vector2(1, 1), new yom.Vector2(), yom.physics.force_type.OD);
 
-		// Start the steps and rendering of the world
 		yom.start();
 	</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54433495-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 	<a href="../index.html">Back...</a>
 </html>

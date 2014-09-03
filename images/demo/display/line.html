@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>YOM - Demo - Graphic BSpline</title>
+		<title>YOM - Demo - Graphic Line</title>
 	</head>
 
 	<body>
@@ -29,23 +29,30 @@
 	<script src="../../src/client/math/Vector2.js"></script>
 	<script src="../../src/client/physics/Force.js"></script>
 	<script>
+		// Mandatory objects
 		var world = new yom.World("app", 500, 500);
 		var drawManager = new yom.DrawManager(world);
 		var renderManager = new yom.RenderManager(world, drawManager);
 
-		// the B-Spline
-		var nodes1 = [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]; // example of input for nodes
-		var nodes2 = new Array(12);
-		for(var i=0; i<nodes2.length; ++i) {
-			nodes2[i] = (i)/(nodes2.length-1);
-		}
-		var bspline = new yom.BSpline(nodes2, [200,-60,100,200,0,100,0,300,50], 2, new yom.Vector2(100,100), 250);
-		var graphic_bs = new yom.GraphicBSpline(bspline, 
-				{z:yom.shapes.DEFAULT_ZINDEX, borderColor:'#FF00FF', borderWidth: 1});
-		world.shapes[0] = graphic_bs;
-		// ---
+		// Drawn line
+		var line = new yom.Line(0, 0, 500, 500);
+		var graphicLine = new yom.GraphicLine(line, {borderColor: '#ff0000', borderWidth: 5});
 
+		// Add shapes to the world
+		world.shapes[0] = graphicLine;
+
+		// Start the steps and rendering of the world
 		yom.start();
 	</script>
 	<a href="../index.html">Back...</a>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54433495-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </html>
