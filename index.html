@@ -118,7 +118,11 @@ Sergueï Lallement - Contributor</p>
   <script src="src/client/math/Vector2.js"></script>
   <script src="src/client/physics/Force.js"></script>
   <script>
-  var circle = new yom.Circle(250, 250, 50);
+    var world = new yom.World("app", 500, 500);
+    var drawManager = new yom.DrawManager(world);
+    var renderManager = new yom.RenderManager(world, drawManager);
+  
+    var circle = new yom.Circle(250, 250, 50);
     var graphicCircle = new yom.GraphicCircle(
       circle,
       {
@@ -159,16 +163,86 @@ Sergueï Lallement - Contributor</p>
         fillColor: '#A6E409'
       }
     );
+	
+	// curve
+	var style_curve_lines = {z:1, borderColor:'#444444',  borderWidth:2};
+	var style_curve_lines_light = {z:0, borderColor:'#BBB',  borderWidth:1};
+	var curve_lines = [];
+	var graphic_curve_lines = [];
+	var curve_sub_lines = [];
+	var graphic_curve_sub_lines = [];
+	var curve_list_size = 300;
+	var curve_e = 1.0;
+	var curve_t = 0.0;
+	for(var i = 0; i<curve_list_size;++i){
+		curve_lines[i] = new yom.Line(0,0,0,0);
+		graphic_curve_lines[i] = new yom.GraphicLine(curve_lines[i],
+				style_curve_lines);
+		curve_sub_lines[i] = new yom.Line(0,0,0,0);
+		graphic_curve_sub_lines[i] = new yom.GraphicLine(curve_sub_lines[i],
+				style_curve_lines_light);
+	}
+	
+	// conchoïde de rosace
+	function computeCurve(e, offset, offset2){
+		offset = 3.1415926536*offset || 0.0;
+		offset2 = (3.1415926536*offset2) || 0.0;
+		var radius = 100.0;
+		// polar equation: 
+		function eq(t){
+			return radius*(1+e*Math.cos(n*t));
+		}
+		var p = 4.0;
+		var n = 9.0/p;
+		var origin = new yom.Vector2(world.width/2, world.height/2);
+		var factor = 3.1415926536*2.0*p;
+		var len = curve_lines.length;
+		for(var i =0; i<len; ++i){
+			var t = i/(len-1)*factor;
+			var v1 = new yom.Vector2(Math.cos(t+offset), Math.sin(t+offset));
+			v1.mul(eq(t));
+			
+			t = (i+1+offset2)/(len-1)*factor;// + offset2;
+			var v2 = new yom.Vector2(Math.cos(t+offset), Math.sin(t+offset));
+			v2.mul(eq(t));
+			
+			if(offset2 == 0.0){
+				// the curve
+				curve_lines[i].firstPoint = new yom.Vector2(origin.x+v1.x, origin.y+v1.y);
+				curve_lines[i].secondPoint = new yom.Vector2(origin.x+v2.x, origin.y+v2.y);
+			}else{
+				// light grey lines:
+				curve_sub_lines[i].firstPoint = new yom.Vector2(origin.x+v1.x, origin.y+v1.y);
+				curve_sub_lines[i].secondPoint = new yom.Vector2(origin.x+v2.x, origin.y+v2.y);
+			}
+		}
+	}
+	
+	// update the curve
+	setInterval(function() {
+			curve_t += 0.002;
+			curve_e += 0.01;
+			if(curve_e > 2.0){
+				curve_e = 0.0;
+			}
+			var r_curve_e = curve_e-1.0;
+			computeCurve(r_curve_e, curve_t);
+			computeCurve(r_curve_e, curve_t, 3.0);
+		}, 30);
 
-    var world = new yom.World("app", 500, 500);
-    var drawManager = new yom.DrawManager(world);
-    var renderManager = new yom.RenderManager(world, drawManager);
-
+	// display
     world.shapes[0] = graphicLine1;
     world.shapes[1] = graphicPolyline1;
     world.shapes[2] = new yom.GraphicText('YOM', '40px arial', 250, 270, 
             {z: 58, borderWidth:1, fillColor: '#34495e', borderColor: '#3498db'});
+	for(var i =0;i<graphic_curve_lines.length;++i){
+		world.shapes[3+i] = graphic_curve_lines[i];
+	}
+	for(var i =0;i<graphic_curve_sub_lines.length;++i){
+		world.shapes[3+graphic_curve_lines.length+i] = graphic_curve_sub_lines[i];
+	}
 
+	// physics 
     world.bodies[0] = new yom.Body([graphicCircle2], 10);
 
     world.bodies[1] = new yom.Body([graphicCircle], 10);
