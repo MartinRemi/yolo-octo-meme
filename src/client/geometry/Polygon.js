@@ -120,7 +120,7 @@ yom.Polygon.prototype.move = function (x, y) {
 	// We don't have to move the coordinates as the polyline does it (same array)
 	this.perimeter.move(x, y);
 	
-	this.centroid.move(x, y);
+	this.centroid.translate(x, y);
 };
 
 /**

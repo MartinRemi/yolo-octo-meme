@@ -66,7 +66,7 @@ yom.Line = function (xf, yf, xs, ys) {
     /**
      *  @property {yom.Point} centroid - The center of gravity of the line
      */
-    this.centroid = new yom.Point();
+    this.centroid = new yom.Vector2();
     this.centroid.y = this.firstPoint.y + (this.secondPoint.y + this.firstPoint.y) / 2;
     this.centroid.x = this.firstPoint.x + (this.secondPoint.x + this.firstPoint.x) / 2;
 };
@@ -114,7 +114,7 @@ yom.Line.prototype.move = function (x, y) {
 	// The gradient is the same
 	// but we have to compute the intercept again
 	this.intercept = this.firstPoint.getY() - this.gradient * this.firstPoint.getX();
-    this.centroid.move(x, y);
+    this.centroid.translate(x, y);
 };
 
 /**

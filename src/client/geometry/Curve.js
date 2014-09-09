@@ -38,7 +38,7 @@ yom.Curve = function (points, controlPoints) {
      */
 	this.controlPoints = controlPoints;// || new Array((this.points.length-1)*2);
 
-    this.centroid = new yom.Point(); // TODO 
+    this.centroid = new yom.Vector2(); // TODO 
 };
 
 // ----- Getter(s) ----- \\
@@ -83,7 +83,7 @@ yom.Curve.prototype.move = function (x, y) {
 		graphic.curve.controlPoints[2*(i-1)].add(x,y);
 		graphic.curve.controlPoints[2*(i-1)].add(x,y);
 	}
-    this.centroid.move(x, y);
+    this.centroid.translate(x, y);
 };
 
 /**
