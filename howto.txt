@@ -1,4 +1,0 @@
-To launch the server, use the following command :
-php bin/chat-server.php
-
-
